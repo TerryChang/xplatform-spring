@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Work" classname="Work" inheritanceid="" position="absolute 0 0 765 540" titletext="Master/Detail (1:n)">
+    <Layouts>
+      <Layout>
+        <Static id="sta_WF_SearchBox" class="sta_WF_SearchBox" position="absolute 0 0 765 41" text="" anchor="left top right"/>
+        <Static id="sta_WFSA_LabelP" text="사번/성명" class="sta_WFSA_LabelP" position="absolute 17 10 97 30"/>
+        <Static id="sta_WFSA_PointLabel00" text="조직 :" class="sta_WFSA_Label" position="absolute 320 10 365 30"/>
+        <Static id="sta_WFSA_PointLabel01" text="직위 :" class="sta_WFSA_Label" position="absolute 494 10 534 30"/>
+        <Button id="btn_WFSA_Search" taborder="1" text="조회" class="btn_WFSA_Search" position="absolute 700 10 750 32" anchor="top right"/>
+        <Button id="btn_WFSA_Search02" taborder="2" class="btn_WFSA_Search" position="absolute 156 10 176 30" style="image:URL('theme://images/ico_Search.png'); "/>
+        <Edit id="Edit00" taborder="3" class="input_point" position="absolute 91 10 154 30"/>
+        <Edit id="Edit01" taborder="4" enable="false" position="absolute 178 10 281 30"/>
+        <Edit id="Edit02" taborder="5" value="컨설팅지원그룹" text="컨설팅지원그룹" readonly="true" position="absolute 354 10 472 30"/>
+        <Edit id="Edit03" taborder="6" value="과장" text="과장" readonly="true" position="absolute 530 10 638 30"/>
+        <Button id="btn_WF_crud" taborder="7" text="저장" class="btn_WF_crud" position="absolute 715 56 765 76" anchor="top right"/>
+        <Static id="sta_WF_TitleLev1" text="급여정보" class="sta_WF_TitleLev1" position="absolute 0 59 134 73"/>
+        <Static id="sta_WFDA_Label" text="시작일" class="sta_WFDA_LabelP" position="absolute 0 81 105 107"/>
+        <Static id="sta_WFDA_Label05" class="sta_WFDA_Data" position="absolute 104 81 244 107" text=""/>
+        <Calendar id="Calendar01" taborder="8" value="20110620" text="2011-06-20" dateformat="yyyy-MM-dd" class="input_point" position="absolute 108 84 198 104"/>
+        <Static id="sta_WFDA_Label00" text="종료일" class="sta_WFDA_LabelP" position="absolute 243 81 348 107"/>
+        <Static id="sta_WFDA_Label01" class="sta_WFDA_Data" position="absolute 347 81 487 107" text=""/>
+        <Calendar id="Calendar02" taborder="9" value="20110620" text="2011-06-20" dateformat="yyyy-MM-dd" class="input_point" position="absolute 351 84 441 104"/>
+        <Static id="sta_WFDA_Label02" text="급여지급여부" class="sta_WFDA_Label" position="absolute 486 81 616 107"/>
+        <Static id="sta_WFDA_Label03" class="sta_WFDA_Data" position="absolute 615 81 765 107" text="" anchor="left top right"/>
+        <Combo id="Combo03" taborder="10" position="absolute 619 84 704 104"/>
+        <Static id="sta_WFDA_Label04" text="기본급" class="sta_WFDA_LabelP" position="absolute 0 106 105 132"/>
+        <Static id="sta_WFDA_Label06" class="sta_WFDA_Data" position="absolute 104 106 244 132" text=""/>
+        <Static id="sta_WFDA_Label07" text="기본급(%)" class="sta_WFDA_LabelP" position="absolute 243 106 348 132"/>
+        <Static id="sta_WFDA_Label08" class="sta_WFDA_Data" position="absolute 347 106 487 132" text=""/>
+        <Static id="sta_WFDA_Label09" text="상여금(%)" class="sta_WFDA_LabelP" position="absolute 486 106 616 132"/>
+        <Static id="sta_WFDA_Label10" class="sta_WFDA_Data" position="absolute 615 106 765 132" text="" anchor="left top right"/>
+        <MaskEdit id="MaskEdit00" taborder="11" class="input_point" position="absolute 108 109 228 129"/>
+        <MaskEdit id="MaskEdit01" taborder="12" class="input_point" position="absolute 351 109 396 129"/>
+        <MaskEdit id="MaskEdit02" taborder="13" class="input_point" position="absolute 619 109 664 129"/>
+        <Static id="sta_WFDA_Label11" text="퇴직금기산일" class="sta_WFDA_Label" position="absolute 0 131 105 157"/>
+        <Static id="sta_WFDA_Label12" class="sta_WFDA_Data" position="absolute 104 131 244 157" text=""/>
+        <Static id="sta_WFDA_Label13" text="중간정산일" class="sta_WFDA_Label" position="absolute 243 131 348 157"/>
+        <Static id="sta_WFDA_Label14" class="sta_WFDA_Data" position="absolute 347 131 487 157" text=""/>
+        <Static id="sta_WFDA_Label15" text="중간정산횟수" class="sta_WFDA_Label" position="absolute 486 131 616 157"/>
+        <Static id="sta_WFDA_Label16" class="sta_WFDA_Data" position="absolute 615 131 765 157" text="" anchor="left top right"/>
+        <MaskEdit id="MaskEdit05" taborder="14" class="input_point" position="absolute 619 134 664 154"/>
+        <Calendar id="Calendar03" taborder="15" value="20110620" text="2011-06-20" dateformat="yyyy-MM-dd" enable="false" position="absolute 108 134 198 154"/>
+        <Calendar id="Calendar04" taborder="16" value="20110620" text="2011-06-20" readonly="true" dateformat="yyyy-MM-dd" position="absolute 351 134 441 154"/>
+        <Static id="sta_WFDA_Label17" text="국민연금" class="sta_WFDA_Label" position="absolute 0 156 105 182"/>
+        <Static id="sta_WFDA_Label18" class="sta_WFDA_Data" position="absolute 104 156 244 182" text=""/>
+        <Static id="sta_WFDA_Label19" text="건강보험" class="sta_WFDA_Label" position="absolute 243 156 348 182"/>
+        <Static id="sta_WFDA_Label20" class="sta_WFDA_Data" position="absolute 347 156 487 182" text=""/>
+        <Static id="sta_WFDA_Label21" text="퇴직연금제도유형" wordwrap="none" class="sta_WFDA_Label" position="absolute 486 156 616 182"/>
+        <Static id="sta_WFDA_Label22" class="sta_WFDA_Data" position="absolute 615 156 765 182" text="" anchor="left top right"/>
+        <MaskEdit id="MaskEdit04" taborder="17" position="absolute 108 159 228 179"/>
+        <MaskEdit id="MaskEdit03" taborder="18" position="absolute 351 159 471 179"/>
+        <Combo id="Combo04" taborder="19" position="absolute 619 159 739 179"/>
+        <Static id="sta_WFDA_Label23" text="거래은행" class="sta_WFDA_Label" position="absolute 0 181 105 207"/>
+        <Static id="sta_WFDA_Label24" class="sta_WFDA_Data" position="absolute 104 181 244 207" text=""/>
+        <Static id="sta_WFDA_Label25" text="계좌번호" class="sta_WFDA_Label" position="absolute 243 181 348 207"/>
+        <Static id="sta_WFDA_Label26" class="sta_WFDA_Data" position="absolute 347 181 487 207" text=""/>
+        <Static id="sta_WFDA_Label27" text="예금주" wordwrap="none" class="sta_WFDA_Label" position="absolute 486 181 616 207"/>
+        <Static id="sta_WFDA_Label28" class="sta_WFDA_Data" position="absolute 615 181 765 207" text="" anchor="left top right"/>
+        <MaskEdit id="MaskEdit07" taborder="20" position="absolute 351 184 471 204"/>
+        <Combo id="Combo05" taborder="21" position="absolute 108 184 228 204"/>
+        <Edit id="Edit04" taborder="22" position="absolute 619 184 739 204"/>
+        <Button id="btn_WF_crud00" taborder="23" text="삭제" class="btn_WF_crud" position="absolute 663 56 713 76" anchor="top right"/>
+        <Button id="btn_WF_crud01" taborder="24" text="추가" class="btn_WF_crud" position="absolute 611 56 661 76" anchor="top right"/>
+        <Button id="btn_WF_crud03" taborder="26" text="저장" class="btn_WF_crudL2" position="absolute 715 222 765 242" anchor="top right"/>
+        <Grid id="Grid00" taborder="27" binddataset="ds_grid" useinputpanel="false" position="absolute 0 247 765 540" autofittype="col" anchor="all">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="35"/>
+                <Column size="180"/>
+                <Column size="100"/>
+                <Column size="90"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="22" band="head"/>
+                <Row size="20"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="순서"/>
+                <Cell col="1" displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="2" text="업체명"/>
+                <Cell col="3" text="대표자"/>
+                <Cell col="4" text="전화번호"/>
+                <Cell col="5" text="등록유형"/>
+                <Cell col="6" text="신용"/>
+                <Cell col="7" text="현금"/>
+                <Cell col="8" text="현장평가"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:Column0"/>
+                <Cell col="1" displaytype="checkbox" edittype="checkbox" text="bind:Column1"/>
+                <Cell col="2" text="bind:Column2"/>
+                <Cell col="3" text="bind:Column3"/>
+                <Cell col="4" text="bind:Column4"/>
+                <Cell col="5" text="bind:Column5"/>
+                <Cell col="6" text="bind:Column6"/>
+                <Cell col="7" text="bind:Column7"/>
+                <Cell col="8" text="bind:Column8"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_WF_crud04" taborder="28" text="삭제" class="btn_WF_crudL2" position="absolute 663 222 713 242" anchor="top right"/>
+        <Button id="btn_WF_crud05" taborder="29" text="추가" class="btn_WF_crudL2" position="absolute 611 222 661 242" anchor="top right"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_grid" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+          <Column id="Column3" type="STRING" size="256"/>
+          <Column id="Column4" type="STRING" size="256"/>
+          <Column id="Column5" type="STRING" size="256"/>
+          <Column id="Column6" type="STRING" size="256"/>
+          <Column id="Column7" type="STRING" size="256"/>
+          <Column id="Column8" type="STRING" size="256"/>
+          <Column id="Column9" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script type="xscript4.0"><![CDATA[/* 
+ *====================================================File description===================================================================
+ * File Name    : commTran.xjs
+ * Comment      : Transaction 관련 함수의 집합.
+ * Create Date  : 2012/08/22 
+ * Author       : 
+ * Change History : 
+ *=======================================================================================================================================
+- fn_IsNull : NULL 여부 체크.
+*/
+// function fnSetVoInfo(objFrm, strVoClass)
+// {
+// 	objFrm.ds_voInfo.clearData();
+// 	var row = objFrm.ds_voInfo.addRow();
+// 	objFrm.ds_voInfo.setColumn(row, "voClass", strVoClass);
+// }
+
+
+// function fnCmTr(objFrm, svcid, strController, strVoClass, inputDs, outputDs, params, callbackFnc)
+// {
+// 
+// 	fnSetVoInfo(objFrm, strVoClass);
+// 
+// 	strParam = "egovframework.rte.sample.service.SampleVO";
+// 	transaction(svcid, 
+// 				"svc::" + strController, 
+// 				"ds_voInfo=ds_voInfo " + inputDs, 
+// 				outputDs,
+// 				params,
+// 				"fnCallback");
+// }
+
+/**********************************************************************************
+ * 함수명     : utlf_TransNullToEmpty
+ * 설명       : NULL 일 경우 빈 값을 리턴한다.
+ * argument    : sValue (문자열)
+ * return Type : String
+ **********************************************************************************/
+function fn_TransNullToEmpty(sValue)
+{
+	if( fn_IsNull(sValue) )
+	{
+		return "";
+	}
+	return sValue;
+}
+
+
+
+/******************************************************************************************
+ * 함  수  명	:	gfn_transaction(strId, strModel,inDs,outDs,strParam,sCall,bSync,strDomain)
+ * 입      력	:	strId		- transaction을 구분하기 위한 ID
+ *					strModel	- XUP 모델명
+ *					inDs		- transaction을 요청할 때 입력값으로 보낼 Dataset 의 ID 리스트
+ *					outDs		- transaction을 처리 결과를 받을 Dataset의 ID 리스트
+ *					strParam	- transaction을 요청할 때 입력값으로 보낼 변수
+ *					sCall		- transaction callback 함수
+ *					bAsync		- 비동기 여부(true: Sync, false : UnSync)
+ *					strDomain	- domain 지정
+ * 반      환	:	없음
+ * 기      능	:	transaction함수
+ *****************************************************************************************/
+function gfn_transaction(objFrm, svcid, strURL, inputDs, outputDs, params, callbackFnc)
+{
+// 	objFrm.dsTransInfo.clearData();
+// 	var row = objFrm.dsTransInfo.addRow();
+// 	dsTransInfo.setColumn(row,0, svcid);
+// 	dsTransInfo.setColumn(row,1, strController);
+// 	dsTransInfo.setColumn(row,2, inputDs);
+// 	dsTransInfo.setColumn(row,3, outputDs);
+// 	dsTransInfo.setColumn(row,4, params);
+// 
+// 	transaction(svcid, 
+// 				"svc::" + strController, 
+// 				"__DS_TRANS_INFO__=dsTransInfo " + inputDs, 
+// 				outputDs,
+// 				params,
+// 				"fn_callBack");
+
+	objFrm.dsTransInfo.clearData();
+
+	var dsInputName = splitDsName(inputDs,0);
+	var dsOutputName = splitDsName(outputDs,1);
+	
+	for (var i = 0; i < dsInputName.length ; i++ ){
+		var row = objFrm.dsTransInfo.addRow();
+		if (i == 0){										//svc id 와 url은 하나이다.
+			objFrm.dsTransInfo.setColumn(row,0, svcid);
+			objFrm.dsTransInfo.setColumn(row,1, strURL);
+		}
+		objFrm.dsTransInfo.setColumn(row,2, dsInputName[i]);
+	}
+	
+	for (var i = 0; i < dsOutputName.length ; i++ ){
+		objFrm.dsTransInfo.setColumn(row,3, dsOutputName[i]);
+	}
+	
+	trace(objFrm.dsTransInfo.saveXML());
+	
+	trace("svcid : " + svcid);
+	trace("strURL : " + strURL);
+	trace("inputDs : " + inputDs);
+	trace("outputDs : " + outputDs);
+	trace("params : " + params);
+	
+
+	transaction(svcid, 
+				"svc::" + strURL, 
+				"__DS_TRANS_INFO__=dsTransInfo " + inputDs, 
+				outputDs,
+				params,
+				"fn_callBack");
+	
+}
+
+function splitDsName(objString, type){
+	var strDsMapping;			//mapping string
+	var objArr;					//dataset name array
+	var objReturn = new Array();
+	
+	strDsMapping = objString.split(" ");
+	
+	for (var i = 0; i < strDsMapping.length ; i++ ){
+		objArr = strDsMapping[i].split("=");    // objArr = a,cd
+		if (type == 0)
+			objReturn[i] = objArr[0];
+		else
+			objReturn[i] = objArr[1];
+	}
+	
+	return objReturn;
+}
+
+/******************************************************************************************
+ * 함  수  명	:	gfn_transactionOLAP(strId, strModel,inDs,outDs,strParam,sCall,bSync,strDomain)
+ * 입      력	:	strId		- transaction을 구분하기 위한 ID
+ *					sBundle		- 서비스 이름
+ *					sData		- 데이터소스 이름
+ *					inDs		- transaction을 요청할 때 입력값으로 보낼 Dataset 의 ID 리스트
+ *					outDs		- transaction을 처리 결과를 받을 Dataset의 ID 리스트
+ *					strParam	- transaction을 요청할 때 입력값으로 보낼 변수
+ *					sCall		- transaction callback 함수
+ *					bAsync		- 비동기 여부(true: Sync, false : UnSync)
+ *					strDomain	- domain 지정
+ * 반      환	:	없음
+ * 기      능	:	transaction함수
+ *****************************************************************************************/
+function gfn_transactionOLAP(strId ,sBundle ,sData ,inDs ,outDs ,strParam ,sCall ,bAsync)
+{
+	//기본 비동기통신
+	if(bAsync == null)	
+	{
+		bAsync = "true";
+	}
+	
+	var svcparam ="service=bundleUtil"
+				+ "&bundleid=bwinvoker"
+				+ "&domain=cf"
+				+ "&bundleCommand=" + sBundle
+				+ "&datasource=" + sData + "";
+	var svcurl = "svcUrl::bundleUtil?" + svcparam;
+	
+	transaction(strId, svcurl, inDs, outDs, strParam, sCall, bAsync);
+}
+]]></Script>

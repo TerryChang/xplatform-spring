@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>XPlatform Run Page</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<SCRIPT type="text/javascript" src="./install/checkBrowser.js" ></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="./install/launch_etc_Browser.js"></SCRIPT> <!-- launch_etc_Browser JavaScript include -->
+<script language="javascript">
+
+	var Server_Path = window.location.href;
+		Server_Path = Server_Path.substring(0, Server_Path.lastIndexOf("/")) + "/";
+
+	//v_xadl : 알맞은 xadl값을 설정하십시오. (url로 입력)
+	//현재 연결된 프로젝트는 url로 설정시 오류가 있어 로컬경로로 설정함
+	var v_xadl = Server_Path + "DefaultTheme.xadl";
+	
+	function fn_start()
+	{  
+		/** 웹브라우저에서 실행 **/
+		if ( checkBrowser.browser == "Explorer"){
+		    fn_load_ie();
+		}else{       // 익스플로러가 아닐 경우
+		  	/** launch_etc_Browser.js의 fn_load_crom를 호출함 **/
+		    fn_load_crom();
+		}
+	}
+	
+	/** IE Embed 형태 구동 **/
+	function fn_load_ie()
+	{	
+
+		XPlatformAXCtrl.xadl = v_xadl;		    //xadl
+		XPlatformAXCtrl.autosize = false;		 //autosize
+		XPlatformAXCtrl.key = "EgovXPLATFORM";		//key
+		XPlatformAXCtrl.retry = 2;	       //retry
+		XPlatformAXCtrl.timeout = 30;		  //timeout
+		XPlatformAXCtrl.run();				
+	}
+</script>
+
+	<!------------------------------------------
+		X P l a t f o r m A X C t r l   E v e n t
+	-------------------------------------------->
+	<SCRIPT LANGUAGE=javascript FOR=XPlatformAXCtrl EVENT="loadtypedefinition(strurl)">		
+		//alert("loadtypedefinition : "+strurl);
+	</SCRIPT>
+	<SCRIPT LANGUAGE=javascript FOR=XPlatformAXCtrl EVENT="load()">		
+		//alert("load completed !!");
+	</SCRIPT>
+	<SCRIPT LANGUAGE=javascript FOR=XPlatformAXCtrl EVENT="loadingglobalvariables(strurl)">		
+		//alert("loadingglobalvariables : "+strurl);
+	</SCRIPT>
+	<SCRIPT LANGUAGE=javascript FOR=XPlatformAXCtrl EVENT="beforeexit(close, handled)">		
+		//alert("beforeexit");
+	</SCRIPT>
+	<SCRIPT LANGUAGE=javascript FOR=XPlatformAXCtrl EVENT="exit()">		
+		//alert("exit");
+	</SCRIPT>
+	<SCRIPT LANGUAGE=javascript FOR=XPlatformAXCtrl EVENT="communication(bstart)">	
+		//alert("communication:"+bstart);	
+	</SCRIPT>
+	<SCRIPT LANGUAGE=javascript FOR=XPlatformAXCtrl EVENT="usernotify(nNotifyID, strMsg)">		
+		//alert("nNotifyID:"+nNotifyID +" strMsg:"+strMsg);
+	</SCRIPT>
+	<SCRIPT LANGUAGE=javascript FOR=XPlatformAXCtrl EVENT="error(nerror, strerrmsg)">		
+		//alert("err:"+strerrmsg);
+	</SCRIPT>
+	<SCRIPT LANGUAGE=javascript FOR=XPlatformAXCtrl EVENT="addlog(strMsg)">		
+		//alert("strMsg:"+strMsg);
+	</SCRIPT>
+	<!------------------------------------------
+	X P l a t f o r m A X C t r l  E v e n t (End)
+	-------------------------------------------->
+<HEAD>
+<BODY border="0" cellpadding="0" cellspacing="0" onload="fn_start()">
+<script language="javascript">
+    document.write("<OBJECT ID=\"XPlatformAXCtrl\" CLASSID=\"CLSID:43C5FE00-DD32-4792-83DB-19AE4F88F2A6\" " );
+    document.write("          CodeBase=\""+Server_Path+"Engine/XPLATFORM9.2_SetupEngine.cab#VERSION=2012,8,21,1\"" );
+    document.write("          width=\"100%\" height=\"100%\">" );
+    document.write("<embed " );
+    document.write("  id=\"plugin1\"" );
+    document.write("    	type=\"Application/XPlatform9.2-PlugIn\" " );
+    document.write("    	load=\"p1_onload\"" );
+    document.write("    	width=100%" );
+    document.write("    	height=100%" );
+    document.write("    	loadtypedefinition=\"my_loadtypedefinition\"" );
+    document.write("    	load=\"my_load\"" );
+    document.write("    	loadingglobalvariables=\"my_loadingglobalvariables\"" );
+    document.write("    	beforeexit=\"my_beforeexit\"" );
+    document.write("    	exit=\"my_exit\"" );
+    document.write("    	communication=\"my_communication\"" );
+    document.write("    	usernotify=\"my_usernotify\" " );
+    document.write("    	error=\"my_error\" " );
+    document.write("    	addlog=\"my_addlog\"" );
+    document.write("    />" );
+    document.write("</OBJECT>" );
+</script>
+</BODY>
+</HTML>

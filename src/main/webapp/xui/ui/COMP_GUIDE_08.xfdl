@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="COMP_GUIDE_06" classname="COMP_GUIDE_01" inheritanceid="" position="absolute 0 0 765 540" titletext="Grid #2">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" text="Component Name" position="absolute 0 0 130 26" style="background:#edeee6ff;border:1 solid #c6c6c5ff ;align:center middle;font:Tahoma,9,bold antialias;"/>
+        <Static id="Static02" text="Component View" position="absolute 129 0 765 26" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static10" text="Grid" position="absolute 0 25 130 530" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static11" position="absolute 129 25 765 530" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Grid id="GrdList" taborder="1" binddataset="DsDataset" scrollbars="alwaysvert" autoenter="select" useinputpanel="false" cellsizingtype="col" autofittype="col" position="absolute 148 83 735 168">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+              </Columns>
+              <Rows>
+                <Row size="22" band="head"/>
+                <Row size="20"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="normal"/>
+                <Cell col="1" colspan="2" displaytype="text" edittype="text" text="text"/>
+                <Cell col="3" text="number"/>
+                <Cell col="4" text="date"/>
+                <Cell col="5" text="mask" editautoselect="true"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="normal" text="bind:Column0" editautoselect="true"/>
+                <Cell col="1" edittype="text" text="bind:Column1" editautoselect="true"/>
+                <Cell col="2" edittype="textarea" text="bind:Column2"/>
+                <Cell col="3" displaytype="number" edittype="normal" editfilter="number" style="align:right;" text="bind:Column3" editautoselect="true"/>
+                <Cell col="4" displaytype="date" edittype="date" text="bind:Column4"/>
+                <Cell col="5" edittype="mask" text="bind:Column5" mask="######-#######"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="GrdList2" taborder="2" binddataset="DsDataset" scrollbars="alwaysvert" autoenter="select" useinputpanel="false" autofittype="col" oncellclick="GrdList2_oncellclick" onexpanddown="GrdList2_onexpanddown" position="absolute 148 176 735 261">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+              </Columns>
+              <Rows>
+                <Row size="22" band="head"/>
+                <Row size="20"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="combo"/>
+                <Cell col="1" text="button"/>
+                <Cell col="2" text="checkbox"/>
+                <Cell col="3" text="expand"/>
+                <Cell col="4" text="image"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="combo" edittype="combo" text="bind:Column6" combodataset="DsCombo" combocodecol="cd" combodatacol="nm"/>
+                <Cell col="1" displaytype="button" edittype="button" text="bind:Column7"/>
+                <Cell col="2" displaytype="checkbox" edittype="checkbox" text="bind:Column8"/>
+                <Cell col="3" edittype="expand" text="bind:Column9" expandshow="show" expandsize="20"/>
+                <Cell col="4" displaytype="image" text="bind:Column10"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="GrdList4" taborder="3" binddataset="DsDataset" scrollbars="alwaysvert" autoenter="select" useinputpanel="false" autofittype="col" oncellclick="GrdList2_oncellclick" onexpanddown="GrdList2_onexpanddown" position="absolute 148 411 735 496" style="background:#ffffffff; ">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+              </Columns>
+              <Rows>
+                <Row size="22" band="head"/>
+                <Row size="20"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="combo"/>
+                <Cell col="1" text="button"/>
+                <Cell col="2" text="checkbox"/>
+                <Cell col="3" text="expand"/>
+                <Cell col="4" text="image"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="combo" edittype="combo" text="bind:Column6" combodataset="DsCombo" combocodecol="cd" combodatacol="nm" combodisplay="display"/>
+                <Cell col="1" displaytype="button" edittype="button" text="bind:Column7"/>
+                <Cell col="2" displaytype="checkbox" edittype="checkbox" text="bind:Column8"/>
+                <Cell col="3" edittype="expand" text="bind:Column9" expandshow="show" expandsize="20"/>
+                <Cell col="4" displaytype="image" text="bind:Column10"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="GrdList3" taborder="4" binddataset="DsDataset" scrollbars="alwaysvert" autoenter="select" useinputpanel="false" autofittype="col" position="absolute 148 316 735 401">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+              </Columns>
+              <Rows>
+                <Row size="22" band="head"/>
+                <Row size="20"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="normal"/>
+                <Cell col="1" displaytype="text" edittype="text" text="text"/>
+                <Cell col="2" text="textarea"/>
+                <Cell col="3" text="number"/>
+                <Cell col="4" text="date"/>
+                <Cell col="5" text="mask" editautoselect="true"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="normal" text="bind:Column0" editautoselect="true"/>
+                <Cell col="1" edittype="text" text="bind:Column1" editautoselect="true" editdisplay="display"/>
+                <Cell col="2" edittype="textarea" text="bind:Column2" editdisplay="display"/>
+                <Cell col="3" displaytype="number" edittype="normal" editfilter="number" style="align:right;" text="bind:Column3" editautoselect="true" editdisplay="display"/>
+                <Cell col="4" displaytype="date" edittype="date" text="bind:Column4" calendardisplay="display"/>
+                <Cell col="5" edittype="mask" text="bind:Column5" mask="######-#######" editdisplay="display"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static27" text="Grid Cell Display Normal" class="sta_WF_TitleLev1" position="absolute 148 64 353 84"/>
+        <Static id="Static00" text="Grid Cell Display True" class="sta_WF_TitleLev1" position="absolute 148 297 353 317"/>
+        <Button id="btn_GCancel" taborder="5" text="초기화" onclick="f_GCancel" position="absolute 679 58 735 78"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset enableevent="true" firefirstcount="0" firenextcount="0" id="DsDataset" preload="true" updatecontrol="true" useclientlayout="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+          <Column id="Column3" type="INT" size="256"/>
+          <Column id="Column4" type="STRING" size="256"/>
+          <Column id="Column5" type="STRING" size="256"/>
+          <Column id="Column6" type="STRING" size="256"/>
+          <Column id="Column7" type="STRING" size="256"/>
+          <Column id="Column8" type="STRING" size="256"/>
+          <Column id="Column9" type="STRING" size="256"/>
+          <Column id="Column10" type="STRING" size="256"/>
+          <Column id="Column11" type="STRING" size="256"/>
+          <Column id="Column12" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">1234가나다라</Col>
+            <Col id="Column1">가나다라</Col>
+            <Col id="Column2"/>
+            <Col id="Column3"/>
+            <Col id="Column4"/>
+            <Col id="Column5"/>
+            <Col id="Column6">2</Col>
+            <Col id="Column7">test</Col>
+            <Col id="Column8"/>
+            <Col id="Column9"/>
+            <Col id="Column10"/>
+            <Col id="Column11"/>
+            <Col id="Column12"/>
+          </Row>
+          <Row>
+            <Col id="Column0"/>
+            <Col id="Column1"/>
+            <Col id="Column2"/>
+            <Col id="Column3"/>
+            <Col id="Column4"/>
+            <Col id="Column5"/>
+            <Col id="Column6"/>
+            <Col id="Column7"/>
+            <Col id="Column8"/>
+            <Col id="Column9"/>
+            <Col id="Column10"/>
+            <Col id="Column11"/>
+            <Col id="Column12"/>
+          </Row>
+          <Row>
+            <Col id="Column0"/>
+            <Col id="Column1"/>
+            <Col id="Column2"/>
+            <Col id="Column3"/>
+            <Col id="Column4"/>
+            <Col id="Column5"/>
+            <Col id="Column6"/>
+            <Col id="Column7"/>
+            <Col id="Column8"/>
+            <Col id="Column9"/>
+            <Col id="Column10"/>
+            <Col id="Column11"/>
+            <Col id="Column12"/>
+          </Row>
+          <Row>
+            <Col id="Column0"/>
+            <Col id="Column1"/>
+            <Col id="Column2"/>
+            <Col id="Column3"/>
+            <Col id="Column4"/>
+            <Col id="Column5"/>
+            <Col id="Column6"/>
+            <Col id="Column7"/>
+            <Col id="Column8"/>
+            <Col id="Column9"/>
+            <Col id="Column10"/>
+            <Col id="Column11"/>
+            <Col id="Column12"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="DsCombo" preload="true" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="nm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">1</Col>
+            <Col id="nm">item 1</Col>
+          </Row>
+          <Row>
+            <Col id="cd">2</Col>
+            <Col id="nm">item 2</Col>
+          </Row>
+          <Row>
+            <Col id="cd">3</Col>
+            <Col id="nm">item 3</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript4.0"><![CDATA[/************************************************************************************************
+ * FORM 공통 FUNCTION 영역
+************************************************************************************************/
+
+function f_GCancel()
+{
+	// Dataset 초기화
+	DsDataset.reset();
+}
+]]></Script>
+  </Form>
+</FDL>

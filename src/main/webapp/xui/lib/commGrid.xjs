@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script type="xscript4.0"><![CDATA[
+
+/*********************************************************************************************
+** function name        : grdf_SetGridCheckAll()
+** function description : 그리드 헤드 클릭시 전체체크 
+** argument             : obj				Grid Object
+**                        objDS             checkbox에 바인드데이터셋
+                          strChkCol         check column id
+**                        e					GridClickEventInfo;
+** return Type          :
+** return description   :
+** 예  : 그리드 헤드 예) <Cell displaytype="checkbox" edittype="checkbox" text="expr:0"/> 로 해야함.
+**     스크립트 예)  grdf_SetGridCheckAll(obj,e);
+*********************************************************************************************/
+function fn_SetGridCheckAllDs(obj:Grid, objDS, strChkCol, e:GridClickEventInfo)
+{
+	if(obj.readonly == true) return;
+	
+	var strType;
+	var vl_chk;
+	var strVal;
+	var objDS;
+	var nCell  = e.cell;
+	
+	strType = obj.getCellProperty("head", e.cell, "displaytype");
+	if(strType != "checkbox") {
+		return;
+	}
+
+	// Head셋팅
+	strVal = obj.getCellProperty("head", nCell, "text");
+	if (gfn_IsNull(strVal)) strVal = "0";
+	
+	if (strVal == "0") {
+		obj.setCellProperty("head", nCell, "text", '1');
+		vl_chk="1";
+	} else {
+		obj.setCellProperty("head", nCell, "text", '0');
+		vl_chk="0";
+	}
+
+	// Body셋팅
+	for(var i=0 ; i< objDS.rowcount ; i++){
+		objDS.setColumn(i, strChkCol, vl_chk);
+	}
+}
+
+function getExprCheck(nRow) {
+	return DsCheck.getColumn(nRow, "chk");
+}
+]]></Script>

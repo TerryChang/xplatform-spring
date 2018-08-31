@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script type="xscript4.0"><![CDATA[/* 
+ *====================================================File description===================================================================
+ * File Name    : commonUtility.xjs
+ * Comment      : Utility 관련 함수의 집합.
+ * Create Date  : 2012/08/22 
+ * Author       : 
+ * Change History : 
+ *=======================================================================================================================================
+- fn_IsNull : NULL 여부 체크.
+- fn_getObjFont : 폰트 사이즈 리턴
+- fn_GetTextSize : 텍스트 사이즈 리턴
+*/
+
+
+/**
+* 기능 :  NULL 여부 체크
+* @param : sValue String
+* @return : boolean
+*/
+function gfn_IsNull(sValue)
+{
+    var v_ChkStr = new String(sValue);
+    
+    if (new String(sValue).valueOf() == "undefined") return true;
+    if (sValue == null) return true;
+   	if( ("x"+sValue == "xNaN") && ( new String(sValue.length).valueOf() == "undefined" ) ) return true;
+    if (v_ChkStr == null) return true;
+    if (v_ChkStr.toString().length == 0 ) return true;
+    return false;
+}
+
+
+
+/*****************************************************************************************
+ * 함  수  명	: 	fn_getObjFont
+ * 입      력	: 	iFontSize
+                    sFontName
+ * 반      환	: 	Font Object
+ * 기      능	: 	Font Object 생성 반환
+ *****************************************************************************************/  
+function gfn_getObjFont(iFontSize, sFontName)
+{
+	var objFont = new Font;
+	objFont.size = iFontSize;
+	objFont.name = sFontName;
+	objFont.bold = true;
+	return objFont;
+}
+
+
+
+function gfn_GetTextSize(sText, objFont, iLimitWidth, sConstWordWrapOption)
+{
+	var objPainter = this.canvas.getPainter();
+	if(gfn_IsNull(objPainter)==false)
+	{
+		var objTextSize = objPainter.getTextSize(sText, objFont);
+		return objTextSize;
+	}
+	else
+	{
+		return false;
+	}
+}]]></Script>

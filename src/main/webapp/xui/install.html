@@ -1,0 +1,134 @@
+<HTML>
+<HEAD>
+<TITLE>XPlatform Launch Page</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<SCRIPT type="text/javascript" src="./install/checkBrowser.js" ></SCRIPT>
+<script language="javascript">
+
+	var Server_Path = window.location.href;
+		Server_Path = Server_Path.substring(0, Server_Path.lastIndexOf("/")) + "/";
+	//v_xadl : 알맞은 xadl값을 설정하십시오. (url로 입력)
+	//현재 연결된 프로젝트는 url로 설정시 오류가 있어 로컬경로로 설정함
+	var v_xadl = Server_Path + "DefaultTheme.xadl";
+	
+	function fn_start()
+	{
+		if ( checkBrowser.browser == "Explorer")
+		{
+			/** Launcher 설치 여부 확인 **/
+			//alert("launch=>"+Check_installed("XLauncher.Cy_XLauncher"));   //XLauncher.Cy_XLauncher : Launcher
+			/** Engine 설치 여부 확인 **/
+			//alert("Engine=>"+Check_installed("XPlatformAX.XPlatformAXCtrl91"));     //XPlatformAX.XPlatformAXCtrl91 : Engine
+			
+			/** Launcher Engine 설치 여부 확인후 설치를 유도함 **/
+			if(!Check_installed("XLauncher.Cy_XLauncher") || !Check_installed("XPlatformAX.XPlatformAXCtrl91")){
+				err_msg.innerHTML += "<br><br><font size=\"2\">이 웹사이트를 사용하기 위해 추가기능을 <u>상단 메시지를 클릭하여</u> 설치해주십시오.</font>";
+			 return;
+			}
+			
+			/** IE 구동방법 분기 launch or Embed **/
+			//if(confirm("webBrowser로 실행하시겠습니까?")){
+			//	location.href = "./body.html";
+			//	return;
+			//}else{
+				XLauncher.key = "EgovXPLATFORM";
+				XLauncher.xadl = v_xadl;
+				XLauncher.onlyone = false;
+				XLauncher.makeshortcut("EgovXPLATFORM",Server_Path + "a.ico", "desktop");   //바로가기 아이콘 생성
+			    XLauncher.launch(); 
+				window.open('about:blank','_self').close();	           //browser close
+			//}
+		}else{
+			/********************************************************************************************************
+			 알림 : 현재는 비IE 계열 브라우져에서 Engine 설치여부를 확인하기 어렵고, 플러그인 설치여부만 확인가능하다.
+			 따라서 엔진설치후에 플러그인을 설치하도록 유도하여 설치를 진행하도록 한다.		
+			*********************************************************************************************************/
+			/** 비ie Plugin설치여부 확인 **/
+			if(checkInstaller() == false)
+			{	
+				err_msg.innerHTML += '<br><br><font size=\"2\">이 웹사이트를 사용하기 위해 하단의 추가기능을 다운받으셔서 <u>순서되로</u> 설치해주십시오.'+
+									 '<br><br><b><a href="'+Server_Path+'install/download/XPLATFORM9.2_SetupEngine.exe"><font class="f2" color="red">1. 엔진설치</a>' + 
+									 '&nbsp;&nbsp;&nbsp;&nbsp;<a href="'+Server_Path+'install/download/XPLATFORM9.2_SetupPlugin.exe"><font class="f2" color="red">2. 플러그인 설치</a>' +
+									 '<br><br>설치하신후 본 창을 닫고 다시 브라우져를 열어 접속해주십시오.</font></b>';
+				return;
+			}
+
+			/** 비ie 구동방법 분기 launch or Embed **/
+			if(confirm("webBrowser로 실행하시겠습니까?")){
+				location.href = "./body.html";
+				return;
+			}else{
+				method_launch();
+			}
+		}
+	}
+	
+	/** IE XPlatform9 설치확인 Fucntion **/
+	function Check_installed(installedObj)
+	{
+		try{
+	      var xObj = new ActiveXObject(installedObj); //해당 prog id
+	      if(xObj) Installed = true;
+	      else Installed = false;
+	  }
+	  catch(ex){ 
+	      Installed = false;
+	  }
+	  return Installed;
+	} 
+	
+	/** 비IE Plug-in (Launcher) Engine 설치확인 **/
+	function checkInstaller()
+	{
+			for ( var i = 0 ; i < navigator.plugins.length;i++)
+			{
+				//alert(navigator.plugins[i].name);
+				if (navigator.plugins[i].name.indexOf("XPLATFORM") != -1 ) return true;   //Plugin name : XPLATFORM
+			}
+			return false;
+	}
+
+	/** 바로가기 아이콘 생성 **/
+	function method_makeshortcut()
+	{	
+		//XLauncher.key = "EgovXPLATFORM";
+	 	//XLauncher.xadl = v_xadl;
+	    //XLauncher.makeshortcut("EgovXPLATFORM", Server_Path + "a.ico", "desktop", true);		   
+	}
+	
+	/** 비IE Launch **/
+	function method_launch()
+	{
+		//key
+		XLauncher2.key = "EgovXPLATFORM";
+		XLauncher2.xadl = v_xadl;
+		XLauncher2.onlyone = false;
+		XLauncher2.launch();
+	}
+	
+	/** 비IE Launch onError Event**/
+	function XLauncher_onerror(code, msg) 
+	{
+		alert("code:"+code+", msg:"+msg);
+	}
+</script>
+</HEAD>
+<BODY border="0" cellpadding="0" cellspacing="0" onload="fn_start()">
+<script language="javascript">
+	/** 1. launcher 설치 및 선언(IE이며 cab으로 설치, 비IE는 선언까지만 설치는 exe로 진행) **/
+	document.write("<table width=\"100%\" height=\"100%\" border=\"0\"><tr><td align=\"center\" id=\"err_msg\"><img src=\"./xplatform.jpg\"></td></tr><tr><td></td></tr></table> ");	
+	document.write("<OBJECT ID=\"XLauncher\" CLASSID=\"CLSID:A30D5481-7381-4dd9-B0F4-0D1D37449E97\" width=\"0\" height=\"0\" codebase=\"./install/download/XPLATFORM9.2_XPLauncher.cab#VERSION=2012,8,21,1\" SHOWASTEXT> ");
+	//document.write(" <PARAM NAME=\"key\" VALUE=\"EgovXPLATFORM\">	 ");
+	//document.write(" <PARAM NAME=\"xadl\" VALUE=\""+v_xadl+"\"> ");
+	//document.write(" <PARAM NAME=\"onlyone\" VALUE=\"false\"> ");
+	document.write("</OBJECT>");
+	document.write(" <embed id=\"XLauncher2\" hidden=\"true\" type=\"application/XLauncher9.2-PlugIn\" error=\"XLauncher_onerror\" width=\"0\" height=\"0\" ><embed/>" );
+	
+	/** 2. Engine 설치(IE) 및 선언(IE)  **/
+	document.write("<OBJECT ID=\"XPlatformAXCtrl\" CLASSID=\"CLSID:43C5FE00-DD32-4792-83DB-19AE4F88F2A6\" " );
+	document.write("          CodeBase=\"./install/download/XPLATFORM9.2_SetupEngine.cab#VERSION=2012,8,21,1\" ");
+	document.write("          width=\"0\" height=\"0\" SHOWASTEXT> " );
+	document.write("</OBJECT>" );
+</script>
+</BODY>
+</HTML>

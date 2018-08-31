@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="CLASS_GUIDE_01" classname="CLASS_GUIDE_01" inheritanceid="" position="absolute 0 0 765 540" titletext="Point,Error,Readonly">
+    <Layouts>
+      <Layout>
+        <Static id="Static05" position="absolute 340 50 553 110" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static01" text="Component Name" position="absolute 0 0 130 26" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static02" text="Component View" position="absolute 129 0 765 26" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static10" text="Important&#13;&#10;class : input_point" position="absolute 0 25 130 179" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static11" position="absolute 129 50 341 110" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Edit id="Edit00" taborder="1" position="absolute 180 61 290 81" class="input_point" value="투비소프트"/>
+        <Static id="Static00" text="Edit" position="absolute 129 25 341 51" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static04" text="TextArea" position="absolute 552 25 765 51" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static03" text="MaskEdit" position="absolute 340 25 553 51" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static06" position="absolute 552 50 765 110" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <MaskEdit id="MaskEdit00" taborder="2" position="absolute 392 61 502 81" class="input_point" value="123456789" mask=","/>
+        <TextArea id="TextArea00" taborder="3" position="absolute 573 61 743 101" class="input_point" value="투비소프트"/>
+        <Static id="Static07" text="Spin" position="absolute 129 109 341 135" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static08" text="Combo" position="absolute 340 109 553 135" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static09" text="Calendar" position="absolute 552 109 765 135" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static12" position="absolute 129 134 341 179" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static13" position="absolute 340 134 553 179" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static14" position="absolute 552 134 765 179" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Spin id="Spin00" taborder="4" position="absolute 180 147 290 167" class="input_point" value="5" max="20"/>
+        <Combo id="Combo00" taborder="5" text="Combo00" position="absolute 392 147 502 167" class="input_point" innerdataset="@DsList" codecolumn="idx" datacolumn="context" index="6" value="6"/>
+        <Calendar id="Calendar00" taborder="6" position="absolute 603 147 713 167" class="input_point" value="20110601" dateformat="yyyy-MM-dd"/>
+        <Static id="Static15" position="absolute 340 203 553 263" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static16" text="Error&#13;&#10;class : input_err" position="absolute 0 178 130 376" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static17" position="absolute 129 203 341 263" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Edit id="Edit01" taborder="7" value="투비소프트" text="투비소프트" class="input_err" position="absolute 180 214 290 234"/>
+        <Static id="Static18" text="Edit" position="absolute 129 178 341 204" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static19" text="TextArea" position="absolute 552 178 765 204" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static20" text="MaskEdit" position="absolute 340 178 553 204" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static21" position="absolute 552 203 765 263" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <MaskEdit id="MaskEdit01" taborder="8" value="123456789" text="123,456,789" mask="," class="input_err" position="absolute 392 214 502 234"/>
+        <TextArea id="TextArea01" taborder="9" value="투비소프트" text="투비소프트" class="input_err" position="absolute 573 214 743 254"/>
+        <Static id="Static22" text="Spin" position="absolute 129 262 341 288" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static23" text="Combo" position="absolute 340 262 553 288" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static24" text="Calendar" position="absolute 552 262 765 288" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static25" position="absolute 129 287 341 332" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static26" position="absolute 340 287 553 332" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static27" position="absolute 552 287 765 332" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Spin id="Spin01" taborder="10" class="input_err" position="absolute 180 300 290 320" value="5" max="20"/>
+        <Combo id="Combo01" taborder="11" class="input_err" position="absolute 392 300 502 320" innerdataset="@DsList" codecolumn="idx" datacolumn="context" index="6" value="6"/>
+        <Calendar id="Calendar01" taborder="12" class="input_err" position="absolute 603 300 713 320" value="20110601" dateformat="yyyy-MM-dd"/>
+        <Static id="Static28" position="absolute 340 400 553 460" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static29" text="Readonly&#13;&#10;&lt;b v='false'&gt;Attribute Selector&lt;/b&gt;" position="absolute 0 375 130 529" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " usedecorate="true"/>
+        <Static id="Static30" position="absolute 129 400 341 460" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Edit id="Edit02" taborder="13" value="투비소프트" text="투비소프트" position="absolute 180 411 290 431" readonly="true"/>
+        <Static id="Static31" text="Edit" position="absolute 129 375 341 401" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static32" text="TextArea" position="absolute 552 375 765 401" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static33" text="MaskEdit" position="absolute 340 375 553 401" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static34" position="absolute 552 400 765 460" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <MaskEdit id="MaskEdit02" taborder="14" value="123456789" text="123,456,789" mask="," position="absolute 392 411 502 431" readonly="true"/>
+        <TextArea id="TextArea02" taborder="15" value="투비소프트" text="투비소프트" position="absolute 573 411 743 451" readonly="true"/>
+        <Static id="Static35" text="Spin" position="absolute 129 459 341 485" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static36" text="Combo" position="absolute 340 459 553 485" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static37" text="Calendar" position="absolute 552 459 765 485" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static38" position="absolute 129 484 341 529" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static39" position="absolute 340 484 553 529" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static40" position="absolute 552 484 765 529" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Spin id="Spin02" taborder="16" position="absolute 180 497 290 517" value="20" readonly="true"/>
+        <Combo id="Combo02" taborder="17" position="absolute 392 497 502 517" readonly="true" innerdataset="@DsList" codecolumn="idx" datacolumn="context" index="6" value="6"/>
+        <Calendar id="Calendar02" taborder="18" position="absolute 603 497 713 517" readonly="true" value="20110601" dateformat="yyyy-MM-dd"/>
+        <Static id="Static41" position="absolute 129 331 765 376" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="sta_WF_Info_Orange" text="※ 입력오류가 발생할 경우 해당 클래스를 적용하며, 마우스 포커스가 되었을 경우 &#13;&#10;    기 정의된 값으로 반환시켜야 함" class="sta_WF_Info_Orange" position="absolute 138 343 743 373"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="DsList" preload="true" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true">
+        <ColumnInfo>
+          <Column id="idx" type="STRING" size="256"/>
+          <Column id="context" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="idx">0</Col>
+            <Col id="context">Static</Col>
+          </Row>
+          <Row>
+            <Col id="idx">1</Col>
+            <Col id="context">Edit</Col>
+          </Row>
+          <Row>
+            <Col id="idx">2</Col>
+            <Col id="context">MaskEdit</Col>
+          </Row>
+          <Row>
+            <Col id="idx">3</Col>
+            <Col id="context">TextArea</Col>
+          </Row>
+          <Row>
+            <Col id="idx">4</Col>
+            <Col id="context">Button</Col>
+          </Row>
+          <Row>
+            <Col id="idx">5</Col>
+            <Col id="context">ListBox</Col>
+          </Row>
+          <Row>
+            <Col id="idx">6</Col>
+            <Col id="context">Combo</Col>
+          </Row>
+          <Row>
+            <Col id="idx">7</Col>
+            <Col id="context">Sp</Col>
+          </Row>
+          <Row>
+            <Col id="idx">8</Col>
+            <Col id="context">Calendar</Col>
+          </Row>
+          <Row>
+            <Col id="idx">9</Col>
+            <Col id="context">Tab</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="login" classname="login" inheritanceid="" position="absolute 0 0 460 200" titletext="New Form" style="background:transparent URL('theme://images/login_bg.png') stretch 50,50;">
+    <Layouts>
+      <Layout>
+        <Edit id="S_USER_ID" taborder="0" value="test" onkeydown="S_USER_ID_onkeydown" position="absolute 128 71 273 90" style="background:#ffffff00; "/>
+        <Edit id="S_USER_PWD" taborder="1" value="test1234" password="true" onkeydown="S_USER_PWD_onkeydown" position="absolute 128 95 273 114" style="background:#ffffff00; "/>
+        <Button id="btn_login" taborder="1" onclick="btn_login_onclick" position="absolute 281 71 346 114" style="cursor:hand;" text="login" class="btn_WFSA_Search"/>
+        <Button id="btn_cancel" taborder="1" text="cancel" onclick="btn_login_onclick" position="absolute 349 71 414 114" style="cursor:hand;" class="btn_WF_crud"/>
+        <Radio id="rdo_menuType" taborder="1" position="absolute 128 132 282 156" onitemclick="Radio00_onitemclick" innerdataset="@radio" codecolumn="code" datacolumn="text" direction="vertical" index="0" value="1"/>
+        <Static id="Static00" text="아이디    :" position="absolute 52 72 132 89" style="font:Dotum,10,bold;"/>
+        <Static id="Static01" text="패스워드 :" position="absolute 52 94 133 111" style="font:Dotum,10,bold;"/>
+        <Static id="Static02" text="메뉴타입 :" position="absolute 52 133 133 150" style="font:Dotum,10,bold;"/>
+        <Static id="Static03" text="System Login" position="absolute 21 12 224 29" style="background:transparent URL('theme://images/ico_title.png') left middle;color:#ffffffff;padding:0 0 0 20;font:Dotum,10,bold;"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="S_USER_ID" propid="value" datasetid="ds_in" columnid="USER_ID"/>
+      <BindItem id="item1" compid="S_USER_PWD" propid="value" datasetid="ds_in" columnid="USER_PWD"/>
+    </Bind>
+    <Objects>
+      <Dataset id="radio" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="text" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="text">1단 메뉴</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="text">2단 메뉴</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript4.0"><![CDATA[/*
+ * 01. 업무구분 : 로그인 페이지
+ * 02. 화면명   : login.xfdl
+ * 03. 화면설명 : 
+ * 04. 작성일   : 2012-08-28
+ * 05. 작성자   : sian
+ * 06. 수정이력 :
+ *********************************************************************
+ *     수정일          이  름    사유
+ *********************************************************************
+ *     2012-08-28    sian    최초 작성
+ *********************************************************************
+ */
+ 
+function btn_login_onclick(obj:Button,  e:ClickEventInfo)
+{
+	// 메뉴타입 설정(topFrame 영역 메뉴타입 설정)
+	gv_menuType = rdo_menuType.value;
+	close("OK");
+}
+]]></Script>
+  </Form>
+</FDL>

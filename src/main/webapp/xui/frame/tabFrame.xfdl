@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="tabMenu" classname="Top" inheritanceid="" position="absolute 0 0 825 29" scrollbars="none" class="frm_WF_MID" oninit="tabMenu_oninit">
+    <Layouts>
+      <Layout>
+        <Button id="btn_FrmList" taborder="1" class="btn_WF_max" enable="false" position="absolute 776 4 824 27" anchor="top right" style="background:@gradation;border:1 solid #999999ff ;bordertype:round 3 3 ;opacity:50; :disabled {border:1 solid #999999ff ;bordertype:round 2 2 ;opacity:100;}" onclick="btn_FrmList_onclick"/>
+        <Div id="div_Tab" taborder="1" position="absolute 0 3 734 28" onhscroll="div_Tab_onhscroll" onsize="div_Tab_onsize" anchor="left top right" scrollbars="hidden">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Button id="btn_cas" taborder="1" onclick="btn_Arrange_onclick" class="btn_TF_MAX" position="absolute 785 8 802 26" userdata="cascade" visible="false" anchor="top right"/>
+        <Button id="btn_MdiList" taborder="1" onclick="btn_MdiList_onclick" class="btn_WF_MDI_List" enable="false" position="absolute 756 4 775 27" anchor="top right" style="bordertype:round 3 3 ;opacity:50; :disabled {bordertype:round 2 2 ;opacity:100;}"/>
+        <PopupDiv id="PopLink" text="PopupDiv00" style="background:white; border:2 solid #428cb6ff ; bordertype:round 5 5 ; " onmouseleave="PopLink_onmouseleave" onmouseenter="PopLink_onmouseenter" visible="false" position="absolute 608 29 786 201">
+          <Layouts>
+            <Layout>
+              <ListBox id="ListBoxLink" taborder="0" codecolumn="WINID" datacolumn="MENU_NM" onitemclick="PopLink_ListBoxLink_onitemclick" position="absolute 2 1 174 165" style="itemheight:22; itempadding:0 0 0 10; border:1 none #767676ff ; "/>
+            </Layout>
+          </Layouts>
+        </PopupDiv>
+        <Button id="btn_PreMdi" taborder="1" defaultbutton="true" position="absolute 723 4 740 27" anchor="top right" style="bordertype:round 2 2 ;" onclick="btn_PreMdi_onclick" class="tab_spinup"/>
+        <Button id="btn_NexMdi" taborder="1" defaultbutton="true" position="absolute 742 4 759 27" style="bordertype:round 2 2 ;align:center middle;" anchor="top right" onclick="btn_NexMdi_onclick" class="tab_spindown"/>
+        <Button id="btn_max" taborder="1" onclick="btn_Arrange_onclick" class="btn_TF_MIN" position="absolute 785 8 802 26" userdata="maximize" visible="false" anchor="top right"/>
+        <Button id="btn_closeAll" taborder="1" onclick="btn_Arrange_onclick" position="absolute 802 8 822 26" positionstep="0" style="background:@gradation URL('theme://images\arrange_close_O.png'); border:0 solid #999999ff ; " userdata="closeAll" anchor="top right"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript4.0"><![CDATA[/*
+ * 01. 업무구분 : Frame 공통
+ * 02. 화면명   : tabFrame.xfdl
+ * 03. 화면설명 : 
+ * 04. 작성일   : 2012-08-22
+ * 05. 작성자   : sian
+ * 06. 수정이력 :
+ *********************************************************************
+ *     수정일          이  름    사유
+ *********************************************************************
+ *     2012-08-22    sian    최초 작성
+ *********************************************************************
+ */
+include "lib::commLib.xjs"; //공통함수 호출 
+
+var onTabWork = false;
+var nTop = 6;
+var nBottom = 28;
+var nWidth = 130;
+var nExtraButtonLeft = 107;
+var nExtraButtonRight = 124;
+var nExtraButtonTop = 8;
+var nExtraButtonBottom = 24;
+var nBtnCount = 0;
+var nBtnStart = 1;
+var nBtnEnd = 6;
+var benter = false;
+var objSelectBtn;
+var sBtnWorkCd = "01";
+var sBtnWorkCdEx = "_S";
+
+// Tab메뉴폼 init
+function tabMenu_oninit(obj:Form, e:InitEventInfo)
+{
+	 lfn_TabFrameBtnVisT();
+	 btn_cas.visible=true;
+}
+
+function lfn_TabFrameBtnVisT()
+{
+	btn_PreMdi.visible = true;
+	btn_NexMdi.visible = true;
+}
+
+
+function lfn_TabFrameBtnVisF()
+{
+	btn_PreMdi.visible = false;
+	btn_NexMdi.visible = false;
+}
+
+function btn_Arrange_onclick(obj:Button,  e:ClickEventInfo)
+{  	
+    btn_FrmList.class = obj.name;   
+    gfn_ArrangeWin(obj.userdata);
+    
+    // MDI 화면에서 Arrange정렬시 Active 상태 표시
+    gfn_ActiveFrame(gds_OpenMenu.getColumn(gds_OpenMenu.rowposition,"WINID"));
+}
+
+//활성화된 페이지를 tabFrame에 메뉴버튼 형태로 추가한다.
+function fn_setNaviAdd(naviCD, naviNM) {
+
+	var i;
+	var objFont = gfn_getObjFont(9,"Malgun Gothic");
+	objFont.bold = false;
+	var objTextSize = gfn_GetTextSize(naviNM, objFont);
+	var nGap;
+	
+	if(gds_OpenMenu.rowcount==1)
+	{
+		nGap = 0;
+	}
+	else
+	{
+		nGap = div_Tab.all[gds_OpenMenu.getColumn(gds_OpenMenu.rowcount-2, "WINID")].position.right;
+	}
+	var naviNM_Tooltip = naviNM;
+	btn_MdiList.enable = true;
+	btn_FrmList.enable = true;
+
+	nBtnCount++;
+
+	//페이지 버튼 생성
+	var objBtn = new Button();
+    ///////////////////////////////////////////////////
+    objBtn.init(naviCD, nGap+1, nTop, nGap+objTextSize.cx+50, nBottom);
+	div_Tab.addChild(objBtn.name, objBtn);
+	objBtn.text = naviNM;
+	objBtn.tooltiptext = naviNM_Tooltip;
+	///////////////////////////////////////////////////
+	
+    
+	objBtn.onclick.setHandler(Button_onclick);
+	
+	objBtn.visible = true;
+	objBtn.show();
+	objBtn.click();
+
+	//페이지 닫기 버튼 생성
+	var objExtraBtn = new Button();
+	objExtraBtn.init(naviCD+"__EX", objBtn.position.right-17, nExtraButtonTop+2, objBtn.position.right-3, nExtraButtonBottom);
+	div_Tab.addChild(objExtraBtn.name, objExtraBtn);
+	objExtraBtn.class = "btn_tab_close";
+	
+	objExtraBtn.onclick.setHandler(ExtraButton_onclick);
+	objExtraBtn.visible = true;
+	objExtraBtn.show();
+
+	
+	//생성된 페이지의 갯수에 따라 네비게이션을 한칸 이동할지 현재로 유지할지 결정
+	if(nBtnCount>nBtnEnd)
+	{
+		nBtnStart = nBtnCount-nBtnEnd
+		fn_BtnMove("NEXT");
+	}
+	else
+	{
+		fn_BtnMove("MOVE");
+	}
+	
+	div_Tab.resetScroll();
+	
+	objBtn.setFocus();
+}
+
+//버튼클릭시 해당페이지로 focus를 이동하여 해당페이지를 Active상태로 만든다.
+function Button_onclick(obj:Button,  e:ClickEventInfo)
+{
+	fn_activeTabpage(obj.name);
+}
+
+function Button_ondbclick(obj:Button, e:MouseEventInfo)
+{
+	gfn_ChangePopup(obj.name);
+}
+
+//닫기버튼 클릭시 해당하는 페이지를 닫는다.
+function ExtraButton_onclick(obj:Button,  e:ClickEventInfo)
+{
+   gfn_TabOnClose(obj.name.replace("__EX", ""));	
+}
+
+//선택된페이지의 Button을 Select상태로 만들고 
+//해당하는페이지가 현재페이지 네비게이션에 보이지 
+//않을경우 네비게이션에 보이는 Button의 위치를 변경해 
+//선택된페이지가 네비게이션에 보이도록 한다.
+function fn_activeTabpage(naviCD) {
+	var i;
+	var sWINID;
+	var nRow;
+	var nBtnMoveCount;
+	
+	for(i=0;i<gds_OpenMenu.rowcount;i++)
+	{
+		sWINID = gds_OpenMenu.getColumn(i, "WINID");
+		if(gfn_IsNull(div_Tab.components[sWINID])==true) continue;
+		
+		div_Tab.components[sWINID].class ="btn_tab";
+		if(gfn_IsNull(div_Tab.components[sWINID+"__EX"])==true) continue;
+		div_Tab.components[sWINID+"__EX"].class ="btn_tab_close";
+	}
+   
+	if(gfn_IsNull(div_Tab.components[naviCD])==false)
+	{	
+ 		div_Tab.components[naviCD].class = "btn_tabseleted";			 
+		div_Tab.resetScroll();
+		
+		div_Tab.components[naviCD].setFocus();
+	}
+	
+	nRow = gds_OpenMenu.findRow("WINID", naviCD)
+	gds_OpenMenu.rowposition = nRow;
+	
+	//MDI메뉴에서 선택된 메뉴코드를 이용해서 leftFrame의 메뉴INDEX를 표시
+	gv_leftFrame.form.fn_selectedMenuIndex(naviCD.substr(0,8));
+	
+	gfn_ActiveFrame(naviCD);
+	
+	// Arrange 버튼 상태처리
+	btn_closeAll.enable=true;
+	btn_cas.enable=true;
+	btn_max.enable=true;
+}
+
+function fn_movePage(naviCD)
+{
+	var i;
+	nRow = gds_OpenMenu.findRow("WINID", naviCD)
+		
+	if(nRow<nBtnStart-1)
+	{
+		nBtnMoveCount = (nBtnStart-1) - nRow;
+		for(i=0;i<nBtnMoveCount;i++)
+		{
+			fn_BtnMove("PREV");
+		}
+	}
+	else if(nRow>nBtnStart+nBtnEnd-2)
+	{
+		nBtnMoveCount = nRow - (nBtnStart+nBtnEnd-2);
+		for(i=0;i<nBtnMoveCount;i++)
+		{
+			fn_BtnMove("NEXT");
+		}
+	}
+}
+
+//페이지가 닫아졌을때 해당페이지의 네비게이션 버튼과 닫기버튼을 삭제한다.
+function fn_deleteTabpage(naviCD) {
+	var i;
+	var sWINID;
+	var nGap = 0;
+	
+	if(gfn_IsNull(div_Tab.components[naviCD])==false) {
+		nGap = div_Tab.all[naviCD].position.width;
+		div_Tab.all[naviCD]+"__EX".visible = false;
+	}
+   
+    
+	var nRow = gds_OpenMenu.findRow("WINID", naviCD);
+ 	for(i=nRow;i<gds_OpenMenu.rowcount;i++)
+ 	{
+   		sWINID = gds_OpenMenu.getColumn(i, "WINID");
+		div_Tab.all[sWINID].move(div_Tab.all[sWINID].position.left-(nGap +1), nTop);
+		div_Tab.all[sWINID+"__EX"].move(div_Tab.all[sWINID].position.right-17, nExtraButtonTop + 2);
+		div_Tab.removeChild(naviCD);   
+		div_Tab.removeChild(naviCD+"__EX"); 
+ 	}
+}
+
+
+//네비게이션 다음버튼 클릭시
+function btn_NexMdi_onclick(obj:Button,  e:ClickEventInfo)
+{
+	div_Tab.hscrollbar.pos += div_Tab.hscrollbar.page;
+}
+
+//네비게이션 이전버튼 클릭시
+function btn_PreMdi_onclick(obj:Button,  e:ClickEventInfo)
+{
+	div_Tab.hscrollbar.pos -= div_Tab.hscrollbar.page;
+}
+
+//선택된 Type에 따라 버튼의 위치를 이동시킨다.
+function fn_BtnMove(Type)
+{
+	if(Type=="PREV")
+	{
+		if(nBtnStart!=1)
+		{
+			nBtnStart--;
+		}
+	}
+	else if(Type=="NEXT")
+	{
+		if(nBtnStart != gds_OpenMenu.rowcount-nBtnEnd+1&&gds_OpenMenu.rowcount>nBtnEnd)
+		{
+			nBtnStart++;
+		}
+	}
+	else if(Type=="MOVE")
+	{
+		nBtnStart=nBtnStart;
+	}
+	
+	btn_PreMdi.enable = true;
+	btn_NexMdi.enable = true;
+	
+	if(nBtnStart==1)
+	{
+		btn_PreMdi.enable = false;		
+	}
+	
+	if(nBtnStart == gds_OpenMenu.rowcount-nBtnEnd+1||gds_OpenMenu.rowcount<=nBtnEnd)
+	{
+		btn_NexMdi.enable = false;
+	}
+
+}
+
+function PopLink_ListBoxLink_onitemclick(obj:ListBox, e:ListBoxClickEventInfo)
+{
+	fn_activeTabpage(e.itemvalue);
+	PopLink.closePopup();
+}
+
+function div_Tab_onsize(obj:Div, e:SizeEventInfo)
+{
+	nBtnEnd = Math.round(obj.position.width/130);
+	fn_BtnMove("MOVE");
+}
+
+
+function div_Tab_onhscroll(obj:Div, e:ScrollEventInfo)
+{
+	if(e.pos==0&&div_Tab.hscrollbar.max>0)
+	{
+		btn_NexMdi.enable = true;
+	}
+	
+	if(e.pos==div_Tab.hscrollbar.max&&div_Tab.hscrollbar.max>0)
+	{
+		btn_PreMdi.enable = true;
+	}
+}
+
+function btn_MdiList_onclick(obj:Button,  e:ClickEventInfo)
+{
+	var nX   = system.clientToScreenX(obj, 0)+obj.position.width-PopLink.position.width;
+	var nY   = system.clientToScreenY(obj, 0)+obj.position.height;
+	PopLink.ListBoxLink.innerdataset = gds_OpenMenu;
+	PopLink.ListBoxLink.index = gds_OpenMenu.rowposition;
+	
+	if(PopLink.isPopup()==false)
+	{
+		var RetVal = PopLink.trackPopup(nX, nY);
+	}
+	else
+	{
+		PopLink.closePopup();
+	}
+	
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="BoardList" classname="BoardList" inheritanceid="" position="absolute 0 0 765 540" titletext="New Form" onload="fn_onload">
+    <Layouts>
+      <Layout>
+        <Static id="sta_WF_SearchBox" class="sta_WF_SearchBox" position="absolute 0 0 765 40" anchor="left top right"/>
+        <Button id="btn_excel" taborder="2" text="Excel" position="absolute 788 3 844 29" onclick="fn_excelExport" visible="false"/>
+        <Button id="btn_new" taborder="3" text="신규등록" position="absolute 848 3 904 29" onclick="fn_new" visible="false"/>
+        <Button id="btn_add" taborder="1" text="Add" position="absolute 558 60 608 80" onclick="fn_add" class="btn_WF_crud" anchor="top right"/>
+        <Button id="btn_delete" taborder="1" text="Delete" onclick="fn_delete" position="absolute 610 60 660 80" class="btn_WF_crud" anchor="top right"/>
+        <Button id="btn_save" taborder="1" text="Save" position="absolute 662 60 712 80" onclick="fn_save" class="btn_WF_crud" anchor="top right"/>
+        <Button id="btn_search" taborder="1" text="Search" position="absolute 701 7 751 29" onclick="fn_search" class="btn_WFSA_Search" anchor="top right"/>
+        <Button id="btn_reset" taborder="1" text="Reset" position="absolute 714 60 764 80" class="btn_WF_crud" anchor="top right" onclick="fn_reset"/>
+        <Static id="sta_WF_TitleLev1" text="타이틀" class="sta_WF_TitleLev1" position="absolute 0 59 134 73"/>
+        <grd_basic id="grd_main" taborder="1" scrollpixel="all" autoenter="select" useinputpanel="false" selecttype="area" areaselecttype="overband" cellsizingtype="col" cellsizebandtype="allband" summarytype="top" objBizForm="" sGridNm="" sGrdFullPath="" objBindDs="" strSeparator="&#9;" bIsValidSort="false" iSortStep="-1" iLastCell="-1" iLastHeadCol="-1" iLastHeadRow="-1" sLastText="" validChkCol="" objectType="grd_basic" flag="true" position2="absolute l:0 r:0 t:84 b:0" positiontype="position2" binddataset="ds_list">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="카테고리ID"/>
+                <Cell col="1" text="카테고리명"/>
+                <Cell col="2" text="사용여부"/>
+                <Cell col="3" text="Description"/>
+                <Cell col="4" text="등록자"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="normal" text="bind:id"/>
+                <Cell col="1" edittype="normal" text="bind:name"/>
+                <Cell col="2" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="ds_combo" combocodecol="code" combodatacol="value"/>
+                <Cell col="3" edittype="normal" text="bind:description"/>
+                <Cell col="4" edittype="normal" text="bind:regUser"/>
+              </Band>
+            </Format>
+          </Formats>
+        </grd_basic>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="rowStatus" type="STRING" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="description" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regUser" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_voInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep">
+        <ColumnInfo>
+          <Column id="voClass" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_param" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="DsCheck" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="chk" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTransInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="strSvcID" type="STRING" size="256"/>
+          <Column id="strURL" type="STRING" size="256"/>
+          <Column id="strInDatasets" type="STRING" size="256"/>
+          <Column id="strOutDatasets" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_combo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="value">Y</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="value">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript4.0"><![CDATA[/************************************************************************************************
+ * 01. 업무구분 : 샘플 
+ * 02. 화면 : Sample
+ * 03. 화면 설명 : CRUD 테스트
+ * 04. 관련 화면/서비스 :  
+ * 05. 관련테이블 : 
+ * 06. 작성자 : 
+ * 07. 작성일 : 2012.09.20
+ * 08. 수정이력 :
+ ************************************************************************************************/
+
+/************************************************************************************************
+ * 공통 라이브러리 INCLUDE 영역
+ ************************************************************************************************/
+include "lib::commLib.xjs";
+
+/************************************************************************************************
+ * FORM 변수 선언 영역
+ ************************************************************************************************/
+
+
+/************************************************************************************************
+ * Form OnLoad 
+ ************************************************************************************************/
+function fn_onload(obj:Form, e:LoadEventInfo)
+{
+	fn_formInit();
+}
+
+/*------------------------------------------------------------------------------
+* 기   능:	form 초기화 함수
+* 인   수:	N/A
+* Return : 	N/A
+------------------------------------------------------------------------------*/
+function fn_formInit()
+{
+	// Grid Common 컴포넌트 초기화작업
+	grd_main.grd_onloadInitialization();
+	grd_main.init();
+
+	/////////////////////////////////////////////////////////////////////
+	//마스터 화면에서 Chk 칼럼, RowStatus 칼럼 동적으로 생성시 호출
+	grd_main.sGrdFullPath = "grd_main";
+	grd_main.grd_setChkContents(0);
+	//grd_main.grd_setRowStatusContents(1);
+	
+	////////////////////////////////////////////////////////////////////
+}
+
+
+
+
+/****************************************************************************************
+ CRUD Button Event Area
+****************************************************************************************/
+// search(조회)
+function fn_search(obj:Button,  e:ClickEventInfo)
+{
+	var strSvcid 		= "selectSvc";
+	// var strController 	= "egovSampleSelect.do";
+	var strController 	= "egovSampleSelect.do?id=50&firstIndex=0&recordCountPerPage=10&regUser=terry";
+	//var strVoClass 		= "egovframework.rte.sample.service.SampleVO";
+	var strInputDs 		= "";
+	var strOutputDs 	= "ds_list=ds_output";
+	// var strParam 		= "a=b";
+	var strParam 		= "firstIndex=5 recordCountPerPage=20 id=100 regUser=chang";
+	var strFnCallback 	= "fn_callBack";
+	
+	// 트랜젝션 공통함수 호출
+	gfn_transaction(this, 
+			strSvcid, 
+			strController, 
+			strInputDs, 
+			strOutputDs, 
+			strParam, 
+			strFnCallback);
+}
+
+// 마지막row 추가(UI)
+function fn_add(obj:Button,  e:ClickEventInfo)
+{
+	var nRow = ds_list.addRow();
+	fn_initInsertData(ds_list, nRow);
+}
+
+// 중간 삽입(UI)
+function fn_insert(obj:Button,  e:ClickEventInfo)
+{
+	var nRow = ds_list.insertRow(ds_list.rowposition);
+	fn_initInsertData(ds_list, nRow);
+}
+
+// 삭제(UI)
+function fn_delete()
+{
+	for( var i =ds_list.getRowCount() ; i >= 0; i--)
+	{		
+		ds_list.enableevent = false;	
+		var isChk = false;
+		for( var i=ds_list.getRowCount() ; i >= 0; i--)
+		{
+			if(ds_list.getColumn(i,"chk") == 1)
+			{
+				// 삭제처리 패턴1(Dataset을 deleteRow처리)
+				ds_list.deleteRow(i);
+				
+				
+				/*
+				// 삭제처리 패턴2(Dataset의 rowStatus상태값을 D로 바꾼다)
+				isChk = true;
+				// row를 추가한 다음 삭제할 경우 deleteRow처리함.
+				if(ds_list.getColumn(i,"rowStatus")=='C')
+				{
+					ds_list.deleteRow(i);	
+				}
+				else
+				{
+					var rtnFlag = confirm("삭제하시겠습니까?");//gfn_adl_Msg("msg.cfm.wbs.comm.0031");
+					if(rtnFlag){
+						ds_list.setColumn(i,"rowStatus","D");
+						ds_list.setColumn(i,"chk","");
+					}
+					else
+					{
+						ds_list.setColumn(i,"chk","");
+					}
+				}
+				*/
+			}
+		}
+		
+		
+		if (isChk == false)
+		{
+			//gfn_adl_Msg('inf.alt.wbs.comm.0022');
+			alert("삭제하시겠습니까?");
+		}
+		ds_list.enableevent = true;
+	}
+}
+
+
+//리셋
+function fn_reset(obj:Button,  e:ClickEventInfo)
+{
+	ds_list.reset();
+}
+
+//저장(Save)
+function fn_save(obj:Button,  e:ClickEventInfo)
+{
+	var strSvcid 		= "changedData";
+	var strController 	= "egovSampleModify.do";
+	var strInputDs 		= "ds_input=ds_list:U";
+	var strOutputDs 	= "";
+	var strParam 		= "a=b";
+	var strFnCallback 	= "fn_callBack";
+	
+	//Transaction 호출
+	gfn_transaction(this, 
+			strSvcid, 
+			strController, 
+			strInputDs, 
+			strOutputDs, 
+			strParam, 
+			strFnCallback);
+}
+
+
+/****************************************************************************************
+ Dataset Event Area
+****************************************************************************************/
+// 데이타 입력, 추가시 rowStatus변경 
+function fn_initInsertData(objDs, nRow) {
+	objDs.setColumn(nRow, "rowStatus", "C");
+}
+
+
+/************************************************************************************************
+ * 01. 함수구분 : CALLBACK FUNCTION  
+ * 02. 함수 : fn_CallBack
+ ************************************************************************************************/
+function fn_callBack(svcid, errcd, errmsg)
+{
+	for(var i = 0;i<ds_list.getRowCount();i++) {
+		DsCheck.addRow();
+	}
+
+	if ( svcid == "list" )
+	{	
+		this.status = "  처리메세지 : " + errmsg;
+	}
+	
+	alert("errcd : " + errcd);
+	alert("errmsg : " + errmsg);
+}]]></Script>
+  </Form>
+</FDL>

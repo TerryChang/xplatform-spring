@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<license version="1.0">
+	<product>
+		<name>XPLATFORM</name>
+		<version>9</version>
+		<function>Runtime,&#32;Widget,&#32;AJAX</function>
+	</product>
+	<customer>
+		<name>TOBESOFT</name>
+		<coreCount>0</coreCount>
+		<ipAddress>0.0.0.0</ipAddress>
+		<targetPlatform>Windows,CE,Linux</targetPlatform>
+	</customer>
+	<date>
+		<activation>2018-08-01</activation>
+		<term unit="month">2</term>
+	</date>
+	<key>RDUTZJQZYZVS42PMV7NP4WGXE53J4VWM9</key>
+</license>

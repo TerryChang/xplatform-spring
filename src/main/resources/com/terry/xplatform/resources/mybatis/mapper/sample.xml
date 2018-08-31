@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.terry.xplatform.dao.SampleDAO">
+	<insert id="insertSample" parameterType="SampleVO">
+		<![CDATA[
+			INSERT INTO SAMPLE 
+				( ID
+				  , NAME
+				  , DESCRIPTION
+				  , USE_YN
+				  , REG_USER )
+			VALUES ( #{id}
+				  , #{name}
+				  , #{description}
+				  , #{useYn}
+				  , #{regUser} )
+		]]>
+	</insert>
+	
+	<update id="updateSample" parameterType="SampleVO">
+		<![CDATA[
+			UPDATE SAMPLE 
+			SET ID=#{id}
+				, NAME=#{name}
+				, DESCRIPTION=#{description}
+				, USE_YN=#{useYn}
+			WHERE ID=#{id}
+		]]>
+	</update>
+	
+	<delete id="deleteSample" parameterType="int">
+		<![CDATA[
+			DELETE FROM SAMPLE 
+			WHERE ID=#{id}
+		]]>
+	</delete>
+	
+	<select id="selectSample" parameterType="int" resultType="SampleVO">
+		<![CDATA[
+			SELECT
+				ID, NAME, DESCRIPTION, USE_YN, REG_USER
+			FROM SAMPLE 
+			WHERE ID=#{id}
+		]]>
+	</select>
+	
+	<select id="selectSampleList" parameterType="SampleDefaultVO" resultType="SampleVO">
+			SELECT
+				ID, NAME, DESCRIPTION, USE_YN, REG_USER
+			FROM SAMPLE
+			<where>
+				<if test="!searchCondition.equals('')">
+					<if test="searchCondition == 0">
+						ID = #{searchKeyword}
+					</if>
+					<if test="searchCondition == 1">
+						NAME LIKE '%' || #{searchKeyword} || '%'
+					</if>
+				</if>
+			</where>
+			ORDER BY ID DESC
+			LIMIT #{recordCountPerPage} OFFSET #{firstIndex}		
+	</select>
+	
+	<select id="selectSampleListTotCnt" parameterType="SampleDefaultVO" resultType="long">
+
+			SELECT COUNT(*) totcnt
+			FROM SAMPLE
+			<where>
+				<if test="searchCondition == 0">
+					ID = #{searchKeyword}
+				</if>
+				<if test="searchCondition == 1">
+					NAME LIKE '%' || #{searchKeyword} || '%'
+				</if>
+			</where>
+	</select>
+	
+	<!-- 
+	<resultMap type="Employee" id="Employee_Result">
+        <id property="employee_no" column="employee_no" />
+        <result property="employee_name" column="employee_name" />
+        <association property="dept" resultMap="Dept_Result" />
+        <collection property='job_list' ofType='Job' resultMap='Job_Result' />
+    </resultMap>
+
+    <resultMap type="Dept" id="Dept_Result">
+        <id property="dept_no" column="dept_no" />
+        <result property="dept_name" column="dept_name" />
+    </resultMap>
+    
+    <resultMap type="Job" id="Job_Result">
+        <id property="job_no" column="job_no" />
+        <result property="job_name" column="job_name" />
+    </resultMap>
+	
+	<select id="employee_dept" resultMap="Employee_Result">
+		SELECT A.EMPLOYEE_NO AS EMPLOYEE_NO, A.EMPLOYEE_NAME AS EMPLOYEE_NAME, C.DEPT_NAME AS DEPT_NAME
+        FROM MYBATIS_EMPLOYEE A, MYBATIS_EMPLOYEE_DEPT B, MYBATIS_DEPT C
+        WHERE A.EMPLOYEE_NO = B.EMPLOYEE_NO
+        AND B.DEPT_NO = C.DEPT_NO
+	</select>
+	
+	<select id="employee_dept_job" resultMap="Employee_Result">
+        SELECT A.EMPLOYEE_NO AS EMPLOYEE_NO, A.EMPLOYEE_NAME AS EMPLOYEE_NAME, C.DEPT_NO AS DEPT_NO, C.DEPT_NAME AS DEPT_NAME, E.JOB_NAME AS JOB_NAME
+        FROM MYBATIS_EMPLOYEE A, MYBATIS_EMPLOYEE_DEPT B, MYBATIS_DEPT C, MYBATIS_EMPLOYEE_JOB D, MYBATIS_JOB E
+        WHERE A.EMPLOYEE_NO = B.EMPLOYEE_NO
+        AND B.DEPT_NO = C.DEPT_NO
+        AND A.EMPLOYEE_NO = D.EMPLOYEE_NO
+        AND D.JOB_NO = E.JOB_NO
+    </select>
+    
+    -->
+	
+</mapper>

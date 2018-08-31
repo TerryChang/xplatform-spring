@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Work" classname="Work" inheritanceid="" position="absolute 0 0 765 540" titletext="Shuttle">
+    <Layouts>
+      <Layout>
+        <Static id="sta_WF_SearchBox" class="sta_WF_SearchBox" position="absolute 0 0 765 41" text="" anchor="left top right"/>
+        <Static id="sta_WFSA_PointLabel" class="sta_WFSA_Label" position="absolute 17 10 107 30" text="원본프로젝트"/>
+        <Button id="btn_WFSA_Search" taborder="1" text="조회" class="btn_WFSA_Search" position="absolute 700 10 750 32" anchor="top right"/>
+        <Button id="btn_WFSA_Search02" taborder="2" class="btn_WFSA_Search" position="absolute 164 10 184 30" style="image:URL('theme://images/ico_Search.png'); "/>
+        <Edit id="Edit00" taborder="3" position="absolute 99 10 162 30"/>
+        <Edit id="Edit01" taborder="4" enable="false" position="absolute 186 10 334 30"/>
+        <Static id="sta_WFSA_PointLabel00" text="대상프로젝트" class="sta_WFSA_Label" position="absolute 363 10 453 30"/>
+        <Button id="btn_WFSA_Search00" taborder="5" class="btn_WFSA_Search" position="absolute 510 10 530 30" style="image:URL('theme://images/ico_Search.png'); "/>
+        <Edit id="Edit02" taborder="6" position="absolute 445 10 508 30"/>
+        <Edit id="Edit03" taborder="7" enable="false" position="absolute 532 10 680 30"/>
+        <Static id="sta_WF_TitleLev1" text="원본프로젝트" class="sta_WF_TitleLev1" position="absolute 0 55 134 69"/>
+        <Static id="sta_WF_TitleLev00" text="대상프로젝트" class="sta_WF_TitleLev1" position="absolute 400 55 534 69"/>
+        <Grid id="Grid00" taborder="8" useinputpanel="false" position="absolute 0 71 365 540" binddataset="ds_grid" formats="&lt;Formats&gt;&#10;  &lt;Format id=&quot;default&quot;&gt;&#10;    &lt;Columns&gt;&#10;      &lt;Col size=&quot;80&quot;/&gt;&#10;      &lt;Col size=&quot;80&quot;/&gt;&#10;      &lt;Col size=&quot;80&quot;/&gt;&#10;      &lt;Col size=&quot;80&quot;/&gt;&#10;      &lt;Col size=&quot;80&quot;/&gt;&#10;      &lt;Col size=&quot;80&quot;/&gt;&#10;      &lt;Col size=&quot;80&quot;/&gt;&#10;    &lt;/Columns&gt;&#10;    &lt;Rows&gt;&#10;      &lt;Row band=&quot;head&quot; size=&quot;24&quot;/&gt;&#10;      &lt;Row band=&quot;body&quot; size=&quot;24&quot;/&gt;&#10;    &lt;/Rows&gt;&#10;    &lt;Band id=&quot;head&quot;&gt;&#10;      &lt;Cell col=&quot;0&quot; disptype=&quot;normal&quot; text=&quot;Column0&quot;/&gt;&#10;      &lt;Cell col=&quot;1&quot; disptype=&quot;normal&quot; text=&quot;Column1&quot;/&gt;&#10;      &lt;Cell col=&quot;2&quot; disptype=&quot;normal&quot; text=&quot;Column2&quot;/&gt;&#10;      &lt;Cell col=&quot;3&quot; disptype=&quot;normal&quot; text=&quot;Column3&quot;/&gt;&#10;      &lt;Cell col=&quot;4&quot; disptype=&quot;normal&quot; text=&quot;Column4&quot;/&gt;&#10;      &lt;Cell col=&quot;5&quot; disptype=&quot;normal&quot; text=&quot;Column5&quot;/&gt;&#10;      &lt;Cell col=&quot;6&quot; disptype=&quot;normal&quot; text=&quot;Column6&quot;/&gt;&#10;    &lt;/Band&gt;&#10;    &lt;Band id=&quot;body&quot;&gt;&#10;      &lt;Cell col=&quot;0&quot; disptype=&quot;normal&quot; text=&quot;bind:Column0&quot;/&gt;&#10;      &lt;Cell col=&quot;1&quot; disptype=&quot;normal&quot; text=&quot;bind:Column1&quot;/&gt;&#10;      &lt;Cell col=&quot;2&quot; disptype=&quot;normal&quot; text=&quot;bind:Column2&quot;/&gt;&#10;      &lt;Cell col=&quot;3&quot; disptype=&quot;normal&quot; text=&quot;bind:Column3&quot;/&gt;&#10;      &lt;Cell col=&quot;4&quot; disptype=&quot;normal&quot; text=&quot;bind:Column4&quot;/&gt;&#10;      &lt;Cell col=&quot;5&quot; disptype=&quot;normal&quot; text=&quot;bind:Column5&quot;/&gt;&#10;      &lt;Cell col=&quot;6&quot; disptype=&quot;normal&quot; text=&quot;bind:Column6&quot;/&gt;&#10;    &lt;/Band&gt;&#10;  &lt;/Format&gt;&#10;&lt;/Formats&gt;&#10;" autofittype="col" fillareatype="linerow" anchor="left top bottom">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="35"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="18" band="head"/>
+                <Row size="18" band="head"/>
+                <Row size="20"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" displaytype="checkbox" edittype="checkbox" text="Column0"/>
+                <Cell col="1" rowspan="2" text="품명"/>
+                <Cell col="2" rowspan="2" text="규격"/>
+                <Cell col="3" rowspan="2" text="단위"/>
+                <Cell col="4" colspan="3" text="실행"/>
+                <Cell row="1" col="4" text="수량"/>
+                <Cell row="1" col="5" text="단가"/>
+                <Cell row="1" col="6" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:Column0"/>
+                <Cell col="1" text="bind:Column1"/>
+                <Cell col="2" text="bind:Column2"/>
+                <Cell col="3" text="bind:Column3"/>
+                <Cell col="4" text="bind:Column4"/>
+                <Cell col="5" text="bind:Column5"/>
+                <Cell col="6" text="bind:Column6"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid01" taborder="9" binddataset="ds_grid" useinputpanel="false" autofittype="col" fillareatype="linerow" position="absolute 400 71 765 540" anchor="all">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="35"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="18" band="head"/>
+                <Row size="18" band="head"/>
+                <Row size="20"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" displaytype="checkbox" edittype="checkbox" text="Column0"/>
+                <Cell col="1" rowspan="2" text="품명"/>
+                <Cell col="2" rowspan="2" text="규격"/>
+                <Cell col="3" rowspan="2" text="단위"/>
+                <Cell col="4" colspan="3" text="실행"/>
+                <Cell row="1" col="4" text="수량"/>
+                <Cell row="1" col="5" text="단가"/>
+                <Cell row="1" col="6" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:Column0"/>
+                <Cell col="1" text="bind:Column1"/>
+                <Cell col="2" text="bind:Column2"/>
+                <Cell col="3" text="bind:Column3"/>
+                <Cell col="4" text="bind:Column4"/>
+                <Cell col="5" text="bind:Column5"/>
+                <Cell col="6" text="bind:Column6"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button00" taborder="10" position="absolute 373 269 392 289" style="image:URL('theme://images/btn_move_right_N.png'); :disabled {image:URL('theme://images/btn_move_right_D.png');} :mouseover {image:URL('theme://images/btn_move_right_O.png');}"/>
+        <Button id="Button01" taborder="11" position="absolute 373 293 392 313" style="image:URL('theme://images/btn_move_left_N.png'); :disabled {image:URL('theme://images/btn_move_left_D.png');} :mouseover {image:URL('theme://images/btn_move_left_O.png');}"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_grid" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+          <Column id="Column3" type="STRING" size="256"/>
+          <Column id="Column4" type="STRING" size="256"/>
+          <Column id="Column5" type="STRING" size="256"/>
+          <Column id="Column6" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

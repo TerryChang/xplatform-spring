@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="topMenu" classname="Top" inheritanceid="" position="absolute 0 0 1024 37" scrollbars="none" class="frm_TP_Bg" onload="Top_onload" ontimer="topMenu_ontimer">
+    <Layouts>
+      <Layout>
+        <Div id="div_Menu" taborder="1" position="absolute 195 1 1012 33" anchor="left top right" scrollbars="none" style="background:transparent URL('theme://images\menu_line.png') left bottom;"/>
+        <PopupMenu id="PopMenuTopMenu" innerdataset="DsPopMenu" idcolumn="MENU_CD" captioncolumn="MENU_NM" levelcolumn="MENU_LVL" userdatacolumn="MENU_CD" onmenuclick="PopMenuTopMenu_onmenuclick" class="pmenu_TopMenu" position="absolute 106 38 271 263" style="cursor:hand; "/>
+        <Static id="Static00" position="absolute 33 2 135 35" style="background:URL('img::TOBESOFT.png') left middle; "/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsTopMenu" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="MENU_CD" type="STRING" size="8"/>
+          <Column id="UP_MENU_CD" type="STRING" size="8"/>
+          <Column id="MENU_NM" type="STRING" size="50"/>
+          <Column id="MENU_LVL" type="BIGDECIMAL" size="22"/>
+          <Column id="PGM_PATH" type="STRING" size="200"/>
+          <Column id="PGM_ID" type="STRING" size="200"/>
+          <Column id="SORT" type="BIGDECIMAL" size="22"/>
+          <Column id="SAYONG_YN" type="STRING" size="1"/>
+          <Column id="HELP_PATH" type="STRING" size="200"/>
+          <Column id="HELP_FILE" type="STRING" size="200"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="DsPopMenu">
+        <ColumnInfo>
+          <Column id="menuLvl" type="STRING" size="256"/>
+          <Column id="menuId" type="STRING" size="256"/>
+          <Column id="menuTitle" type="STRING" size="256"/>
+          <Column id="menuUrl" type="STRING" size="256"/>
+          <Column id="lvl1Code" type="STRING" size="256"/>
+          <Column id="lvl1Name" type="STRING" size="256"/>
+          <Column id="lvl2Code" type="STRING" size="256"/>
+          <Column id="lvl2Name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript4.0"><![CDATA[/*
+ * 01. 업무구분 : Frame 공통
+ * 02. 화면명   : topFrame.xfdl
+ * 03. 화면설명 : 
+ * 04. 작성일   : 2012-08-22
+ * 05. 작성자   : sian
+ * 06. 수정이력 :
+ *********************************************************************
+ *     수정일          이  름    사유
+ *********************************************************************
+ *     2012-08-22    sian    최초 작성
+ *********************************************************************
+ */
+
+var objFocusBtn;
+
+//메뉴이동시 열린페이지 닫을때 취소여부 체크
+var isChecked=true;
+
+// 대메뉴(탑메뉴) SORT 칼럼의 순서를 array에 저장한다
+var arrSort = new Array();
+
+function Top_onload(obj:Form, e:LoadEventInfo)
+{
+	
+	//Global Dataset에서 1레벨 데이타만 가져온다.
+	fn_removeTopMenu();
+	dsTopMenu.copyData(gds_Menu);
+	dsTopMenu.filter("MENU_LVL == '1'");
+	
+	for(i=0; i < dsTopMenu.rowcount; i++){
+		arrSort[i] = (dsTopMenu.getColumn(i,"SORT")=="undefined" || dsTopMenu.getColumn(i,"SORT")=="")  ? i : dsTopMenu.getColumn(i,"SORT");
+	}
+
+	
+	
+	// Top 메뉴 동적으로 생성
+	fn_setTopMenu();
+	this.setTimer(1, 100);
+}
+
+
+function topMenu_ontimer(obj:Form, e:TimerEventInfo)
+{
+	if(e.timerid==1)
+	{
+		fn_leftMenuOpen();
+	}
+}
+
+
+//application로딩시 트리메뉴 리스트 출력 
+function fn_leftMenuOpen()
+{
+	if(gv_leftFrame.form != null || gv_leftFrame.form != "undefined"){
+	
+		var iFirstRow = dsTopMenu.findRow("SORT",dsTopMenu.getMin("SORT"));
+		
+		//대메뉴(탑메뉴)첫번째에 해당하는 트리메뉴를 자동으로 오픈한다.
+		var sOpenMenuCode =  dsTopMenu.getColumn(iFirstRow,"MENU_CD");
+
+		//gds_Menu.filter("UP_MENU_CD=='01000000'&&MENU_LVL=='2'");
+		gds_Menu.filter("UP_MENU_CD=='"+sOpenMenuCode+"'&&MENU_LVL=='2'");
+		DsPopMenu.copyData(gds_Menu, true);
+		gds_Menu.filter("");
+		
+		var sMenuCD = DsPopMenu.getColumn(0, "MENU_CD");
+		var sMenuNm = DsPopMenu.getColumn(0, "MENU_NM");
+		//gv_leftFrame.form.fn_changeLeftMenu("01010000", sMenuNm);
+		
+		trace("--------------------------------------------------" + sMenuCD + " : " + sMenuNm);
+		
+		gv_leftFrame.form.fn_changeLeftMenu(sMenuCD, sMenuNm);
+		gv_leftFrame.form.fn_loadMenu();
+		this.killTimer(1);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////
+//	Top Menu Button 동적생성                                      	   //
+/////////////////////////////////////////////////////////////////////////
+function fn_setTopMenu()
+{
+	var objBtn;
+	var sBtnID;
+	var sBtnPreFix = "btn_TopMenu_";
+	
+	var menuTitle;
+	var menuId;
+	
+	var objFont = fn_getObjFont(10,"굴림");
+	var objTextSize;
+
+	var iNowLeft = 1;
+	var iTop = 0;
+	var iHeight = div_Menu.position.height;
+
+	var iBtnSpace = 47;
+	var iBtnGap = 0;
+	var iBtnSize;
+	var objStartBtn;
+	
+	 for(i=0; i < dsTopMenu.rowcount; i++)
+	 {
+
+	        // 대메뉴 SORT 칼럼에 정상적인 값 셋팅여부판단
+// 	        if(!bSort) 
+// 	        {
+// 				menuTitle = dsTopMenu.getColumn(i,"MENU_NM");
+// 				menuId   = dsTopMenu.getColumn(i,"MENU_CD");
+// 	        }
+// 	        else
+// 	        {
+
+				menuTitle = dsTopMenu.getColumn(arrSort[i]-1,"MENU_NM");
+				menuId   = dsTopMenu.getColumn(arrSort[i]-1,"MENU_CD");
+	        //}
+
+			//menuTitle = dsTopMenu.getColumn(i,"MENU_NM");
+			//menuId   = dsTopMenu.getColumn(i,"MENU_CD");
+
+		objTextSize = fn_getTextSize(menuTitle, objFont);
+		iBtnSize  = objTextSize.cx + iBtnSpace;
+
+		objBtn = new Button;
+		sBtnID = sBtnPreFix + i;
+		objBtn.init(sBtnID, iNowLeft, iTop, (iNowLeft+iBtnSize), iHeight);
+		objBtn.menuId = menuId;
+		objBtn.text = menuTitle;
+		if(i==0) objBtn.class="btn_Gnb_S";
+		else objBtn.class="btn_Gnb";
+
+		div_Menu.addChild(objBtn.name, objBtn);
+		
+			
+		objBtn.onclick.addHandler(btn_TopMenu_onClick);
+		//objBtn.onmouseenter.addHandler(btn_TopMenu_onmouseenter);
+
+				
+		objBtn.show();
+		
+		iNowLeft += (iBtnSize  + iBtnGap);
+	}
+	
+}
+
+
+function btn_TopMenu_onClick(obj:Button, e:MouseEventInfo)
+{
+	if(gv_menuType == "1") // 1Depth 메뉴(버튼) 형태
+	{
+			gv_leftFrame.form.fn_changeLeftMenu(obj.menuId, obj.menuId);
+	}
+	else if(gv_menuType == "2") // 1Depth 메뉴(버튼) + 2Depth메뉴(팝업Div)형태
+	{
+		if(fn_IsNull(objFocusBtn)==true)
+		{
+			objFocusBtn= obj;
+			gds_Menu.filter("UP_MENU_CD=='"+obj.menuId+"'&&MENU_LVL=='2'");
+			DsPopMenu.copyData(gds_Menu, true);
+			gds_Menu.filter("");
+			
+			fn_getLevel1Menu();
+		}
+		
+		if(objFocusBtn.name!=obj.name||PopMenuTopMenu.isPopup()==false)
+		{
+			objFocusBtn= obj;
+			gds_Menu.filter("UP_MENU_CD=='"+obj.menuId+"'&&MENU_LVL=='2'");
+			DsPopMenu.copyData(gds_Menu, true);
+			gds_Menu.filter("");
+			
+			fn_getLevel1Menu();
+		}
+	
+	}
+	
+	//Top 메뉴 선택상태표시
+	if(isChecked){
+		fn_clicked(obj);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////
+//	Top메뉴 Button selected 상태표현                             //
+/////////////////////////////////////////////////////////////////////////
+function fn_clicked(obj)
+{
+	//style class 설정..
+	var iCount = dsTopMenu.rowcount;
+	
+	var sBtnID = new Array();
+	for(var i=0;i<iCount;i++){
+		sBtnID[i] = div_Menu.all["btn_TopMenu_" + i];
+		trace(obj.name + " : " + sBtnID[i].name);
+		if(obj.name == sBtnID[i].name){
+			sBtnID[i].class = "btn_Gnb_S";
+		}else{
+			if(sBtnID[i].class == "btn_Gnb_S")
+				sBtnID[i].class = "btn_Gnb";
+		}
+	}
+}
+
+
+function btn_TopMenu_onmouseenter(obj:Button, e:MouseEventInfo)
+{
+	if(fn_IsNull(objFocusBtn)==true)
+	{
+		objFocusBtn= obj;
+		gds_Menu.filter("UP_MENU_CD=='"+obj.menuId+"'&&MENU_LVL=='2'");
+		DsPopMenu.copyData(gds_Menu, true);
+		gds_Menu.filter("");
+		
+		fn_getLevel1Menu();
+	}
+	
+	if(objFocusBtn.name!=obj.name||PopMenuTopMenu.isPopup()==false)
+	{
+		objFocusBtn= obj;
+		gds_Menu.filter("UP_MENU_CD=='"+obj.menuId+"'&&MENU_LVL=='2'");
+		DsPopMenu.copyData(gds_Menu, true);
+		gds_Menu.filter("");
+		
+		fn_getLevel1Menu();
+	}
+}
+
+function fn_getLevel1Menu()
+{
+	var nX   = system.clientToScreenX(objFocusBtn, 0);
+	var nY   = system.clientToScreenY(objFocusBtn, 0)+objFocusBtn.position.height;
+	
+	for(var i=0;i<DsPopMenu.rowcount;i++)
+	{
+		if(DsPopMenu.getColumn(i, "MENU_LVL")=="2")
+		{
+			DsPopMenu.setColumn(i, "MENU_LVL", "0");
+		}
+		else
+		{
+			DsPopMenu.setColumn(i, "MENU_LVL", "1");
+		}
+	}
+	
+	PopMenuTopMenu.closePopup();
+	PopMenuTopMenu.trackPopup(nX, nY);
+}
+
+
+function PopMenuTopMenu_onmenuclick(obj:PopupMenu, e:MenuClickEventInfo)
+{
+	var nRow = DsPopMenu.findRow("MENU_CD", e.id);
+	var sMenuNm = DsPopMenu.getColumn(nRow, "MENU_NM");
+	
+	gv_leftFrame.form.fn_changeLeftMenu(e.userdata, sMenuNm);
+}
+
+function fn_removeTopMenu()
+{
+	if(div_Menu.components.length>0)
+	{
+		while(div_Menu.components.length!=0)
+		{
+			div_Menu.removeChild(div_Menu.components[0].name);
+		}
+	}
+}
+
+//
+/*------------------------------------------------------------------------------
+* 기   능:	Font Object 생성 반환
+* 인   수:	iFontSize
+            sFontName
+* Return : 	Font Object
+------------------------------------------------------------------------------*/
+function fn_getObjFont(iFontSize, sFontName)
+{
+	var objFont = new Font;
+	objFont.size = iFontSize;
+	objFont.name = sFontName;
+	objFont.bold = true;
+	return objFont;
+}
+
+/*------------------------------------------------------------------------------
+* 기   능:	1depth 메뉴 Text Size 반환
+* 인   수:	sText (사이즈를 계산할 텍스트 )
+            objFont(Font정보를 가지고 있는 object입니다.)
+            iLimitWidth (Option : word wrap이 일어나는 문자열 길이 제한 정수 값입)
+            sConstWordWrapOption (Option : word wrap 옵션입니다)
+* Return : 	계산된 사이즈가 저장된  Size object
+------------------------------------------------------------------------------*/
+function fn_getTextSize(sText, objFont, iLimitWidth, sConstWordWrapOption)
+{
+	//var objPainter = this.canvas.getPainter();
+	var objPainter = this.canvas.getPainter();
+	if(fn_IsNull(objPainter)==false)
+	{
+		var objTextSize = objPainter.getTextSize(sText, objFont);
+		return objTextSize;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+
+
+/**********************************************************************************
+ * 함수명     : fn_IsNull
+ * 설명       : NULL 여부 체크
+ * argument    : sValue (문자열)
+ * return Type : boolean
+ **********************************************************************************/
+function fn_IsNull(sValue)
+{
+    if (new String(sValue).valueOf() == "undefined") return true;
+    if (sValue == null) return true;
+    var v_ChkStr = new String(sValue);
+
+    if (v_ChkStr == null) return true;
+
+    if (v_ChkStr.toString().length == 0 ) return true;
+
+    return false;
+}]]></Script>
+  </Form>
+</FDL>

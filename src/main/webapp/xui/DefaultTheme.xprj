@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project active_adl="DefautTheme" version="1.1">
+  <TypeDefinition url="default_typedef.xml"/>
+  <GlobalVariables url="globalvars.xml"/>
+  <ADL id="110425_XP_Template_T1" url="DefaultTheme.xadl"/>
+  <Services>
+    <Service id="CSS" file_ext="" include_subdir="false"/>
+    <Service id="IMG" file_ext="" include_subdir="false"/>
+    <Service id="css" file_ext="" include_subdir="false"/>
+    <Service id="img" file_ext="" include_subdir="false"/>
+  </Services>
+  <Themes>
+    <RecentlyUsed>
+      <Theme url="DefaultTheme.xtheme"/>
+    </RecentlyUsed>
+  </Themes>
+  <ComponentInfoGroup>
+    <ComponentInfo name="grd_basic" defaultwidth="" defaultheight="" image="18"/>
+  </ComponentInfoGroup>
+</Project>

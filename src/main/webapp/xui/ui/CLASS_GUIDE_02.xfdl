@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="CLASS_GUIDE_02" classname="CLASS_GUIDE_01" inheritanceid="" position="absolute 0 0 765 540" titletext="Information">
+    <Layouts>
+      <Layout>
+        <Static id="Static19" position="absolute 446 25 765 538" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static01" text="Component Name" position="absolute 0 0 130 26" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static02" text="Component View" position="absolute 129 0 765 26" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static10" text="Information&#13;&#10;- Orange" position="absolute 0 25 130 154" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static11" position="absolute 129 25 447 154" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="sta_WF_Info_Orange_Box" class="sta_WF_Info_Orange_Box" position="absolute 150 59 415 125" text=""/>
+        <Static id="sta_WF_Info_Orange" text="sta_WF_Info_Orange" class="sta_WF_Info_Orange" position="absolute 235 95 405 115"/>
+        <Static id="sta_WF_Info_Orange_Title" text="sta_WF_Info_Orange_Title" class="sta_WF_Info_Orange_Title" position="absolute 235 70 405 90"/>
+        <Static id="Static07" text="sta_WF_Info_Orange_Box" position="absolute 155 41 384 54" style="color:#999999ff; font:Tahoma,8; "/>
+        <Static id="Static03" text="Title :" position="absolute 160 70 227 90" style="align:right;"/>
+        <Static id="Static00" text="Contents :" position="absolute 160 95 227 115" style="align:right;"/>
+        <Static id="sta_WF_Info_Orange_Box00" class="sta_WF_Info_Orange_Box" position="absolute 468 57 743 133" text=""/>
+        <Static id="Static04" text="Information&#13;&#10; - Green" position="absolute 0 153 130 282" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static05" position="absolute 129 153 447 282" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static06" text="Information&#13;&#10; - Blue" position="absolute 0 281 130 410" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static08" position="absolute 129 281 447 410" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="sta_WF_Info_Green_Box" class="sta_WF_Info_Green_Box" position="absolute 150 187 415 253" text=""/>
+        <Static id="sta_WF_Info_Green" text="sta_WF_Info_Green" class="sta_WF_Info_Green" position="absolute 235 223 405 243"/>
+        <Static id="sta_WF_Info_Green_Title" text="sta_WF_Info_Green_Title" class="sta_WF_Info_Green_Title" position="absolute 235 198 405 218"/>
+        <Static id="Static09" text="sta_WF_Info_Green_Box" position="absolute 155 169 384 182" style="color:#999999ff; font:Tahoma,8; "/>
+        <Static id="Static12" text="Title :" position="absolute 160 198 227 218" style="align:right; "/>
+        <Static id="Static13" text="Contents :" position="absolute 160 223 227 243" style="align:right; "/>
+        <Static id="Static14" text="Information&#13;&#10; - Gray" position="absolute 0 409 130 538" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static15" position="absolute 129 409 447 538" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="sta_WF_Info_Blue_Box" class="sta_WF_Info_Blue_Box" position="absolute 150 315 415 381" text=""/>
+        <Static id="sta_WF_Info_Blue" text="sta_WF_Info_Blue" class="sta_WF_Info_Blue" position="absolute 235 351 405 371"/>
+        <Static id="sta_WF_Info_Blue_Title" text="sta_WF_Info_Blue_Title" class="sta_WF_Info_Blue_Title" position="absolute 235 326 405 346"/>
+        <Static id="Static16" text="sta_WF_Info_Blue_Box" position="absolute 155 297 384 310" style="color:#999999ff; font:Tahoma,8; "/>
+        <Static id="Static17" text="Title :" position="absolute 160 326 227 346" style="align:right; "/>
+        <Static id="Static18" text="Contents :" position="absolute 160 351 227 371" style="align:right; "/>
+        <Static id="sta_Info_Gray" text="sta_Info_Gray" class="sta_Info_Gray" position="absolute 235 469 405 489"/>
+        <Static id="sta_Info_Gray_Title" text="sta_Info_Gray_Title" class="sta_Info_Gray_Title" position="absolute 235 444 405 464"/>
+        <Static id="Static20" text="Title :" position="absolute 160 444 227 464" style="align:right; "/>
+        <Static id="Static21" text="Contents :" position="absolute 160 469 227 489" style="align:right; "/>
+        <Static id="sta_WF_Info_Orange_Title00" text="필수정보" class="sta_WF_Info_Orange_Title" position="absolute 493 70 643 90"/>
+        <Static id="sta_WF_Info_Orange00" text="등록된 상품에 대하여 고객사별 가격 및 부가정보를 조회 할 수 있습니다." class="sta_WF_Info_Orange" position="absolute 493 95 719 119"/>
+        <Static id="sta_WF_Info_Orange01" text="※ 줄 간격을 조절 할 수 있는 컴포넌트는&#13;&#10;    텍스트박스(TextArea)만 가능하며 필요한&#13;&#10;    경우 TextArea에 Class를 신규 제작하여 &#13;&#10;    사용함" class="sta_WF_Info_Orange" position="absolute 478 178 749 227"/>
+        <TextArea id="TextArea00" taborder="1" position="absolute 478 284 733 332" style="background:transparent;border:0 none #808080ff ;color:#e37a0cff;" value="※ 텍스트박스(TextArea)로 만들어진 &#13;&#10;    정보영역" linespace="5" wordwrap="word"/>
+        <Static id="Static22" text="TextArea" position="absolute 478 271 707 284" style="color:#999999ff; font:Tahoma,8; "/>
+        <Static id="Static23" text="TextArea" position="absolute 478 159 707 172" style="color:#999999ff; font:Tahoma,8; "/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+  </Form>
+</FDL>

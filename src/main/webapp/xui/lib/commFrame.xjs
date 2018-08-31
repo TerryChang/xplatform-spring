@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script type="xscript4.0"><![CDATA[/* 
+ *====================================================File description===================================================================
+ * File Name    : commFrame.xjs
+ * Comment      : UI Frame 관련 함수의 집합.
+ * Create Date  : 2012/08/22 
+ * Author       : 
+ * Change History : 
+ *=======================================================================================================================================
+- fn_IsNull : NULL 여부 체크.
+*/
+/*****************************************************************************************
+ * 함  수  명	: gfn_ChkOpenMenu
+ * 입      력	: menuid: 메뉴 아이디
+ * 반      환	:   
+ * 기      능	: 메뉴 아이디를 기준으로 신규 윈도우 화면을 생성하고 open 시킴
+ *****************************************************************************************/ 
+function gfn_ChkOpenMenu(menuid,objDs) {
+	var nRow = objDs.findRow("MENU_CD", menuid);
+	
+	if (gfn_IsNull(menuid) == true) 
+	{
+		trace("Menu가 존재하지 않습니다.");
+		return;
+	}
+	
+	if(gfn_IsNull(objDs.getColumn(nRow, "PGM_PATH"))==true)
+	{
+		return;
+	}
+
+	var winKey = gds_OpenMenu.lookup("MENU_CD", menuid, "WINID");
+	if(gfn_IsNull(winKey) == false)
+	{
+		if(gfn_ActiveFrame(winKey) == true)
+		{
+		  	gv_tabFrame.form.fn_movePage(winKey);
+			gv_tabFrame.form.fn_activeTabpage(winKey);
+			return;
+		}
+	}
+
+	if(parseInt(gds_OpenMenu.rowcount) > 14)
+	{
+		gfn_MsgAlert("메뉴는  15개이상 오픈할 수 없습니다.");
+		return;
+	}
+	
+	if(gfn_IsNull(objDs.getColumn(nRow, "MENU_CD")) == true) return; 
+	
+	winKey = menuid + "_" + gds_OpenMenu.getRowCount()+ "_" + parseInt(Math.random() * 100);
+	
+	var objNewWin = new ChildFrame;
+	objNewWin.init(winKey, 0, 0, gv_initWidth, gv_initHeight);
+	objNewWin.formurl = "frame::workFrame.xfdl";
+	objNewWin.arguments = [];	
+	
+	var tmpNewPgmId = objDs.getColumn(nRow, "PGM_ID");
+	if(objDs.getColumn(nRow, "PGM_ID").indexOf("xfdl?")>0)
+	{
+		var tmpPgmId = objDs.getColumn(nRow, "PGM_ID");		
+		tmpNewPgmId = tmpPgmId.substr(0,tmpPgmId.indexOf("xfdl?") + 4);
+		var tmpNewParam = tmpPgmId.substr(tmpPgmId.indexOf("xfdl?") + 5);
+		objNewWin.arguments["args"]   =  tmpNewParam;
+	}
+	
+	objNewWin.arguments["winKey"]   =  winKey;
+	objNewWin.arguments["menuId"]   =  objDs.getColumn(nRow, "MENU_CD");
+	objNewWin.arguments["menuUrl"]   =  objDs.getColumn(nRow, "PGM_PATH")+"::"+objDs.getColumn(nRow, "PGM_ID");
+	objNewWin.arguments["programId"]   =  tmpNewPgmId;
+	objNewWin.arguments["menuTitle"] =  objDs.getColumn(nRow, "MENU_NM");
+	objNewWin.arguments["menuTitle2"] = "";
+	objNewWin.arguments["helpUrl"] = "";
+	objNewWin.arguments["pInfoflag"] =  "";
+	objNewWin.openstatus = "maximize";
+	objNewWin.arguments["menuMultiYn"] =  "";
+	gv_workFrame.addChild(winKey, objNewWin);
+	gfn_AddGblDSMenu(winKey, nRow, objDs);
+	objNewWin.dragmovetype = "all";
+	objNewWin.showtitlebar = false;
+	
+	objNewWin.resizable = true;
+	objNewWin.show();	
+
+    //20120611 좌측메뉴 클릭시
+	gv_tabFrame.form.fn_setNaviAdd(winKey, objDs.getColumn(nRow, "MENU_NM"));
+	gv_tabFrame.form.fn_activeTabpage(winKey);
+	gv_activeWinId = winKey;
+}
+
+
+/*****************************************************************************************
+ * 함  수  명	: 	gfn_ArrangeWin
+ * 입      력	: 	strType: 정렬 타입
+ * 반      환	:   
+ * 기      능	: 	열려있는 윈도우 화면을 정렬
+ *****************************************************************************************/
+function gfn_ArrangeWin(strType) {
+	var strWinKey;
+	var strMenuNm;
+	var i;
+	// workFrame영역에 open된 childFrame 갯수
+	var iFramesCnt = gv_workFrame.frames.length;
+	
+	//if (gds_OpenMenu.getRowCount() < 1) return;
+	if (iFramesCnt < 1) return;
+	
+	
+	if(strType == "maximize")
+	{
+		btn_cas.visible=true;
+		btn_max.visible=false;
+		
+		for (i=0; i<iFramesCnt; i++) 
+		{
+			gv_workFrame.frames[i].openstatus = "normal";
+			gv_workFrame.frames[i].showtitlebar = false;
+			gv_workFrame.frames[i].style.border = "0 solid #006666ff";
+			if(gv_workFrame.frames[i].openstatus!="maximize")
+			{
+				gv_workFrame.frames[i].openstatus = strType;
+			}
+		}
+				
+	}
+	else if (strType == "closeAll")
+	{	
+		for (var i=iFramesCnt-1; i>=0; i--) {			
+			strWinKey = gds_OpenMenu.getColumn(i, "WINID");
+			gv_workFrame.frames[i].showtitlebar = true;
+			if(gfn_TabOnClose(strWinKey) == false) return;
+		}
+		gv_workFrame.arrange(strType);
+		
+		// Arrange 버튼 상태처리
+		btn_closeAll.enable=false;
+		btn_cas.enable=false;
+		btn_max.enable=false;
+		
+	}
+	else if (strType == "cascade" || strType == "horizontal") 
+	{	
+		btn_cas.visible=false;
+		btn_max.visible=true;
+
+		for (i=0; i<iFramesCnt; i++) 
+		{
+			gv_workFrame.frames[i].showtitlebar = true;
+			gv_workFrame.frames[i].style.border = "1 solid #7f7f7bff";
+			gv_workFrame.frames[i].style.bordertype = "round 3 3";
+			gv_workFrame.frames[i].openstatus = "maximize";
+		}
+		gv_workFrame.arrange(strType);
+	}
+	else if (strType == "hidden") 
+	{	
+
+		for (i=0; i<iFramesCnt; i++) 
+		{
+			gv_workFrame.frames[i].showtitlebar = true;
+			gv_workFrame.frames[i].style.border = "1 solid #7f7f7bff";
+			gv_workFrame.frames[i].style.bordertype = "round 3 3";
+			gv_workFrame.frames[i].openstatus = "minimize";
+		}
+		
+		gv_workFrame.arrange(strType);
+	}
+	else
+	{
+
+	    for (i=0; i<iFramesCnt; i++) 
+		{
+			gv_workFrame.frames[i].showtitlebar = true;
+			gv_workFrame.frames[i].style.border = "1 solid #7f7f7bff";
+			gv_workFrame.frames[i].style.bordertype = "round 3 3";
+			gv_workFrame.frames[i].openstatus = "minimize";
+		}
+		gv_workFrame.arrange(strType);
+	}
+	
+}
+
+
+ /*****************************************************************************************
+ * 함  수  명	: 	gfn_AddGblDSMenu
+ * 입      력	: 	strID: 윈도우 생성키, 메뉴데이터셋에서의 row position
+ * 반      환	:   
+ * 기      능	: 	신규 생성된 윈도우 화면을 DsOpenwininfo 에 등록
+ *****************************************************************************************/
+function gfn_AddGblDSMenu(strID, nRow, objDs) {
+	gds_Menu.filter("");
+	var curRow = gds_OpenMenu.addRow();
+	gds_OpenMenu.setColumn(curRow, "WINID", strID);
+	gds_OpenMenu.setColumn(curRow, "MENU_CD", objDs.getColumn(nRow, "MENU_CD"));
+
+	
+ 	if(strID.indexOf("HOME01") != -1 )
+ 	{
+ 		gds_OpenMenu.setColumn(curRow, "MENU_NM", "HOME");
+ 	}
+ 	else
+ 	{
+		gds_OpenMenu.setColumn(curRow, "MENU_NM", objDs.getColumn(nRow, "MENU_NM"));		
+	}	
+}
+
+/*****************************************************************************************
+ * 함  수  명	: 	gfn_ActiveFrame
+ * 입      력	: 	winKey: 윈도우 생성 키
+ * 반      환	:   
+ * 기      능	: 	윈도우 키를 기준으로 열려있는 화면일 경우 focus, maximize 처리
+ *****************************************************************************************/
+function gfn_ActiveFrame(winKey) {
+	
+	var fs_main_info = gv_workFrame.frames;
+	if(fs_main_info[winKey]) 
+	{
+		fs_main_info[winKey].setFocus();
+		return true;
+	}
+	return false;
+}
+
+ /*****************************************************************************************
+ * 함  수  명	: 	gfn_TabOnClose
+ * 입      력	: 	strID: 윈도우 생성키
+ * 반      환	:   true/false 정상닫힘/닫힘취소 
+ * 기      능	: 	윈도우 타이틀 탭 닫힘 처리
+ *****************************************************************************************/
+function gfn_TabOnClose(winKey)
+{
+ 	gv_workFrame.frames[winKey].form.f_close();
+}
+ 
+ 
+ /*****************************************************************************************
+ * 함  수  명	: 	gfn_ActiveForm
+ * 입      력	: 	winKey: 윈도우 생성 키
+ * 반      환	:   
+ * 기      능	: 	윈도우 키를 기준으로 Active된 화면의 타이틀 탭을 Active시킨다
+ *****************************************************************************************/
+function gfn_ActiveForm(winKey) {
+	gv_activeWinId = winKey;
+	gv_TabFrame.form.fn_activeTabpage(winKey);
+}
+
+ /*****************************************************************************************
+ * 함  수  명	: 	gfn_FrameOnClose
+ * 입      력	: 	winKey: 윈도우 생성키
+ * 반      환	:   
+ * 기      능	: 	윈도우 화면 닫힘 처리
+ *****************************************************************************************/
+function gfn_FrameOnClose(winKey)
+{
+	gv_tabFrame.form.fn_deleteTabpage(winKey);
+	gfn_DelGblDSMenu(winKey);	
+}
+
+
+ /*****************************************************************************************
+ * 함  수  명	: 	gfn_DelGblDSMenu
+ * 입      력	: 	strID: 윈도우 생성키
+ * 반      환	:   
+ * 기      능	: 	생성된 윈도우 화면을 DsOpenwininfo 에서 삭제
+ *****************************************************************************************/
+function gfn_DelGblDSMenu(strID) {
+
+	var iRow = gds_OpenMenu.findRow("WINID", strID);
+	
+	gds_OpenMenu.deleteRow(iRow);
+	//if(gds_OpenMenu.rowcount==0)gv_workFrame.frames["workArea"].openstatus = "maximize";
+}
+
+
+/*******************************************************************************
+ * 작성자 : AA
+ * 공통 Modal Dialog를 실행 한다.
+ * parameter 
+			 1.objForm : 호출하는 form (this로 넘기면 됨, 필수)
+			 2. strId  : Dialog ID 
+             3. strURL : Form URL
+             4. nTop   : Form TOP Position
+             5. nLeft  : Form Left Position
+             6. nWidth : Form Width
+             7. nHeight: Form Height
+             8. bShowTitle : Form Title 을 표시 할지 여부
+             9. strAlign: Dialog 의 위치 - '-1' : 모니터의 중앙
+                                          - 'Bottom Left' : Click 된 마우스 위치의 좌측 하단 정렬
+                                          - 'Top Left' : Click 된 마우스 위치의 좌측 상단 정렬
+                                          - 'Bottom Right' : Click 된 마우스 위치의 우측 하단 정렬
+                                          - 'Top Right' : Click 된 마우스 위치의 우측 상단 정렬
+                                           - 'offset' : Click 된 마우스 위치에서 nTop,nLeft만큼 들여쓰기.
+                                           - 'absolute' : 입력된 좌표를 Screen 좌표로 인식.(손영기)
+                                           - '0' : 사용자 임의 정렬
+            10. strArgument: Dialog 로 전달될 Argument - {strMessage1:'E'}
+            11. isModeless: 10번째 true 면 Dialog 를 Modeless로 띄운다.
+            12. isLayered: 11번째 true 면 Dialog 를 Layered로 띄운다.
+ * return true/false - 적합 / 부적합 
+ ******************************************************************************/
+function gfn_Dialog(objForm, strId, strURL, nTop, nLeft, nWidth, nHeight, bShowTitle, strAlign, strArgument, isModeless, isLayered, bAutoSize)
+{
+	trace("Start gf_Dialog strURL == " + strURL);
+	var newChild = null;
+	var objParentFrame = objForm.getOwnerFrame();
+	
+	var nRight = 0;
+	var nBottom = 0;
+	
+	if (strAlign == "Bottom Left") {
+		nLeft = system.cursorx;
+		nBottom = system.cursory - 5;
+		nTop = nBottom - nHeight;
+		nRight = nLeft + nWidth;
+	}
+	else if (strAlign == "Top Left") {
+		nTop = system.cursory - 5;
+		nLeft = system.cursorx;
+		nBottom = nTop + nHeight;
+		nRight = nLeft + nWidth;
+	}
+	else if (strAlign == "Bottom Right") {
+		nRight = system.cursorx;
+		nBottom = system.cursory - 5;
+		nTop = nBottom - nHeight;
+		nLeft = nRight - nWidth;
+	}
+	else if (strAlign == "Top Right") {
+		nTop = system.cursory - 5;
+		nRight = system.cursorx;
+		nBottom = nTop + nHeight;
+		nLeft = nRight - nWidth;
+	}
+	else if (strAlign == "-1") {
+		
+		var strScreenRes = system.getScreenResolution(1);
+		var nCenterX = new Number(strScreenRes.split(" ")[0]);
+		var nCenterY = new Number(strScreenRes.split(" ")[1]);
+		
+		var nMarginX = 0;
+		var nMoniterIndex = system.getMonitorIndex(system.cursorx, system.cursory);
+		if (nMoniterIndex == 2) {
+			var strMarginRes = system.getScreenResolution(2);
+			nMarginX = new Number(strMarginRes.split(" ")[0]);
+		}
+		nTop = Math.round(mainframe.position.height / 2) - Math.round(nHeight / 2) + mainframe.position.top;
+		nLeft = Math.round(mainframe.position.width / 2) - Math.round(nWidth / 2) + mainframe.position.left;
+		nBottom = nTop + nHeight;
+		nRight = nLeft + nWidth;
+	}
+	else if (strAlign == "offset") {
+		nTop += system.cursory;
+		nLeft += system.cursorx;
+		nBottom = nTop + nHeight;
+		nRight = nLeft + nWidth;
+	}
+	else if (strAlign == "absolute")
+	{
+		nBottom = nTop + nHeight;
+		nRight = nLeft + nWidth;
+	}
+	else {
+		nTop += mainframe.position.top;
+		nLeft += mainframe.position.left;
+		nBottom = nTop + nHeight;
+		nRight = nLeft + nWidth;
+	}
+	
+	// 화면 밖으로 벗어나는 Dialog 방지 - Sonyk
+	var nMonitor = system.getMonitorIndex((nLeft+nRight)/2,(nTop+nBottom)/2);
+	var rectScreen = system.getScreenRect(nMonitor);
+	if(nBottom > rectScreen.bottom)
+	{
+		nTop = rectScreen.bottom - (nBottom - nTop);
+		nBottom = rectScreen.bottom;
+	}
+	if(nTop < rectScreen.top)
+	{
+		nBottom = rectScreen.top + (nBottom - nTop);
+		nTop = rectScreen.top;
+	}
+	if(nRight > rectScreen.right)
+	{
+		nLeft = rectScreen.right - (nRight - nLeft);
+		nRight = rectScreen.right;
+	}
+	if(nLeft < rectScreen.left)
+	{
+		nRight = rectScreen.left + (nRight - nLeft);
+		nLeft = rectScreen.left;
+	}
+	// 여기까지 - Sonyk
+	
+	newChild = new ChildFrame;
+	newChild.init(strId, nLeft, nTop, nRight, nBottom, strURL);
+
+	if (isLayered == true) {
+		//newChild.style.bordertype="round 10 10";
+		newChild.layered = true;
+	}
+	else {
+		newChild.layered = false;
+	}
+	
+	newChild.style.border.width = "0";
+	newChild.showstatusbar = false;
+	
+	if (bAutoSize == false) newChild.autosize = false;
+	else newChild.autosize = true;
+
+	if (!bShowTitle) newChild.showtitlebar = false;
+	if (isModeless == true)
+	{
+		return newChild.showModeless(objParentFrame, strArgument);
+	}
+	else
+	{	
+		var rtn;
+		//if(gf_Dialog.arguments.length == 9)
+			rtn = newChild.showModal(objParentFrame, strArgument);
+		//else
+		//	rtn = newChild.showModal(objParentFrame);
+		// this.removeChild(newChild.name);
+		// newChild.destroy();
+		// newChild = null;
+
+	trace("End gf_Dialog showModal strURL == " + strURL);
+		return rtn;
+	}
+}
+]]></Script>

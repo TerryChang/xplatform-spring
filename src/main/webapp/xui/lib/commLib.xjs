@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script type="xscript4.0"><![CDATA[include "lib::commTran.xjs"; 
+include "lib::commFrame.xjs"; 
+include "lib::commDataset.xjs"; 
+include "lib::commGrid.xjs";
+include "lib::commUtility.xjs";]]></Script>

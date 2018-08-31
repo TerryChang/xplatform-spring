@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="COMP_GUIDE_01" classname="COMP_GUIDE_01" inheritanceid="" position="absolute 0 0 765 540" titletext="Static,Edit,TextArea,MaskEdit">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" text="Component Name" position="absolute 0 0 130 26" style="background:#edeee6ff;border:1 solid #c6c6c5ff ;align:center middle;font:Tahoma,9,bold antialias;"/>
+        <Static id="Static02" text="Component View" position="absolute 129 0 765 26" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static00" text="Static" position="absolute 0 25 130 245" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static03" position="absolute 129 25 765 245" style="background:#ffffffff;border:1 solid #c6c6c5ff ;align:center middle;font:Tahoma,9,bold antialias;" text=""/>
+        <Static id="Static07" text="enabled" position="absolute 138 30 258 43" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static04" text="disabled" position="absolute 311 30 431 43" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static05" text="Edit" position="absolute 0 244 130 319" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static06" position="absolute 129 244 765 319" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static08" text="enabled" position="absolute 138 249 258 262" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static09" text="disabled" position="absolute 311 249 431 262" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static10" text="TextArea" position="absolute 0 318 130 463" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static11" position="absolute 129 318 765 463" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static12" text="enabled" position="absolute 138 323 258 336" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static13" text="disabled" position="absolute 311 323 431 336" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static14" text="MaskEdit" position="absolute 0 462 130 537" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static15" position="absolute 129 462 765 537" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static16" text="enabled" position="absolute 138 467 258 480" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static17" text="disabled" position="absolute 311 467 431 480" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static26" text="XPLATFORM" position="absolute 138 52 258 72"/>
+        <Static id="Static27" text="XPLATFORM" position="absolute 311 52 431 72" enable="false"/>
+        <Static id="Static28" text="※ Static의 기본 높이를 20으로 지정" position="absolute 469 53 724 68" class="sta_WF_Info_Orange" wordwrap="none"/>
+        <Edit id="Edit00" taborder="1" position="absolute 138 272 288 292" value="엑스플렛폼"/>
+        <Edit id="Edit01" taborder="2" position="absolute 311 272 461 292" enable="false" value="엑스플렛폼"/>
+        <TextArea id="TextArea00" taborder="3" position="absolute 138 346 288 451" value="엑스플렛폼"/>
+        <TextArea id="TextArea01" taborder="4" position="absolute 311 346 461 451" value="엑스플렛폼" enable="false"/>
+        <Static id="Static29" text="※ wordwrap을 both로 지정" wordwrap="none" class="sta_WF_Info_Orange" position="absolute 469 346 724 361"/>
+        <MaskEdit id="MaskEdit00" taborder="5" position="absolute 138 490 288 510" value="1234567890" mask="@@@,@@@"/>
+        <MaskEdit id="MaskEdit01" taborder="6" position="absolute 311 490 461 510" enable="false" value="1234567890" mask="@@@,@@@"/>
+        <Static id="Static30" text="※ mask = &quot;@@@,@@@&quot;" wordwrap="none" class="sta_WF_Info_Orange" position="absolute 469 492 724 507"/>
+        <Shape id="Shape00" position="absolute 139 82 754 92" style="strokepen:1 dashed #b1c0cbff;"/>
+        <Static id="Static18" text="※ usedecorate =&quot;&lt;b v='true'&gt;true&lt;/b&gt;&quot;" wordwrap="none" class="sta_WF_Info_Orange" position="absolute 141 100 396 115" usedecorate="true"/>
+        <TextArea id="TextArea02" taborder="7" position="absolute 156 110 679 237" value="fs 글자의 크기(fontsize)를 지정합니다.  ex)&lt;fs v='12'&gt;&lt;/fs&gt;&#13;&#10;fc 글자의 색상(fontcolor)를 지정합니다.  ex)&lt;fc v='red'&gt;&lt;/fc&gt;&lt;fc v='#FF00FF'&gt;&lt;/fc&gt;&#13;&#10;ff 글자의 종류(fontface)를 지정합니다.  ex)&lt;ff v='굴림'&gt;&lt;/ff&gt;&#13;&#10;b 굵은글씨를(bold)를 지정합니다. ex)&lt;b v='true'&gt;&lt;/b&gt;&#13;&#10;i 이텔릭체를 (italic)를 지정합니다.  ex)&lt;i v='true'&gt;&lt;/i&gt;&#13;&#10;u 언더라인을(underline)를 지정합니다.  ex)&lt;u v='true'&gt;&lt;/u&gt;&#13;&#10;s 취소선(strike)를 지정합니다.  ex)&lt;s v='true'&gt;&lt;/s&gt;" wordwrap="both" readonly="true" style="border:0 none #808080 ;color:#e37a0cff;" linespace="3"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

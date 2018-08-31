@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="workArea" classname="WORK" inheritanceid="" position="absolute 0 0 805 580" scrollbars="none" oninit="workArea_oninit" onclose="workArea_onclose" onsize="workArea_onsize">
+    <Layouts>
+      <Layout>
+        <Static id="st_Navi" usedecorate="true" position="absolute 41 6 482 25" style="background:transparent;align:left middle;"/>
+        <Div id="div_Work" taborder="1" position="absolute 20 30 785 570" style="background:#ffffffff;"/>
+        <Static id="st_Navi2" text="네비게이션2" class="static_workTitle" visible="false" position="absolute 437 9 800 24" anchor="top right" style="background:left middle; color:#939393ff; padding:0 0 0 0; align:right middle; font:Malgun Gothic,8, antialias; "/>
+        <Button id="btn_copyMenu" taborder="1" onclick="btn_copyMenu_onclick" visible="false" position="absolute 761 0 806 6" anchor="top right" style="hideeffect:tranAniShow; "/>
+        <Button id="btn_changeMenu" taborder="1" onclick="btn_changeMenu_onclick" visible="false" position="absolute 708 0 753 6" anchor="top right" style="hideeffect:tranAniShow; " bPopup="0"/>
+        <Static id="stc_bulet" position="absolute 19 5 38 23" style="background:transparent URL('img::alert_information.png') stretch;"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript4.0"><![CDATA[/*
+ * 01. 업무구분 : Frame 공통
+ * 02. 화면명   : workFrame.xfdl
+ * 03. 화면설명 : 
+ * 04. 작성일   : 2012-08-22
+ * 05. 작성자   : sian
+ * 06. 수정이력 :
+ *********************************************************************
+ *     수정일          이  름    사유
+ *********************************************************************
+ *     2012-08-22    sian    최초 작성
+ *********************************************************************
+ */
+include "lib::commLib.xjs"; //공통함수 호출 
+
+var pv_winKey;		//업무화면 Key코드
+var pv_menuId;		//메뉴 ID
+var pv_programId;   //프로그램 ID
+var pv_menuUrl;		//업무화면 Url
+var pv_menuTitle;	//업무화면 Title
+var pv_menuTitle2;	//업무화면 Title2
+var pv_helpUrl;		//도움말 URL
+var pv_args;		
+var fv_datalog_yn;  //데이터Log를 저장할지 여부
+
+function workArea_oninit(obj:Form, e:InitEventInfo)
+{
+	pv_winKey      = getOwnerFrame().arguments["winKey"];
+	pv_menuId      = getOwnerFrame().arguments["menuId"];
+	pv_menuUrl     = getOwnerFrame().arguments["menuUrl"];
+	pv_menuTitle   = getOwnerFrame().arguments["menuTitle"];
+	pv_menuTitle2  = getOwnerFrame().arguments["menuTitle2"];
+	pv_programId   = getOwnerFrame().arguments["programId"];
+	pv_helpUrl	   = getOwnerFrame().arguments["helpUrl"];
+	pv_args		   = getOwnerFrame().arguments["args"];
+	pv_menuMultiYn = getOwnerFrame().arguments["menuMultiYn"];
+	fv_datalog_yn  = getOwnerFrame().arguments["pInfoflag"];  //ncPInfoFlag  
+                                                              //"ncTrId=" + trID + " ncPInfoFlag=" + fv_datalog_yn
+this.titletext = pv_menuTitle; 
+	btn_changeMenu.winKey = pv_winKey;
+	
+	this.st_Navi.text = pv_menuTitle;
+	this.st_Navi2.text = pv_menuTitle2.substr(1) + "  ["+pv_programId+"]";
+	
+	var objFont = gfn_getObjFont(10,"Dotum");
+	var objTextSize = gfn_GetTextSize(this.st_Navi.text, objFont);
+	
+	if(objTextSize==false)return nLeft;
+	
+    this.st_Navi.position.width = objTextSize.cx+25;
+    var pv_loadUrl = pv_menuUrl.indexOf("xfdl?") > 0 ? pv_menuUrl.substr(0, pv_menuUrl.indexOf("xfdl?") + 4) : pv_menuUrl;
+    
+	this.div_Work.url = pv_loadUrl;
+	this.div_Work.programId = pv_menuId;
+}
+
+
+
+function frm_child_oninit(obj:Form)
+{
+    var oFrame = obj.getOwnerFrame();
+	if(oFrame.arguments) {
+		pv_menuId     = oFrame.arguments["menuId"];
+	}	
+	obj.onclose.addHandler(frm_child_onclose);
+}
+
+
+function workArea_onactivate(obj:Form, e:ActivateEventInfo)
+{
+	mainframe.titletext = (pv_menuTitle == null || pv_menuTitle == undefined || pv_menuTitle == "" ? "" : " [ " +pv_menuTitle +" ]" );
+	
+	if(gfn_IsNull(pv_winKey) == true) return;
+	gfn_ActiveForm(pv_winKey);
+}
+
+function workArea_onsize(obj:Form, e:SizeEventInfo)
+{
+	if(e.cx < 600 || e.cy < 450) return;
+
+	f_setResize(obj, e.cx, e.cy);
+
+	
+}
+
+function f_setResize(obj, nCx, nCy)
+{
+    div_Work.position.height = nCy - 50;
+ 	div_Work.position.width = nCx - 40;
+}
+
+function workArea_onclose(obj:Form, e:CloseEventInfo)
+{
+	if(gfn_IsNull(pv_winKey) == true) return;
+	gfn_FrameOnClose(pv_winKey);
+}
+
+function f_close()
+{
+	if(gfn_IsNull(div_Work.url) == true) close();
+	div_Work.url = "";
+	if(gfn_IsNull(div_Work.url) == true) close();
+}
+
+function frm_child_onclose(obj:Form, e:CloseEventInfo)
+{
+	if(obj != div_Work) return;
+	close();
+}]]></Script>
+  </Form>
+</FDL>

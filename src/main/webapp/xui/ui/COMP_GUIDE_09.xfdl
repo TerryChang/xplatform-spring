@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="COMP_GUIDE_09" classname="COMP_GUIDE_09" inheritanceid="" position="absolute 0 0 765 540" titletext="Tab #1">
+    <Layouts>
+      <Layout>
+        <Static id="Static02" text="Component View" position="absolute 129 0 765 26" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static01" text="Component Name" position="absolute 0 0 130 26" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static10" text="Tab" position="absolute 0 25 130 530" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static11" position="absolute 129 25 765 530" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Tab id="Tab00" taborder="1" tabindex="0" scrollbars="autoboth" position="absolute 152 52 742 177">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="탭페이지01"/>
+            <Tabpage id="tabpage2" text="탭페이지02"/>
+            <Tabpage id="tabpage3" text="탭페이지03"/>
+            <Tabpage id="tabpage4" text="탭페이지04"/>
+            <Tabpage id="tabpage5" text="탭페이지05"/>
+            <Tabpage id="tabpage6" text="탭페이지06"/>
+            <Tabpage id="tabpage7" text="탭페이지07"/>
+            <Tabpage id="tabpage8" text="탭페이지08"/>
+          </Tabpages>
+        </Tab>
+        <Tab id="Tab01" taborder="2" tabindex="0" scrollbars="autoboth" position="absolute 152 222 742 322" tabjustify="true">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="탭페이지01"/>
+            <Tabpage id="tabpage2" text="탭페이지02"/>
+            <Tabpage id="tabpage3" text="탭페이지03"/>
+            <Tabpage id="tabpage4" text="탭페이지04"/>
+          </Tabpages>
+        </Tab>
+        <Static id="Static15" text="tabjustify = &quot;&lt;b v='true'&gt;true&lt;/b&gt;&quot;" position="absolute 152 204 331 219" style="font:Tahoma,8;" usedecorate="true" class="sta_WF_Info_Orange"/>
+        <Tab id="Tab02" taborder="3" tabindex="0" scrollbars="autoboth" position="absolute 152 370 377 495" multiline="true">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="탭페이지01"/>
+            <Tabpage id="tabpage2" text="탭페이지02"/>
+            <Tabpage id="tabpage3" text="탭페이지03"/>
+            <Tabpage id="tabpage4" text="탭페이지04"/>
+            <Tabpage id="tabpage5" text="탭페이지05"/>
+            <Tabpage id="tabpage6" text="탭페이지06"/>
+            <Tabpage id="tabpage7" text="탭페이지07"/>
+            <Tabpage id="tabpage8" text="탭페이지08"/>
+          </Tabpages>
+        </Tab>
+        <Static id="Static00" text="multiline = &quot;&lt;b v='true'&gt;true&lt;/b&gt;&quot;" usedecorate="true" class="sta_WF_Info_Orange" position="absolute 152 352 331 367" style="font:Tahoma,8; "/>
+        <Tab id="Tab03" taborder="4" tabindex="0" scrollbars="autoboth" position="absolute 392 370 747 494" showextrabutton="true">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="탭페이지01"/>
+            <Tabpage id="tabpage2" text="탭페이지02"/>
+            <Tabpage id="tabpage3" text="탭페이지03"/>
+            <Tabpage id="tabpage4" text="탭페이지04"/>
+          </Tabpages>
+        </Tab>
+        <Static id="Static03" text="showextrabutton = &quot;&lt;b v='true'&gt;true&lt;/b&gt;&quot;" usedecorate="true" class="sta_WF_Info_Orange" position="absolute 392 352 571 367" style="font:Tahoma,8; "/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

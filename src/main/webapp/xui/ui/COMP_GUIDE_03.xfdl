@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="COMP_GUIDE_03" classname="COMP_GUIDE_01" inheritanceid="" position="absolute 0 0 765 540" titletext="Calendar,Radio,ChecBox,ProgressBar">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" text="Component Name" position="absolute 0 0 130 26" style="background:#edeee6ff;border:1 solid #c6c6c5ff ;align:center middle;font:Tahoma,9,bold antialias;"/>
+        <Static id="Static02" text="Component View" position="absolute 129 0 765 26" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static18" text="Calendar" position="absolute 0 25 130 260" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static19" position="absolute 129 25 765 260" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static20" text="enabled" position="absolute 138 30 258 43" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static21" text="disabled" position="absolute 311 30 431 43" style="color:#999999ff;font:Tahoma,8;"/>
+        <Calendar id="Calendar00" taborder="1" position="absolute 138 53 228 73" dateformat="yyyy-MM-dd" value="20110620"/>
+        <Calendar id="Calendar01" taborder="2" dateformat="yyyy-MM-dd" position="absolute 311 51 401 71" enable="false" value="20110620"/>
+        <Static id="Static00" text="type=&quot;normal&quot;" position="absolute 138 88 258 101" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static03" text="type=&quot;spin&quot;" position="absolute 311 88 431 101" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static04" text="type=&quot;monthonly&quot;" position="absolute 524 38 644 51" style="color:#999999ff;font:Tahoma,8;"/>
+        <Calendar id="Calendar02" taborder="3" value="20110620" text="2011-06-20" dateformat="yyyy-MM-dd" position="absolute 138 112 228 132"/>
+        <Calendar id="Calendar03" taborder="4" value="20110620" text="2011-06-20" dateformat="yyyy-MM-dd" position="absolute 311 112 401 132" type="spin" style=""/>
+        <Calendar id="Calendar04" taborder="5" value="20110620" text="2011-06-20" dateformat="yyyy-MM-dd" position="absolute 524 62 690 248" type="monthonly"/>
+        <Static id="Static05" text="Radio" position="absolute 0 259 130 324" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static06" position="absolute 129 259 765 324" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static07" text="enabled" position="absolute 138 264 258 277" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static08" text="disabled" position="absolute 311 264 431 277" style="color:#999999ff;font:Tahoma,8;"/>
+        <Radio id="Radio00" taborder="6" columncount="2" index="0" innerdataset="@DsRadio" codecolumn="Column0" datacolumn="Column1" value="0" text="남" position="absolute 138 289 268 310" style=""/>
+        <Radio id="Radio01" taborder="7" columncount="2" index="1" innerdataset="@DsRadio" codecolumn="Column0" datacolumn="Column1" value="1" text="여" enable="false" position="absolute 311 289 441 310"/>
+        <Static id="Static09" text="CheckBox" position="absolute 0 323 130 403" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static10" position="absolute 129 323 765 403" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static11" text="enabled" position="absolute 138 328 258 341" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static12" text="disabled" position="absolute 311 328 431 341" style="color:#999999ff;font:Tahoma,8;"/>
+        <CheckBox id="CheckBox00" taborder="8" text="XPLATFORM" position="absolute 138 348 253 368"/>
+        <CheckBox id="CheckBox01" taborder="9" text="XPLATFORM" value="true" position="absolute 138 373 253 388"/>
+        <CheckBox id="CheckBox03" taborder="10" text="XPLATFORM" enable="false" position="absolute 311 348 426 368"/>
+        <CheckBox id="CheckBox02" taborder="11" text="XPLATFORM" value="true" enable="false" position="absolute 311 373 426 393"/>
+        <Static id="Static13" text="ProgressBar" position="absolute 0 402 130 537" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static14" position="absolute 129 402 765 537" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static15" text="enabled" position="absolute 138 407 258 420" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static16" text="disabled" position="absolute 383 407 503 420" style="color:#999999ff;font:Tahoma,8;"/>
+        <Button id="Btn01" taborder="12" text="Progress Test" onclick="Btn01_onclick" position="absolute 512 483 609 503"/>
+        <ProgressBar id="ProgressBar00" taborder="13" max="100" min="0" pos="65" position="absolute 138 433 338 448"/>
+        <ProgressBar id="ProgressBar02" taborder="14" max="100" min="0" pos="65" enable="false" position="absolute 383 433 583 448"/>
+        <ProgressBar id="Pbr01" taborder="15" max="100" min="0" position="absolute 138 486 506 501" blocksize="1"/>
+        <Static id="Static28" text="※ Appearance&#13;&#10;    columncount = &quot;2&quot;" wordwrap="none" class="sta_WF_Info_Orange" position="absolute 495 273 625 303"/>
+        <Calendar id="Calendar05" taborder="16" value="20110620" text="2011-06-20" type="spin" dateformat="yyyy-MM-dd" position="absolute 311 140 401 160" enable="false"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="DsRadio" preload="true" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">남</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">여</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript4.0"><![CDATA[function Btn01_onclick(obj:Button,  e:ClickEventInfo)
+{
+	var i, j;
+	Pbr01.pos = 0;
+	for( i = 0 ; i < 200 ; i+=2 )
+	{
+		Pbr01.stepIt();
+		this.updateWindow();		
+		sleep(5);
+	}
+}]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "HTTP://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="mapUnderscoreToCamelCase" value="true"/> <!-- 컬럼에 대한 필드 매핑시 camelcase에 대한 처리를 지정(컬렴명 USE_YN, 필드명 useYn) -->
+	</settings>
+	<typeAliases>
+		<package name="com.terry.xplatform.vo" />
+    </typeAliases>
+</configuration>

@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GlobalVariables>
+  <Dataset id="gds_Menu" keystring="S:MENU_CD+MENU_NM">
+    <ColumnInfo>
+      <Column id="MENU_CD" type="STRING" size="8"/>
+      <Column id="UP_MENU_CD" type="STRING" size="8"/>
+      <Column id="MENU_NM" type="STRING" size="50"/>
+      <Column id="MENU_LVL" type="BIGDECIMAL" size="22"/>
+      <Column id="PGM_PATH" type="STRING" size="200"/>
+      <Column id="PGM_ID" type="STRING" size="200"/>
+      <Column id="SORT" type="BIGDECIMAL" size="22"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="MENU_CD">01000000</Col>
+        <Col id="UP_MENU_CD">0</Col>
+        <Col id="MENU_NM">CRUD 개발화면</Col>
+        <Col id="MENU_LVL">1</Col>
+        <Col id="SORT">1</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">01010000</Col>
+        <Col id="UP_MENU_CD">01000000</Col>
+        <Col id="MENU_NM">그리드 CRUD</Col>
+        <Col id="MENU_LVL">2</Col>
+        <Col id="SORT">1</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">01010101</Col>
+        <Col id="UP_MENU_CD">01010100</Col>
+        <Col id="MENU_NM">그리드 CRUD</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">template</Col>
+        <Col id="PGM_ID">crudStandard.xfdl</Col>
+        <Col id="SORT">1</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02000000</Col>
+        <Col id="MENU_NM">컴포넌트 가이드</Col>
+        <Col id="MENU_LVL">1</Col>
+        <Col id="SORT">2</Col>
+        <Col id="UP_MENU_CD">0</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010000</Col>
+        <Col id="MENU_NM">타입</Col>
+        <Col id="UP_MENU_CD">02000000</Col>
+        <Col id="MENU_LVL">2</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010100</Col>
+        <Col id="MENU_NM">Class</Col>
+        <Col id="UP_MENU_CD">02010000</Col>
+        <Col id="MENU_LVL">3</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010101</Col>
+        <Col id="UP_MENU_CD">02010100</Col>
+        <Col id="MENU_NM">Edit</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">compguide</Col>
+        <Col id="SORT">1</Col>
+        <Col id="PGM_ID">CLASS_GUIDE_01.xfdl</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010102</Col>
+        <Col id="UP_MENU_CD">02010100</Col>
+        <Col id="MENU_NM">Static</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">compguide</Col>
+        <Col id="PGM_ID">CLASS_GUIDE_02.xfdl</Col>
+        <Col id="SORT">2</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010200</Col>
+        <Col id="UP_MENU_CD">02010000</Col>
+        <Col id="MENU_NM">Component</Col>
+        <Col id="MENU_LVL">3</Col>
+        <Col id="PGM_PATH">[Undefined]</Col>
+        <Col id="PGM_ID">[Undefined]</Col>
+        <Col id="SORT">[Undefined]</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010201</Col>
+        <Col id="UP_MENU_CD">02010200</Col>
+        <Col id="MENU_NM">Static</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">compguide</Col>
+        <Col id="PGM_ID">COMP_GUIDE_01.xfdl</Col>
+        <Col id="SORT">1</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010202</Col>
+        <Col id="UP_MENU_CD">02010200</Col>
+        <Col id="MENU_NM">Button</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">compguide</Col>
+        <Col id="PGM_ID">COMP_GUIDE_02.xfdl</Col>
+        <Col id="SORT">2</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010203</Col>
+        <Col id="UP_MENU_CD">02010200</Col>
+        <Col id="MENU_NM">Calendar</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">compguide</Col>
+        <Col id="PGM_ID">COMP_GUIDE_03.xfdl</Col>
+        <Col id="SORT">3</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010204</Col>
+        <Col id="UP_MENU_CD">02010200</Col>
+        <Col id="MENU_NM">Shape</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">compguide</Col>
+        <Col id="PGM_ID">COMP_GUIDE_04.xfdl</Col>
+        <Col id="SORT">4</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010205</Col>
+        <Col id="UP_MENU_CD">02010200</Col>
+        <Col id="MENU_NM">Popup</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">compguide</Col>
+        <Col id="PGM_ID">COMP_GUIDE_05.xfdl</Col>
+        <Col id="SORT">5</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010206</Col>
+        <Col id="UP_MENU_CD">02010200</Col>
+        <Col id="MENU_NM">Alert</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">compguide</Col>
+        <Col id="PGM_ID">COMP_GUIDE_06.xfdl</Col>
+        <Col id="SORT">6</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010207</Col>
+        <Col id="UP_MENU_CD">02010200</Col>
+        <Col id="MENU_NM">Grid1</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">compguide</Col>
+        <Col id="PGM_ID">COMP_GUIDE_07.xfdl</Col>
+        <Col id="SORT">7</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010208</Col>
+        <Col id="UP_MENU_CD">02010200</Col>
+        <Col id="MENU_NM">Grid2</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">compguide</Col>
+        <Col id="PGM_ID">COMP_GUIDE_08.xfdl</Col>
+        <Col id="SORT">8</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010209</Col>
+        <Col id="UP_MENU_CD">02010200</Col>
+        <Col id="MENU_NM">Tab1</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">compguide</Col>
+        <Col id="PGM_ID">COMP_GUIDE_09.xfdl</Col>
+        <Col id="SORT">9</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">02010210</Col>
+        <Col id="UP_MENU_CD">02010200</Col>
+        <Col id="MENU_NM">Tab2</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">compguide</Col>
+        <Col id="PGM_ID">COMP_GUIDE_10.xfdl</Col>
+        <Col id="SORT">10</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">03000000</Col>
+        <Col id="UP_MENU_CD">0</Col>
+        <Col id="MENU_NM">화면유형 가이드 </Col>
+        <Col id="MENU_LVL">1</Col>
+        <Col id="SORT">3</Col>
+      </Row>
+      <Row>
+        <Col id="UP_MENU_CD">03000000</Col>
+        <Col id="MENU_CD">03010000</Col>
+        <Col id="MENU_NM">화면유형</Col>
+        <Col id="MENU_LVL">2</Col>
+      </Row>
+      <Row>
+        <Col id="UP_MENU_CD">03010000</Col>
+        <Col id="MENU_CD">03010101</Col>
+        <Col id="MENU_NM">패턴1</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">work</Col>
+        <Col id="PGM_ID">Pattern_01.xfdl</Col>
+        <Col id="SORT">1</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">03010102</Col>
+        <Col id="UP_MENU_CD">03010000</Col>
+        <Col id="MENU_NM">패턴2</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">work</Col>
+        <Col id="PGM_ID">Pattern_02.xfdl</Col>
+        <Col id="SORT">1</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">03010103</Col>
+        <Col id="UP_MENU_CD">03010000</Col>
+        <Col id="MENU_NM">패턴3</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">work</Col>
+        <Col id="PGM_ID">Pattern_03.xfdl</Col>
+        <Col id="SORT">1</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">03010104</Col>
+        <Col id="UP_MENU_CD">03010000</Col>
+        <Col id="MENU_NM">패턴4</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">work</Col>
+        <Col id="PGM_ID">Pattern_04.xfdl</Col>
+        <Col id="SORT">1</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">03010105</Col>
+        <Col id="UP_MENU_CD">03010000</Col>
+        <Col id="MENU_NM">패턴5</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">work</Col>
+        <Col id="PGM_ID">Pattern_05.xfdl</Col>
+        <Col id="SORT">1</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">03010106</Col>
+        <Col id="UP_MENU_CD">03010000</Col>
+        <Col id="MENU_NM">패턴6</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">work</Col>
+        <Col id="PGM_ID">Pattern_06.xfdl</Col>
+        <Col id="SORT">1</Col>
+      </Row>
+      <Row>
+        <Col id="MENU_CD">03010107</Col>
+        <Col id="UP_MENU_CD">03010000</Col>
+        <Col id="MENU_NM">패턴7</Col>
+        <Col id="MENU_LVL">4</Col>
+        <Col id="PGM_PATH">work</Col>
+        <Col id="PGM_ID">Pattern_07.xfdl</Col>
+        <Col id="SORT">1</Col>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Variable id="gv_userId" initval="sian"/>
+  <PropertyAnimation id="gPropAni"/>
+  <Dataset id="gds_OpenMenu">
+    <ColumnInfo>
+      <Column id="MENU_CD" type="STRING" size="256"/>
+      <Column id="MENU_NM" type="STRING" size="256"/>
+      <Column id="WINID" type="STRING" size="256"/>
+    </ColumnInfo>
+  </Dataset>
+  <Variable id="gv_menuType" initval="1" usecookie="false"/>
+  <Variable id="gv_openCnt" initval="15"/>
+</GlobalVariables>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="commFrame" classname="commFrame" inheritanceid="" position="absolute 0 0 1 1" titletext="New Form" onload="commFrame_onload">
+    <Layouts>
+      <Layout/>
+    </Layouts>
+    <Script type="xscript4.0"><![CDATA[/*
+ * 01. 업무구분 : Frame 공통
+ * 02. 화면명   : commFrame.xfdl
+ * 03. 화면설명 : 
+ * 04. 작성일   : 2012-08-22
+ * 05. 작성자   : sian
+ * 06. 수정이력 :
+ *********************************************************************
+ *     수정일          이  름    사유
+ *********************************************************************
+ *     2012-08-22    sian    최초 작성
+ *********************************************************************
+ */
+include "lib::commLib.xjs";
+
+
+// Hidden Frame으로 공통 스크립트를 포함하고 있음.
+// 업무 또는 공통영역에서 사용할 추가 컴포넌트를 commFrame에서 처리한다.
+function commFrame_onload(obj:Form, e:LoadEventInfo)
+{
+}]]></Script>
+  </Form>
+</FDL>

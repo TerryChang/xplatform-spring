@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ADL version="1.0">
+  <TypeDefinition url="default_typedef.xml"/>
+  <GlobalVariables url="globalvars.xml"/>
+  <Application id="DefautTheme" codepage="utf-8" language="Korean" loginformurl="" loginformstyle="" windowopeneffect="" windowcloseeffect="" version="" tracemode="" themeid="DefaultTheme.xtheme" onload="application_onload" licenseurl="http://localhost:8080/template-xplatform/xui/license/XPLATFORM_Client_License.xml" httpretry="0" httptimeout="0">
+    <Layout>
+      <MainFrame id="mainFrame" title="maintitle" defaultfont="" resizable="true" showtitlebar="true" showstatusbar="true" position="absolute 0 0 1024 738" style="showzoomcombo:true;" showcascadetitletext="true" statustext="1" text="2" titletext="3" visible="false">
+        <VFrameSet id="VFrameSet" separatesize="37,*,0">
+          <Frames>
+            <ChildFrame id="topFrame" formurl="frame::topFrame.xfdl" showtitlebar="false" dragmovetype="none"/>
+            <HFrameSet id="HFrameSet" separatesize="30,165,*">
+              <Frames>
+                <ChildFrame id="myFrame" showtitlebar="false" formurl="frame::myFrame.xfdl"/>
+                <ChildFrame id="leftFrame" formurl="frame::leftFrame.xfdl" showtitlebar="false"/>
+                <VFrameSet id="VFrameSet2" separatesize="29,*">
+                  <Frames>
+                    <ChildFrame id="tabFrame" formurl="frame::tabFrame.xfdl" showtitlebar="false" dragmovetype="none"/>
+                    <FrameSet id="workFrameSet">
+                      <Frames/>
+                    </FrameSet>
+                  </Frames>
+                </VFrameSet>
+              </Frames>
+            </HFrameSet>
+            <ChildFrame id="commFrame" formurl="frame::commFrame.xfdl"/>
+          </Frames>
+        </VFrameSet>
+      </MainFrame>
+    </Layout>
+  </Application>
+  <Script type="xscript4.0"><![CDATA[// UI 프레임셋 alias 정의
+var gv_topFrame;	//상단메뉴 Frame
+var gv_myFrame;	    //마이메뉴 Frame
+var gv_leftFrame;	//좌측메뉴 Frame
+var gv_HFrameSet;	//좌측메뉴, 업무영역 FrameSet
+var gv_workFrame;	//업무영역 Frame
+var gv_tabFrame;	//Tab메뉴 Frame
+
+// Application에서 Global하게 사용하는 변수
+var gv_activeWinId;	// Active화면 Id
+var gv_initWidth  = 1024; //업무화면 초기 width 
+var gv_initHeight = 738;  //업무화면 초기 height
+var gv_menuHideWidth = 30;
+var gv_menuShowWidth = 30;
+var gv_menuHideHeight = 8;
+var gv_menuShowHeight;
+
+// Application 최초 실행시 발생하는 이벤트
+function application_onload(obj:Object, e:LoadEventInfo)
+{
+	trace("1111111111111111111111111111111111111111111");
+	application.mainFrame.titletext = "Default Template";
+	//각각의 Frame alias 정의
+	gv_topFrame = application.mainFrame.VFrameSet.topFrame;
+	gv_tabFrame = application.mainFrame.VFrameSet.HFrameSet.VFrameSet2.tabFrame;
+	gv_myFrame = application.mainFrame.VFrameSet.HFrameSet.myFrame;
+	gv_leftFrame = application.mainFrame.VFrameSet.HFrameSet.leftFrame;
+	gv_HFrameSet = application.mainFrame.VFrameSet.HFrameSet;
+	gv_VFrameSet = application.mainFrame.VFrameSet.HFrameSet.VFrameSet2;
+	gv_workFrame = application.mainFrame.VFrameSet.HFrameSet.VFrameSet2.workFrameSet;
+	
+	var rtn = "OK";
+	//로그인 페이지 호출	
+	rtn = afn_loginProcess();
+	
+	if(rtn=="OK")
+	{
+		application.mainframe.visible = true;
+		application.mainframe.activate();
+	}else if(rtn=="CLOSE")
+	{
+		exit();
+	}
+}
+
+function afn_loginProcess()
+{
+	var nMoniterIndex;
+	var nScreenLeft;
+	var nScreenTop;
+	var nScreenRight;
+	var nScreenBottom;
+	var nScreenWidth;
+	var nScreenHeight;
+	var arrScreenSize;
+	
+	nMoniterIndex = system.getMonitorIndex(system.cursorx, system.cursory); //모니터번호
+	objScreenSize = system.getScreenRect(nMoniterIndex);
+	nScreenLeft = objScreenSize.left;
+	nScreenTop = objScreenSize.top;
+	nScreenRight = objScreenSize.right;
+	nScreenBottom = objScreenSize.bottom;
+	nScreenWidth = nScreenRight - nScreenLeft;
+	nScreenHeight = nScreenBottom - nScreenTop;
+	
+	//로그인 화면 기동
+	application.mainframe.visible = false;
+	var objFrame = new ChildFrame("Login", nScreenLeft+(nScreenWidth/2)-235, nScreenTop+(nScreenHeight/2)-130, nScreenLeft+(nScreenWidth/2)+235,  nScreenTop+(nScreenHeight/2)+130);
+	objFrame.showtitlebar  = false;
+	objFrame.layered = true;
+	objFrame.style.background = "transparent";
+	objFrame.formurl = "frame::login.xfdl";
+	var rtn = objFrame.showModal("Login");
+	
+	return rtn;
+}
+
+
+// tabFrame에 메뉴클릭시 페이지 활성화
+// function workArea_onactivate(obj:ChildFrame, e:ActivateEventInfo)
+// {
+// 	obj.openstatus = "maximize";
+// }
+]]></Script>
+</ADL>

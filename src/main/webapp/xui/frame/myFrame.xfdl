@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="myFrame" classname="myFrame" inheritanceid="" position="absolute 0 0 30 647" titletext="New Form" scrollbars="none">
+    <Layouts>
+      <Layout>
+        <Static id="sta_LF_GuideShadow" transparenthittest="true" position="absolute 25 0 30 648" style="background:@gradation; gradation:liner 0,0 #33333300 100,0 #33333333; "/>
+        <Div id="div_LF_QuickMenu" anchor="left top bottom" taborder="1" style="background:#a8a8a2ff; " text="Div00" scrollbars="none" position="absolute 0 32 30 647">
+          <Layouts>
+            <Layout>
+              <Button id="btn_LF_Quick00" taborder="1" text="1" onclick="div_LF_QuickMenu_btn_LF_Quick00_onclick" class="btn_LF_Quick" position="absolute 2 3 26 26"/>
+              <Button id="btn_LF_Quick01" taborder="1" text="2" class="btn_LF_Quick" position="absolute 2 30 26 53"/>
+              <Button id="btn_LF_Quick02" taborder="1" text="3" class="btn_LF_Quick" position="absolute 2 57 26 80"/>
+              <Button id="btn_LF_Quick03" taborder="1" text="4" class="btn_LF_Quick" position="absolute 2 84 26 107"/>
+              <Button id="btn_LF_Quick04" taborder="1" text="5" class="btn_LF_Quick" position="absolute 2 111 26 134"/>
+              <Button id="btn_LF_Quick05" taborder="1" text="6" class="btn_LF_Quick" position="absolute 2 138 26 161"/>
+              <Button id="btn_LF_Quick06" taborder="1" text="7" class="btn_LF_Quick" position="absolute 2 165 26 188"/>
+              <Button id="btn_LF_Quick07" taborder="1" class="btn_LF_QuickAdd" position="absolute 2 192 26 215"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_Show" taborder="1" onclick="btn_Show_onclick" class="btn_LF_ShowHide" position="absolute 7 7 20 22" style="image:URL('theme://images/img_LF_Show.png'); "/>
+        <Button id="btn_Hide" taborder="1" onclick="btn_Hide_onclick" class="btn_LF_ShowHide" position="absolute 7 7 20 22" style="image:URL('theme://images/img_LF_Hide.png'); "/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <PropertyAnimation id="PropAni" endingmode="to" repeat="1" repeattype="normal" duration="0" starttime="0"/>
+    </Objects>
+    <Script type="xscript4.0"><![CDATA[
+function btn_ShowHide_onclick(obj:Button,  e:ClickEventInfo)
+{
+	btn_Hide.visible = false;
+	btn_Show.visible = true;
+	sysf_openMenuFrame("LEFT", true);
+}
+
+//좌측 메뉴 보이기
+function btn_Show_onclick(obj:Button,  e:ClickEventInfo)
+{
+	btn_Hide.visible = true;
+	btn_Show.visible = false;
+	sysf_openMenuFrame("LEFT", false);
+}
+
+//좌측 메뉴 숨기기
+function btn_Hide_onclick(obj:Button,  e:ClickEventInfo)
+{
+	btn_Hide.visible = false;
+	btn_Show.visible = true;
+	sysf_openMenuFrame("LEFT", true);
+}
+
+//Left메뉴 View/Hide처리
+function sysf_openMenuFrame(Type, bHide)
+{
+	if(Type=="LEFT")
+	{
+		if(bHide == true) 
+		{
+			sysf_hideLeftMenuFrame();
+		}
+		else 
+		{
+			sysf_showLeftMenuFrame();
+		}
+	}
+}
+
+
+/*
+* 기능 : LEFT 프레임 접힘 처리
+* 인수 : 없슴
+* 리턴 : 없슴
+*/
+
+
+function sysf_hideLeftMenuFrame()
+{
+	var PropAni1 = new PropertyAnimation();
+	var PropAni2 = new PropertyAnimation();
+	var CompAni = new CompositeAnimation();
+	gv_menuShowWidth = gv_leftFrame.position.width;
+	
+	gPropAni.menuType = "LEFT";
+	gPropAni.hide = true;
+	gPropAni.duration = 100;
+	gPropAni.targetcomp = gv_leftFrame;
+	
+	gPropAni.interpolation = Interpolation.expoOut;
+	gPropAni.fromvalue = gv_leftFrame.position.x;
+	gPropAni.tovalue   = gv_menuHideWidth - gv_leftFrame.position.width;
+	
+	gPropAni.targetprop = "position.x";	
+	gPropAni.endingmode = "to";
+	
+	PropAni1.duration = 100;
+	PropAni1.targetcomp = gv_VFrameSet;
+	PropAni1.interpolation = Interpolation.expoOut;
+	
+	PropAni1.fromvalue = gv_VFrameSet.position.x;
+	PropAni1.tovalue = gv_menuHideWidth;
+		
+	PropAni1.targetprop = "position.x";
+	PropAni1.endingmode = "to";
+	
+	PropAni2.duration = 100;
+	PropAni2.targetcomp = gv_VFrameSet;
+	PropAni2.interpolation = Interpolation.expoOut;
+	PropAni2.fromvalue = gv_VFrameSet.position.width;
+	PropAni2.tovalue = gv_VFrameSet.position.width+(gv_VFrameSet.position.x-gv_menuHideWidth);
+	PropAni2.targetprop = "position.width";
+	PropAni2.endingmode = "to";
+	
+	CompAni.addItem(gPropAni);
+	CompAni.addItem(PropAni1);
+	CompAni.addItem(PropAni2);
+	CompAni.run();
+}
+
+/*
+* 기능 : LEFT 프레임 펼침 처리
+* 인수 : 없슴
+* 리턴 : 없슴
+*/
+
+function sysf_showLeftMenuFrame()
+{
+	var PropAni1 = new PropertyAnimation();
+	var PropAni2 = new PropertyAnimation();
+	var CompAni = new CompositeAnimation();
+			
+	gPropAni.menuType = "LEFT";
+	gPropAni.hide = false;
+	gPropAni.duration = 100;
+	gPropAni.targetcomp = gv_leftFrame;
+	gPropAni.interpolation = Interpolation.expoOut;
+	trace("gv_menuShowWidth===>> " + gv_menuShowWidth + " : " + gv_leftFrame.position.x);
+	
+	gv_HFrameSet.separatesize = "30," + gv_menuShowWidth + ",*";
+	gPropAni.fromvalue = gv_leftFrame.position.x - gv_menuShowWidth;
+	gPropAni.tovalue = gv_leftFrame.position.x;
+		
+	gPropAni.targetprop = "position.x";
+	gPropAni.endingmode = "to";
+	
+	PropAni1.duration = 100;
+	PropAni1.targetcomp = gv_VFrameSet;
+	PropAni1.interpolation = Interpolation.expoOut;
+	
+	PropAni1.fromvalue = gv_menuHideWidth;
+	PropAni1.tovalue = gv_menuShowWidth + 30;
+			
+	PropAni1.targetprop = "position.x";
+	PropAni1.endingmode = "to";
+	
+	PropAni2.duration = 100;
+	PropAni2.targetcomp = gv_VFrameSet;
+	PropAni2.interpolation = Interpolation.expoOut;
+	
+	PropAni2.fromvalue = gv_VFrameSet.position.width+(gv_VFrameSet.position.x-gv_menuHideWidth);
+	PropAni2.tovalue = gv_VFrameSet.position.width;
+		
+	PropAni2.targetprop = "position.width";
+	PropAni2.endingmode = "to";
+	
+	CompAni.addItem(gPropAni);
+	CompAni.addItem(PropAni1);
+	CompAni.addItem(PropAni2);
+	CompAni.run();
+}
+]]></Script>
+  </Form>
+</FDL>

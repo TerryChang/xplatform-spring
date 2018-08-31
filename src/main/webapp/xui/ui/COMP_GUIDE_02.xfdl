@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="COMP_GUIDE_02" classname="COMP_GUIDE_01" inheritanceid="" position="absolute 0 0 765 540" titletext="Button,Spin,ListBox,Combo">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" text="Component Name" position="absolute 0 0 130 26" style="background:#edeee6ff;border:1 solid #c6c6c5ff ;align:center middle;font:Tahoma,9,bold antialias;"/>
+        <Static id="Static02" text="Component View" position="absolute 129 0 765 26" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static00" text="ListBox" position="absolute 0 253 130 413" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static03" position="absolute 129 253 765 413" style="background:#ffffffff;border:1 solid #c6c6c5ff ;align:center middle;font:Tahoma,9,bold antialias;" text=""/>
+        <Static id="Static07" text="enabled" position="absolute 138 258 258 271" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static04" text="disabled" position="absolute 311 258 431 271" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static10" text="Combo" position="absolute 0 412 130 537" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static11" position="absolute 129 412 765 537" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static12" text="enabled" position="absolute 138 417 258 430" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static13" text="disabled" position="absolute 311 417 431 430" style="color:#999999ff;font:Tahoma,8;"/>
+        <ListBox id="ListBox00" taborder="1" value="5" text="TextArea" index="5" innerdataset="@DsList" codecolumn="idx" datacolumn="context" position="absolute 138 281 292 396"/>
+        <ListBox id="ListBox01" taborder="2" value="TextArea" text="TextArea" index="5" innerdataset="@DsList" codecolumn="idx" datacolumn="context" position="absolute 311 281 465 396" enable="false"/>
+        <Combo id="Combo00" taborder="3" innerdataset="@DsList" codecolumn="idx" datacolumn="context" index="6" displayrowcount="5" position="absolute 138 439 273 459" value="6"/>
+        <Combo id="Combo01" taborder="4" innerdataset="@DsList" codecolumn="idx" datacolumn="context" index="6" enable="false" position="absolute 311 439 446 459"/>
+        <Static id="Static72" text="type = dropdown (default)" position="absolute 138 486 288 501" style="color:#999999ff; font:Tahoma,8; "/>
+        <Combo id="Combo02" taborder="5" innerdataset="@DsList" codecolumn="idx" datacolumn="context" index="6" displayrowcount="5" position="absolute 138 507 273 527" value="6"/>
+        <Combo id="Combo03" taborder="6" innerdataset="@DsList" codecolumn="idx" datacolumn="context" index="6" type="search" displayrowcount="5" position="absolute 311 507 446 527"/>
+        <Combo id="Combo04" taborder="7" innerdataset="@DsList" codecolumn="idx" datacolumn="context" index="6" type="filter" displayrowcount="5" position="absolute 499 507 634 527"/>
+        <Static id="Static73" text="type = search" position="absolute 311 486 461 501" style="color:#999999ff; font:Tahoma,8; "/>
+        <Static id="Static74" text="type = filter" position="absolute 499 486 649 501" style="color:#999999ff; font:Tahoma,8; "/>
+        <Static id="Static69" text="&lt;b v='true'&gt;Misc. &lt;/b&gt;&#13;&#10;displayrowcount = 10" position="absolute 499 429 654 454" style="align:left top;" class="sta_WF_Info_Orange" usedecorate="true"/>
+        <Static id="Static05" text="Spin" position="absolute 0 179 130 254" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static06" position="absolute 129 179 765 254" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static08" text="enabled" position="absolute 138 184 258 197" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static09" text="disabled" position="absolute 311 184 431 197" style="color:#999999ff;font:Tahoma,8;"/>
+        <Spin id="Spin00" taborder="8" value="1" text="1" max="10" min="1" position="absolute 138 199 208 219"/>
+        <Spin id="Spin01" taborder="9" value="1" text="1" max="10" min="1" enable="false" position="absolute 311 199 381 219"/>
+        <Static id="Static18" text="Button" position="absolute 0 25 130 180" style="background:#edeee6ff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; "/>
+        <Static id="Static19" position="absolute 129 25 765 180" style="background:#ffffffff; border:1 solid #c6c6c5ff ; align:center middle; font:Tahoma,9,bold antialias; " text=""/>
+        <Static id="Static20" text="enabled" position="absolute 138 30 258 43" style="color:#999999ff;font:Tahoma,8;"/>
+        <Static id="Static21" text="disabled" position="absolute 311 30 431 43" style="color:#999999ff;font:Tahoma,8;"/>
+        <Button id="Button00" taborder="10" text="일이삼사" position="absolute 138 53 207 73"/>
+        <Button id="Button01" taborder="11" text="일이삼사" enable="false" position="absolute 311 53 380 73"/>
+        <Button id="Button02" taborder="12" text="일이" position="absolute 138 81 183 101"/>
+        <Button id="Button03" taborder="13" text="일이삼" position="absolute 138 104 195 124"/>
+        <Button id="Button04" taborder="14" text="일이삼사" position="absolute 138 127 207 147"/>
+        <Button id="Button05" taborder="15" text="일이삼사오" position="absolute 138 150 219 170"/>
+        <Button id="Button09" taborder="19" text="일이삼사오" position="absolute 277 81 358 101"/>
+        <Button id="Button06" taborder="20" text="일이삼사오육" position="absolute 277 104 370 124"/>
+        <Button id="Button07" taborder="21" text="일이삼사오육칠" position="absolute 277 127 382 147"/>
+        <Button id="Button08" taborder="22" text="일이삼사오육칠팔" position="absolute 277 150 394 170"/>
+        <Static id="Static14" text="버튼사이즈는 기본 2자에서 12px씩 증가함" usedecorate="true" class="sta_WF_Info_Orange" position="absolute 494 81 740 124" style="align:left top; " wordwrap="word"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="DsList" preload="true" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true">
+        <ColumnInfo>
+          <Column id="idx" type="STRING" size="256"/>
+          <Column id="context" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="idx">0</Col>
+            <Col id="context">Static</Col>
+          </Row>
+          <Row>
+            <Col id="idx">1</Col>
+            <Col id="context">Edit</Col>
+          </Row>
+          <Row>
+            <Col id="idx">2</Col>
+            <Col id="context">MaskEdit</Col>
+          </Row>
+          <Row>
+            <Col id="idx">3</Col>
+            <Col id="context">TextArea</Col>
+          </Row>
+          <Row>
+            <Col id="idx">4</Col>
+            <Col id="context">Button</Col>
+          </Row>
+          <Row>
+            <Col id="idx">5</Col>
+            <Col id="context">ListBox</Col>
+          </Row>
+          <Row>
+            <Col id="idx">6</Col>
+            <Col id="context">Combo</Col>
+          </Row>
+          <Row>
+            <Col id="idx">7</Col>
+            <Col id="context">Sp</Col>
+          </Row>
+          <Row>
+            <Col id="idx">8</Col>
+            <Col id="context">Calendar</Col>
+          </Row>
+          <Row>
+            <Col id="idx">9</Col>
+            <Col id="context">Tab</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

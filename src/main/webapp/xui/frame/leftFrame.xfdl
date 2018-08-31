@@ -1,0 +1,911 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="leftFrame" classname="Left" inheritanceid="" position="absolute 0 0 165 647" class="frm_LF" scrollbars="none" onload="leftMenu_onload">
+    <Layouts>
+      <Layout>
+        <PopupDiv id="PopLink" onmouseleave="PopLink_onmouseleave" onmouseenter="PopLink_onmouseenter" visible="false" position="absolute 182 40 528 302" style="background:#f0f2f6ff;border:2 solid #235798ff ;bordertype:round 5 5 ;shadow:drop 0,2 3 gray;">
+          <Layouts>
+            <Layout width="346" height="262"/>
+          </Layouts>
+        </PopupDiv>
+        <Static id="sta_LF_DivLine" position="absolute 12 28 157 31" class="sta_LF_DivLine" text=""/>
+        <Static id="sta_LF_GuideShadow" transparenthittest="true" position="absolute -3 0 2 648" style="background:@gradation; gradation:liner 0,0 #33333300 100,0 #33333333; " text="" visible="false"/>
+        <Div id="divMenu" taborder="1" position="absolute 3 34 161 645" scrollbars="none" anchor="left top bottom">
+          <Layouts>
+            <Layout>
+              <Grid id="grdMenu" class="grd_LF_SubMenu" taborder="0" binddataset="DsMenu" scrollpixel="default" wheelscrollrow="1" useinputpanel="false" selecttype="treecell" autofittype="col" treeuseline="false" treeusecheckbox="false" treeinitstatus="expand,null" position="absolute 0 0 161 467" style="padding:0 0 0 -10;" oncellclick="divMenu_grdMenu_oncellclick">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="165"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="18"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell displaytype="tree" edittype="tree" style="background:EXPR((Level==2)?&quot;#ffffff00&quot;:&quot;&quot;);background2:EXPR((Level==2)?&quot;#ffffff00&quot;:&quot;&quot;);color:EXPR((Level==2)?&quot;#1c81beff&quot;:&quot;&quot;);color2:EXPR((Level==2)?&quot;#1c81beff&quot;:&quot;&quot;);font:EXPR((Level==2)?&quot;Dotum,9,bold&quot;:&quot;&quot;);selectbackground:EXPR((Level==0)?&quot;#ffffff00&quot;:&quot;&quot;);selectcolor:EXPR((Level==0)?&quot;#1c81beff&quot;:&quot;&quot;);selectfont:EXPR((Level==0)?&quot;Dotum,9,bold&quot;:&quot;&quot;);" text="bind:MENU_NM" treestartlevel="2" treelevel="bind:MENU_LVL" tooltiptype="top,center" tooltiptext="bind:MENU_NM"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="sta_LF_TopHilight" position="absolute 4 0 165 18" style="background:@gradation; gradation:liner 0,0 #ffffffff 0,100 #ffffff00; " onclick="sta_LF_TopHilight_onclick"/>
+        <Combo id="Combo00" taborder="1" innerdataset="ds_menu_combo" codecolumn="idx" datacolumn="context" displayrowcount="5" class="cmb_TP_Search" position="absolute 11 2 161 27" anchor="left top right"/>
+        <Edit id="edt_search" taborder="1" position="absolute 14 4 136 26" style="background:transparent;border:0 none #808080ff ;opacity:100;" ontextchanged="edt_search_ontextchanged" onkeydown="edt_search_onkeydown"/>
+        <ListBox id="lst_search" taborder="1" innerdataset="fds_Find" codecolumn="text" datacolumn="text" onitemclick="lst_search_onitemclick" onkeydown="lst_search_onkeydown" visible="false" position="absolute 11 31 161 208"/>
+        <Button id="btn_search" taborder="1" position="absolute 140 4 159 25" style="opacity:0;" onclick="btn_search_onclick"/>
+        <PopupDiv id="PopFMLink" style="background:#ffffffff;border:2 solid #72cdf4ff ;bordertype:round 3 3 ;" onmouseleave="PopLink_onmouseleave" onmouseenter="PopLink_onmouseenter" visible="false" position="absolute 206 0 1176 630">
+          <Layouts>
+            <Layout>
+              <Static id="Static01" text="전력수요" class="stc_PopupAllmenuTil" position="absolute 30 47 190 75" style="background:antiquewhite;" anchor="default"/>
+              <Static id="Static00" text="일간" class="stc_Allmenu_default" position="absolute 48 79 192 107" anchor="default"/>
+              <Static id="Static03" text="주간" class="stc_Allmenu_default" position="absolute 48 103 192 131" anchor="default"/>
+              <Static id="Static04" text="월간" class="stc_Allmenu_default" position="absolute 48 127 192 155" anchor="default"/>
+              <Static id="Static05" text="지역별 수요실적" class="stc_Allmenu_default" position="absolute 48 151 192 179" anchor="default"/>
+              <Static id="Static06" text="전력공급입찰" class="stc_PopupAllmenuTil" position="absolute 214 47 374 75" style="background:antiquewhite;" anchor="default"/>
+              <Static id="Static07" text="입찰" class="stc_Allmenu_1depth" position="absolute 232 79 376 107" anchor="default"/>
+              <Static id="Static08" text="초기입찰" class="stc_Allmenu_2depth" position="absolute 232 103 376 131" anchor="default"/>
+              <Static id="Static09" text="변경입찰" class="stc_Allmenu_2depth" position="absolute 232 127 376 155" anchor="default"/>
+              <Static id="Static10" text="변경입찰 확인" class="stc_Allmenu_1depth" position="absolute 232 151 376 179" anchor="default"/>
+              <Static id="Static11" text="시장가격" class="stc_PopupAllmenuTil" position="absolute 398 47 558 75" style="background:antiquewhite;" anchor="default"/>
+              <Static id="Static12" text="가격결정발전계획" class="stc_Allmenu_default" position="absolute 416 79 560 107" anchor="default"/>
+              <Static id="Static13" text="가격결정발전기" class="stc_Allmenu_default" position="absolute 416 103 560 131" anchor="default"/>
+              <Static id="Static14" text="계통한계가격" class="stc_Allmenu_default" position="absolute 416 127 560 155" anchor="default"/>
+              <Static id="Static15" text="발전가격" class="stc_Allmenu_default" position="absolute 416 151 560 179" anchor="default"/>
+              <Static id="Static16" text="계통운영" class="stc_PopupAllmenuTil" position="absolute 590 47 750 75" style="background:antiquewhite;" anchor="default"/>
+              <Static id="Static17" text="급전지시" class="stc_Allmenu_default" position="absolute 608 79 752 107" anchor="default"/>
+              <Static id="Static18" text="운영발전계획" class="stc_Allmenu_default" position="absolute 608 103 752 131" anchor="default"/>
+              <Static id="Static19" text="예비력계획" class="stc_Allmenu_default" position="absolute 608 127 752 155" anchor="default"/>
+              <Static id="Static20" text="휴전계획" class="stc_Allmenu_default" position="absolute 608 151 752 179" anchor="default"/>
+              <Static id="Static21" text="계량운영" class="stc_PopupAllmenuTil" position="absolute 774 47 934 75" style="background:antiquewhite;" anchor="default"/>
+              <Static id="Static22" text="발전기별 계량정보" class="stc_Allmenu_default" position="absolute 792 79 936 107" anchor="default"/>
+              <Static id="Static23" text="시간대별 계량정보" class="stc_Allmenu_default" position="absolute 792 103 936 131" anchor="default"/>
+              <Static id="Static24" text="미취득 계량정" class="stc_Allmenu_default" position="absolute 792 127 936 155" anchor="default"/>
+              <Static id="Static26" text="변경입찰 목록조회" class="stc_Allmenu_2depth" position="absolute 232 199 376 227" anchor="default"/>
+              <Static id="Static27" text="변경입찰 확인" class="stc_Allmenu_2depth" position="absolute 232 175 376 203" anchor="default"/>
+              <Static id="Static28" text="입찰 결과" class="stc_Allmenu_default" position="absolute 232 223 376 251" anchor="default"/>
+              <Static id="Static29" text="임시발전가격" class="stc_Allmenu_default" position="absolute 416 175 560 203" anchor="default"/>
+              <Static id="Static30" text="발전정비계획" class="stc_Allmenu_default" position="absolute 608 175 752 203" anchor="default"/>
+              <Static id="Static31" text="송전가능용량" class="stc_Allmenu_default" position="absolute 608 199 752 227" anchor="default"/>
+              <Static id="Static32" text="계통운영정보" class="stc_Allmenu_default" position="absolute 608 223 752 251" anchor="default"/>
+              <Static id="Static33" text="자체기동발전기" class="stc_Allmenu_default" position="absolute 608 247 752 275" anchor="default"/>
+              <Static id="Static34" text="전기고장통계" class="stc_Allmenu_default" position="absolute 608 271 752 299" anchor="default"/>
+              <Static id="Static25" text="전력거래정산" class="stc_PopupAllmenuTil" position="absolute 30 310 190 338" style="background:burlywood;" anchor="default"/>
+              <Static id="Static35" text="정산금" class="stc_Allmenu_default" position="absolute 48 342 192 370" anchor="default"/>
+              <Static id="Static36" text="통지서/청구서 접수" class="stc_Allmenu_default" position="absolute 48 366 192 394" anchor="default"/>
+              <Static id="Static37" text="청구서 발행" class="stc_Allmenu_default" position="absolute 48 390 192 418" anchor="default"/>
+              <Static id="Static38" text="수정청구서 접수" class="stc_Allmenu_default" position="absolute 48 414 192 442" anchor="default"/>
+              <Static id="Static39" text="전력공급입찰" class="stc_PopupAllmenuTil" position="absolute 214 310 374 338" style="background:burlywood;" anchor="default"/>
+              <Static id="Static44" text="시장가격" class="stc_PopupAllmenuTil" position="absolute 398 310 558 338" style="background:burlywood;" anchor="default"/>
+              <Static id="Static45" text="사용자 조회" class="stc_Allmenu_default" position="absolute 416 342 560 370" anchor="default"/>
+              <Static id="Static46" text="회원사 관리" class="stc_Allmenu_1depth" position="absolute 416 366 560 394" anchor="default"/>
+              <Static id="Static47" text="발전회사 등록" class="stc_Allmenu_2depth" position="absolute 416 390 560 418" anchor="default"/>
+              <Static id="Static48" text="발전소 등록" class="stc_Allmenu_2depth" position="absolute 416 414 560 442" anchor="default"/>
+              <Static id="Static51" text="시장운영실적" class="stc_Allmenu_default" position="absolute 232 486 376 514" anchor="default"/>
+              <Static id="Static52" text="발전기 등록" class="stc_Allmenu_2depth" position="absolute 416 438 560 466" anchor="default"/>
+              <Static id="Static53" text="수정청구서 발행" class="stc_Allmenu_default" position="absolute 48 438 192 466" anchor="default"/>
+              <Static id="Static54" text="청구서 발행목록" class="stc_Allmenu_default" position="absolute 48 462 192 490" anchor="default"/>
+              <Static id="Static55" text="정산명세서" class="stc_Allmenu_default" position="absolute 48 486 192 514" anchor="default"/>
+              <Static id="Static56" text="가정산 집계표" class="stc_Allmenu_default" position="absolute 48 510 192 538" anchor="default"/>
+              <Static id="Static57" text="세무자료" class="stc_Allmenu_default" position="absolute 48 534 192 562" anchor="default"/>
+              <Static id="Static58" text="세금계산서" class="stc_Allmenu_default" position="absolute 48 558 192 586" anchor="default"/>
+              <Static id="Static59" text="위원회" class="stc_Allmenu_1depth" position="absolute 232 510 376 538" anchor="default"/>
+              <Static id="Static60" text="비용평가위원회" class="stc_Allmenu_2depth" position="absolute 232 534 376 562" anchor="default"/>
+              <Static id="Static40" text="CP/AS/기준가격 관리" class="stc_Allmenu_default" position="absolute 232 462 376 490" anchor="default"/>
+              <Static id="Static41" text="용량가격" class="stc_Allmenu_default" position="absolute 232 438 376 466" anchor="default"/>
+              <Static id="Static42" text="송전손실계수" class="stc_Allmenu_default" position="absolute 232 414 376 442" anchor="default"/>
+              <Static id="Static43" text="발전비용 평가자료" class="stc_Allmenu_default" position="absolute 232 390 376 418" anchor="default"/>
+              <Static id="Static49" text="기저한계가격(구)" class="stc_Allmenu_default" position="absolute 232 366 376 394" anchor="default"/>
+              <Static id="Static50" text="기저상한가격(구)" class="stc_Allmenu_default" position="absolute 232 342 376 370" anchor="default"/>
+              <Static id="Static61" text="규칙개정위원회" class="stc_Allmenu_2depth" position="absolute 232 558 376 586" anchor="default"/>
+              <Static id="Static62" text="정보공개위원회" class="stc_Allmenu_2depth" position="absolute 232 582 376 610" anchor="default"/>
+              <Static id="Static63" text="거래일 관리" class="stc_Allmenu_1depth" position="absolute 416 462 560 490" anchor="default"/>
+              <Static id="Static64" text="휴일 관리" class="stc_Allmenu_2depth" position="absolute 416 486 560 514" anchor="default"/>
+              <Static id="Static65" text="예약입찰일 관리" class="stc_Allmenu_2depth" position="absolute 416 510 560 538" anchor="default"/>
+              <Static id="Static66" text="입잘시간정의 관리" class="stc_Allmenu_1depth" position="absolute 416 534 560 562" anchor="default"/>
+              <Static id="Static67" text="입잘시간 관리" class="stc_Allmenu_2depth" position="absolute 416 558 560 586" anchor="default"/>
+              <Static id="Static68" text="계량 수동입력시간 관리" class="stc_Allmenu_2depth" position="absolute 416 582 560 610" anchor="default"/>
+              <Static id="Static02" text="e-power market 전체 메뉴" position="absolute 0 0 966 29" style="background:darkkhaki;" anchor="default"/>
+              <Button id="Button00" taborder="1" onclick="btnCancel_onclick" class="btn_tab_close" position="absolute 948 8 961 21" anchor="default"/>
+            </Layout>
+          </Layouts>
+        </PopupDiv>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="DsMenu">
+        <ColumnInfo>
+          <Column id="MENU_LVL" type="STRING" size="256"/>
+          <Column id="menuId" type="STRING" size="256"/>
+          <Column id="MENU_NM" type="STRING" size="256"/>
+          <Column id="menuUrl" type="STRING" size="256"/>
+          <Column id="lvl1Code" type="STRING" size="256"/>
+          <Column id="lvl1Name" type="STRING" size="256"/>
+          <Column id="lvl2Code" type="STRING" size="256"/>
+          <Column id="lvl2Name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <FilteredDataset id="fds_Find" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" binddataset="@ds_Find" filterstr="text == ''"/>
+      <Dataset id="ds_Find" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="pseudocode" type="STRING" size="256"/>
+          <Column id="text" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="pseudocode"/>
+            <Col id="text">전력수요</Col>
+          </Row>
+          <Row>
+            <Col id="pseudocode"/>
+            <Col id="text">초기입찰</Col>
+          </Row>
+          <Row>
+            <Col id="pseudocode"/>
+            <Col id="text">계통한계가격</Col>
+          </Row>
+          <Row>
+            <Col id="pseudocode"/>
+            <Col id="text">매출보관함</Col>
+          </Row>
+          <Row>
+            <Col id="pseudocode"/>
+            <Col id="text">발전기계량실적</Col>
+          </Row>
+          <Row>
+            <Col id="pseudocode"/>
+            <Col id="text">정산금통지서</Col>
+          </Row>
+          <Row>
+            <Col id="pseudocode"/>
+            <Col id="text">정산금청구서</Col>
+          </Row>
+          <Row>
+            <Col id="pseudocode"/>
+            <Col id="text">공지사항</Col>
+          </Row>
+          <Row>
+            <Col id="pseudocode"/>
+            <Col id="text">시장운용속보</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_TmenuLt00">
+        <ColumnInfo>
+          <Column id="MENU_LEVEL1_CD" type="STRING" size="255"/>
+          <Column id="MENU_NM" type="STRING" size="255"/>
+          <Column id="TREE" type="STRING" size="55"/>
+          <Column id="PGM_FILE_NM" type="STRING" size="55"/>
+          <Column id="PGM_PATH_NM" type="STRING" size="55"/>
+          <Column id="MENU_CD" type="STRING" size="255"/>
+          <Column id="MENU_LEVEL" type="INT" size="15"/>
+          <Column id="MYMENU" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE1</Col>
+            <Col id="TREE">---2</Col>
+            <Col id="PGM_FILE_NM"/>
+            <Col id="PGM_PATH_NM"/>
+            <Col id="MENU_CD">COA</Col>
+            <Col id="MENU_LEVEL">0</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE2_1</Col>
+            <Col id="TREE">-------3</Col>
+            <Col id="PGM_FILE_NM"/>
+            <Col id="PGM_PATH_NM"/>
+            <Col id="MENU_CD">COA01</Col>
+            <Col id="MENU_LEVEL">1</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE0100</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE0100.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE0100</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE0200</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE0200.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE0200</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE0210</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE0210.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE0210</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE0300</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE0300.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE0300</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE0310</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE0310.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE0310</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE0320</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE0320.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE0320</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE0330</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE0330.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE0330</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE0400</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE0400.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE0400</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE0500</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE0500.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE0500</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE0600</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE0600.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE0600</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE0700</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE0700.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE0700</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE0800</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE0800.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE0800</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE0900</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE0900.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE0900</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE1000</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE1000.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE1000</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE1100</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE1100.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE1100</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_LEVEL1_CD">M3</Col>
+            <Col id="MENU_NM">GUIDE1200</Col>
+            <Col id="TREE">-----------4</Col>
+            <Col id="PGM_FILE_NM">GUIDE1200.xfdl</Col>
+            <Col id="PGM_PATH_NM">design</Col>
+            <Col id="MENU_CD">GUIDE1200</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MYMENU">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_PuSearchlink" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="SEARCH_MENU" type="STRING" size="256"/>
+          <Column id="MENU_NM" type="STRING" size="256"/>
+          <Column id="MENU_CD" type="STRING" size="256"/>
+          <Column id="MENU_TP" type="STRING" size="256"/>
+          <Column id="PGM_FILE_NM" type="STRING" size="256"/>
+          <Column id="PGM_PATH_NM" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="SEARCH_MENU">e-power market (4)</Col>
+            <Col id="MENU_TP">1</Col>
+          </Row>
+          <Row>
+            <Col id="SEARCH_MENU">기타 &gt; &lt;fc v='#ff4005'&gt;시장&lt;/fc&gt;운영자료</Col>
+            <Col id="MENU_TP">2</Col>
+            <Col id="MENU_CD">PGM01</Col>
+          </Row>
+          <Row>
+            <Col id="SEARCH_MENU">기타 &gt; &lt;fc v='#ff4005'&gt;시장&lt;/fc&gt;통계</Col>
+            <Col id="MENU_TP">2</Col>
+            <Col id="MENU_CD">PGM02</Col>
+          </Row>
+          <Row>
+            <Col id="SEARCH_MENU">기타 &gt; 전력&lt;fc v='#ff4005'&gt;시장&lt;/fc&gt;감시위원회</Col>
+            <Col id="MENU_TP">2</Col>
+            <Col id="MENU_CD">PGM03</Col>
+          </Row>
+          <Row>
+            <Col id="SEARCH_MENU">기타 &gt; &lt;fc v='#ff4005'&gt;시장&lt;/fc&gt;가격</Col>
+            <Col id="MENU_TP">2</Col>
+            <Col id="MENU_CD">PGM04</Col>
+          </Row>
+          <Row>
+            <Col id="SEARCH_MENU">정산 (7)</Col>
+            <Col id="MENU_TP">1</Col>
+            <Col id="MENU_CD"/>
+          </Row>
+          <Row>
+            <Col id="MENU_TP">2</Col>
+            <Col id="SEARCH_MENU">2차 depth 메뉴명 &gt; 3차 depth 메뉴명</Col>
+            <Col id="MENU_CD">PGM01</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_TP">2</Col>
+            <Col id="SEARCH_MENU">2차 depth 메뉴명 &gt; 3차 depth 메뉴명</Col>
+            <Col id="MENU_CD">PGM02</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_TP">2</Col>
+            <Col id="SEARCH_MENU">2차 depth 메뉴명 &gt; 3차 depth 메뉴명</Col>
+            <Col id="MENU_CD">PGM03</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_TP">2</Col>
+            <Col id="SEARCH_MENU">2차 depth 메뉴명 &gt; 3차 depth 메뉴명</Col>
+            <Col id="MENU_CD">PGM04</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_TP">2</Col>
+            <Col id="SEARCH_MENU">2차 depth 메뉴명 &gt; 3차 depth 메뉴명</Col>
+            <Col id="MENU_CD">PGM01</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_PuSearchlink00" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="SEARCH_MENU" type="STRING" size="256"/>
+          <Column id="MENU_NM" type="STRING" size="256"/>
+          <Column id="MENU_CD" type="STRING" size="256"/>
+          <Column id="MENU_TP" type="STRING" size="256"/>
+          <Column id="PGM_FILE_NM" type="STRING" size="256"/>
+          <Column id="PGM_PATH_NM" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="SEARCH_MENU">전력수요</Col>
+            <Col id="MENU_TP">1</Col>
+          </Row>
+          <Row>
+            <Col id="SEARCH_MENU">기타 &gt; &lt;fc v='#ff4005'&gt;시장&lt;/fc&gt;운영자료</Col>
+            <Col id="MENU_TP">2</Col>
+            <Col id="MENU_CD">PGM01</Col>
+          </Row>
+          <Row>
+            <Col id="SEARCH_MENU">기타 &gt; &lt;fc v='#ff4005'&gt;시장&lt;/fc&gt;통계</Col>
+            <Col id="MENU_TP">2</Col>
+            <Col id="MENU_CD">PGM02</Col>
+          </Row>
+          <Row>
+            <Col id="SEARCH_MENU">기타 &gt; 전력&lt;fc v='#ff4005'&gt;시장&lt;/fc&gt;감시위원회</Col>
+            <Col id="MENU_TP">2</Col>
+            <Col id="MENU_CD">PGM03</Col>
+          </Row>
+          <Row>
+            <Col id="SEARCH_MENU">기타 &gt; &lt;fc v='#ff4005'&gt;시장&lt;/fc&gt;가격</Col>
+            <Col id="MENU_TP">2</Col>
+            <Col id="MENU_CD">PGM04</Col>
+          </Row>
+          <Row>
+            <Col id="SEARCH_MENU">정보공개</Col>
+            <Col id="MENU_TP">1</Col>
+            <Col id="MENU_CD"/>
+          </Row>
+          <Row>
+            <Col id="MENU_TP">2</Col>
+            <Col id="SEARCH_MENU">2차 depth 메뉴명 &gt; 3차 depth &lt;fc v='#ff4005'&gt;시장&lt;/fc&gt;</Col>
+            <Col id="MENU_CD">PGM01</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_TP">2</Col>
+            <Col id="SEARCH_MENU">2차 depth 메뉴명 &gt; 3차 depth &lt;fc v='#ff4005'&gt;시장&lt;/fc&gt;</Col>
+            <Col id="MENU_CD">PGM02</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_TP">2</Col>
+            <Col id="SEARCH_MENU">2차 depth 메뉴명 &gt; 3차 depth &lt;fc v='#ff4005'&gt;시장&lt;/fc&gt;</Col>
+            <Col id="MENU_CD">PGM03</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_TP">2</Col>
+            <Col id="SEARCH_MENU">2차 depth 메뉴명 &gt; 3차 depth &lt;fc v='#ff4005'&gt;시장&lt;/fc&gt;</Col>
+            <Col id="MENU_CD">PGM04</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_TP">2</Col>
+            <Col id="SEARCH_MENU">2차 depth 메뉴명 &gt; 3차 depth &lt;fc v='#ff4005'&gt;시장&lt;/fc&gt;</Col>
+            <Col id="MENU_CD">PGM01</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript4.0"><![CDATA[/*
+ * 01. 업무구분 : Frame 공통
+ * 02. 화면명   : leftFrame.xfdl
+ * 03. 화면설명 : 
+ * 04. 작성일   : 2012-08-22
+ * 05. 작성자   : sian
+ * 06. 수정이력 :
+ *********************************************************************
+ *     수정일          이  름    사유
+ *********************************************************************
+ *     2012-08-22    sian    최초 작성
+ *********************************************************************
+ */
+include "lib::commLib.xjs"; //공통함수 호출 
+
+var fLoad=0;
+function leftMenu_onload(obj:Form, e:LoadEventInfo)
+{
+	//선택된 메뉴 LEVEL2 명 표시
+	//divMenu.BtnLeftMenu.text = MenuNm;
+	gds_Menu.filter("MENU_CD.toString().substr(0,4)=='"+("0010000".substr(0,4))+"'&&(MENU_LVL=='3'||MENU_LVL=='4')");
+	DsMenu.copyData(gds_Menu, true);
+	DsMenu.keystring = "S:MENU_CD";
+	gds_Menu.filter("");
+	
+	// 검색시 사용할 데이타셋
+	fn_findDataLoad();
+}
+
+function fn_loadMenu()
+{
+	gfn_ChkOpenMenu(DsMenu.getColumn(1, "MENU_CD"), DsMenu);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+//MDI 탭메뉴 생성
+///////////////////////////////////////////////////////////////////////////////////////////////
+function divMenu_grdMenu_oncellclick(obj:Grid, e:GridClickEventInfo)
+{
+	var objDs = this[obj.binddataset];
+ 	var nSx = 29;
+	var nEx = 45;
+	var nRow = e.row;
+	var nLvl = objDs.getColumn(nRow, "MENU_LVL");	
+
+	var childRow = obj.getTreeChildRow(objDs.rowposition, 0, true);
+	
+     if (childRow  >= 0) {
+		
+         var gridRow = obj.getTreeRow(objDs.rowposition);
+		 if (obj.isTreeCollapsedRow(childRow, true)) {
+			 obj.setTreeStatus(gridRow, true);
+		 }
+		 else {
+			 obj.setTreeStatus(gridRow, false);
+		 }
+     }
+
+	if (nLvl=="4"){
+		if (e.canvasX < nSx || e.canvasX > nEx) 
+		{
+		    gfn_ChkOpenMenu(objDs.getColumn(e.row, "MENU_CD"), objDs);
+		}
+		else
+		{		
+			if(objDs.getColumn(e.row,"MYMENU") == "0")
+			{ 
+				objDs.setColumn(e.row,"MYMENU","1");		
+				
+				var nCKrow = gdsMyMenu.findRow("menu_id",objDs.getColumn(e.row,"MENU_CD"));
+				if(nCKrow == -1){
+					var nRow = gdsMyMenu.addRow();
+					gdsMyMenu.setColumn(nRow,"menu_id",objDs.getColumn(e.row,"MENU_CD"));
+					gdsMyMenu.setColumn(nRow,"menu_nm",objDs.getColumn(e.row,"MENU_NM"));				
+				}
+			} else {
+				objDs.setColumn(e.row,"MYMENU","0");
+			    var nCKrow = gdsMyMenu.findRow("menu_id",objDs.getColumn(e.row,"MENU_CD"));
+				gdsMyMenu.deleteRow(nCKrow);
+			}		
+		}	
+	} 
+}
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Left Tree메뉴
+///////////////////////////////////////////////////////////////////////////////////////////////
+function fn_changeLeftMenu(Level1Code, MenuNm)
+{
+	
+	if(gv_menuType == "1") // 1Depth 메뉴(버튼) 형태
+	{
+		
+		//선택된 메뉴 LEVEL2 명 표시
+		//divMenu.BtnLeftMenu.text = MenuNm;
+		var strFilter = "MENU_CD.toString().substr(0,2)=='"+Level1Code.toString().substr(0,2)+"'&&(MENU_LVL=='2'||MENU_LVL=='3'||MENU_LVL=='4')";
+		gds_Menu.filter(strFilter);
+		
+		DsMenu.copyData(gds_Menu, true);
+		
+		DsMenu.keystring = "S:MENU_CD";
+		gds_Menu.filter("");
+	}
+	else if(gv_menuType == "2") // 1Depth 메뉴(버튼) + 2Depth메뉴(팝업Div)형태
+	{
+		//선택된 메뉴 LEVEL2 명 표시
+		//divMenu.BtnLeftMenu.text = MenuNm;
+		var strFilter = "MENU_CD.toString().substr(0,5)=='"+Level1Code.toString().substr(0,5)+"'&&(MENU_LVL=='3'||MENU_LVL=='4')";
+		gds_Menu.filter(strFilter);
+		
+		DsMenu.copyData(gds_Menu, true);
+		
+		DsMenu.keystring = "S:MENU_CD";
+		gds_Menu.filter("");
+	}
+}
+
+function edt_search_ontextchanged(obj:Edit,  e:TextChangedEventInfo)
+{
+
+	var text = e.posttext;  
+	if(text.length > 0)
+	{
+		var etext = GetSpliceTextE(text);
+		fds_Find.filter("pseudocode.toString().indexOf('"+etext+"') == 0");
+	    if(fds_Find.rowcount == 0){
+	    	lst_search.visible = false;
+	    }else{   
+			lst_search.visible = true;
+	    }
+	}
+	else
+	{
+		fds_Find.filter("pseudocode == 0");
+		lst_search.visible = false;
+	}
+	
+}
+
+function edt_search_onkeydown(obj:Edit, e:KeyEventInfo)
+{
+      if(e.keycode == "40"){
+         lst_search.setFocus();
+	     lst_search.index = 0;
+      }else if(e.keycode == "13"){
+         lst_search.visible = false;
+         btn_search_onclick();
+      }
+}
+
+
+
+// 한글 자소를 분리하여 리턴한다.
+var arrFirst = [12593,12594,12596,12599,12600,12601,12609,12610,12611,12613,12614,12615,12616,12617,12618,12619,12620,12621,12622];
+var arrSecond = [12623,12624,12625,12626,12627,12628,12629,12630,12631,12632,12633,12634,12635,12636,12637,12638,12639,12640,12641,12642,12643];
+var arrThird = [0,12593,12594,12595,12596,12597,12598,12599,12601,12602,12603,12604,12605,12606,12607,12608,12609,12610,12612,12613,12614,12615,12616,12618,12619,12620,12621,12622];
+function GetSpliceTextK(strInput)
+{
+	var i;
+	var strOut = "";
+	for(i=0;i<strInput.length;i++)
+	{
+		var nCode = strInput.charCodeAt(i);
+		
+		if(nCode>=44032 && nCode <= 55203)
+		{
+			var nFirst = Math.floor((nCode - 44032) / 588);
+			strOut += String.fromCharCode(arrFirst[nFirst]);
+			var nSecond = Math.floor(((nCode - 44032) % 588) / 28) ;
+			strOut += String.fromCharCode(arrSecond[nSecond]);
+			var nThird = Math.floor((nCode - 44032) % 28) ;
+			if(nThird > 0)
+				strOut += String.fromCharCode(arrThird[nThird]);
+		}
+		else
+			strOut += String.fromCharCode(nCode);
+	}
+	return strOut;
+}
+
+// 한글 자소를 분리하고 키보드에 매치되는 영문으로 리턴한다.
+var arrFirstE = ["r","R","s","e","E","f","a","q","Q","t","T","d","w","W","c","z","x","v","g"];
+var arrSecondE = ["k","o","i","O","j","p","u","P","h","hk","ho","hl","y","n","nj","np","nl","b","m","ml","l"];
+var arrThirdE = ["","r","R","rt","s","sw","sg","e","f","fr","fa","fq","ft","fx","fv","fg","a","q","qt","t","T","d","w","c","z","x","v","g"];
+var arrAllE = ["r","R","rt","s","sw","sg","e","E","f","fr","fa","fq","ft","fx","fv","fg","a","q","Q","qt","t","T","d","w","W","c","z","x","v","g","k","o","i","O","j","p","u","P","h","hk","ho","hl","y","n","nj","np","nl","b","m","ml","l"];
+function GetSpliceTextE(strInput)
+{
+
+	var i;
+	var strOutE = "";
+	for(i=0;i<strInput.length;i++)
+	{
+		var nCode = strInput.charCodeAt(i);
+
+		if(nCode>=44032 && nCode <= 55203)
+		{
+			var nFirst = Math.floor((nCode - 44032) / 588);
+
+			strOutE += arrFirstE[nFirst];
+			var nSecond = Math.floor(((nCode - 44032) % 588) / 28) ;
+
+			strOutE += arrSecondE[nSecond];
+			var nThird = Math.floor((nCode - 44032) % 28) ;
+
+			if(nThird > 0)
+				strOutE += arrThirdE[nThird];
+		}
+		else if(nCode>=12593 && nCode <= 12643)
+		{
+			strOutE += arrAllE[nCode-12593];
+		}
+		else
+		{
+			strOutE += String.fromCharCode(nCode);
+		}
+	}
+
+	return strOutE;
+}
+
+function fn_findDataLoad()
+{
+	var count = ds_Find.getRowCount();
+	var i;
+	
+    //div_LfMenu.cmb_Tmenu.index = 0;
+	//div_LfMenu.grd_LF_SubMenu.binddataset= "ds_TmenuLt00";
+	
+	for(i=0;i<count;i++)
+	{
+		var text = ds_Find.getColumn(i,"text");
+		var code = GetSpliceTextE(text);
+		ds_Find.setColumn(i,"pseudocode",code);
+	}
+}
+
+
+
+function btn_search_onclick(obj:Button,  e:ClickEventInfo)
+{   
+    if(!gfn_IsNull(edt_search.value))
+    fn_SerchCallBack("search",1,edt_search.value);
+}
+
+function fn_SerchCallBack(svcID, errorCode, errorMsg) { 
+    if(errorCode > -1){  
+		if ( svcID == "search"){   
+		  //향후삭제
+		  ds_PuSearchlink.copyData(ds_PuSearchlink00);
+		  for(var i=0; i < ds_PuSearchlink.rowcount; i++){
+		   ds_PuSearchlink.setColumn(i,0,ds_PuSearchlink.getColumn(i,0).replace("시장",edt_search.value));
+		  }
+		  //End
+		   //메뉴생성
+		   fn_setMyMenud();
+		   //PopupListBox viable
+		   lfn_PopupListBox();
+		}
+   }  
+}
+
+
+function lfn_PopupListBox(){
+	
+	var nX   = system.clientToScreenX(btn_search, 0) - edt_search.position.width - 5;
+	var nY   = system.clientToScreenY(btn_search, 0) + btn_search.position.height + 5;
+trace("yyyyyyyyyyyyyyyyyyyyyy=== " + PopLink.isPopup());			
+	if(PopLink.isPopup()==false){
+		PopLink.trackPopup(nX, nY);
+	}else{
+		PopLink.closePopup();
+	}
+
+}
+
+
+function lst_search_onitemclick(obj:ListBox, e:ListBoxClickEventInfo)
+{
+	edt_search.value = e.itemtext;
+	lst_search.visible = false;
+}
+
+
+function lst_search_onkeydown(obj:ListBox, e:KeyEventInfo)
+{
+	if(e.keycode == "13"){
+         edt_search.value = obj.value;
+         lst_search.index = -1;
+	     lst_search.visible = false;	  
+	     edt_search.setFocus();      
+    }
+}
+
+function fn_setMyMenud(){
+	var objStaMn;
+	var sStaID;
+	var sStapreFix = "sta_menu";	
+	var menuTitle;
+	var menuId;	
+	var objTextSize;  
+	var iNowLeft = 5;
+	var iNowTop = 0;
+	var iHeight = 24;
+	var iStaGap = 0;
+	var iStaSize = 300;
+	var k=0;
+	
+	fn_removeMenu();
+	for(i=0; i < ds_PuSearchlink.rowcount; i++){
+		menuTitle = ds_PuSearchlink.getColumn(i,"SEARCH_MENU");
+		menuId    = ds_PuSearchlink.getColumn(i,"MENU_CD");
+		menuType  = ds_PuSearchlink.getColumn(i,"MENU_TP");
+  
+  		objStaMn = new Static;
+  		sStaID = sStapreFix + i;
+
+  		if(menuType == "1"){
+  		    if(i == 0){
+				objStaMn.init(sStaID, iNowLeft, iNowTop+iNowLeft, iStaSize+iNowLeft, iNowTop + iHeight+iNowLeft);	
+    		}else{
+    		    objStaMn.init(sStaID, iNowLeft, iNowTop+iNowLeft, iStaSize+iNowLeft, iNowTop + iHeight+iNowLeft + 12);	
+            }
+  					
+		}else if(menuType == "2"){
+			objStaMn.init(sStaID, iNowLeft, iNowTop+iNowLeft, iStaSize+iNowLeft, iNowTop + iHeight+iNowLeft);
+		}
+		
+       
+ 		if(menuType == "1"){
+ 			if(i == 0){
+				iNowTop += (iHeight + iStaGap);	
+    		}else{
+				iNowTop += (iHeight + iStaGap) + 12;	
+            }
+		}else if(menuType == "2"){
+    		iNowTop += (iHeight + iStaGap);	
+    	} 		
+  		
+  		objStaMn.menuId = menuId;
+		objStaMn.text = menuTitle;
+    	objStaMn.usedecorate = true;			
+		
+		if(menuType == "1"){
+			
+			if(i == 0){
+				//objStaMn.class 		= "stc_popLayerTil";
+				objStaMn.style.color="#235798";
+				objStaMn.style.font="#Dotum,9,bold";
+            }else{
+				//objStaMn.class 		= "stc_popLayerTil2";
+				objStaMn.style.color="#235798";
+				objStaMn.style.font="#Dotum,9,bold";
+            }
+    	
+    	}else if(menuType == "2"){
+    		//objStaMn.class 		= "stc_popLayerList";
+    		objStaMn.style.background="transparent";
+    	}
+    	
+		PopLink.addChild(objStaMn.name, objStaMn);	
+			
+		if(menuType == "2"){
+			objStaMn.onclick.addHandler(Menu_onmouseenter);	
+	    }	
+		objStaMn.show();			   
+	}
+		//close btn 생성
+		var objButton = new Button();
+		objButton.init("btn_PopLinkClose", 305, 5, 320, 20);
+		objButton.class = "btn_tab_close";
+		objButton.text = "";
+		objButton.onclick.addHandler(popLinkCloseButtonClick);
+		PopLink.addChild(objButton.name, objButton);
+		objButton.show();	
+}
+
+function fn_removeMenu()
+{
+	if(PopLink.components.length>0)
+	{
+		while(PopLink.components.length!=0)
+		{
+			PopLink.removeChild(PopLink.components[0].name);
+		}
+	}
+}
+
+
+function Menu_onmouseenter(obj:Static,  e:ClickEventInfo)
+{
+   alert("작업중");
+}
+
+function popLinkCloseButtonClick(obj:Button,  e:ClickEventInfo){
+   PopLink.closePopup();
+}	
+
+// Active Form에 해당하는 메뉴 RowPosition설정
+function fn_selectedMenuIndex(sMenuCd)
+{
+	DsMenu.rowposition = DsMenu.findRowExpr("MENU_CD=='"+sMenuCd+"'");
+}
+]]></Script>
+  </Form>
+</FDL>

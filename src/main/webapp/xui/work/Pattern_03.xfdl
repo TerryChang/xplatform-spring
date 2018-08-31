@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Work" classname="Work" inheritanceid="" position="absolute 0 0 765 540" titletext="List/Detail">
+    <Layouts>
+      <Layout>
+        <Static id="sta_WFDA_Label" text="조직코드" position="absolute 0 349 95 375" class="sta_WFDA_LabelP"/>
+        <Static id="sta_WF_SearchBox" class="sta_WF_SearchBox" position="absolute 0 0 765 62" text="" anchor="left top right"/>
+        <Static id="sta_WFSA_PointLabel" text="기준일자" class="sta_WFSA_LabelP" position="absolute 17 10 102 30"/>
+        <Static id="sta_WFSA_PointLabel00" text="조직코드/명" class="sta_WFSA_Label" position="absolute 319 10 394 30"/>
+        <Button id="btn_WFSA_Search" taborder="10" text="조회" class="btn_WFSA_Search" position="absolute 703 31 753 53" anchor="top right"/>
+        <Static id="sta_WFSA_PointLabel02" text="사번/성명" class="sta_WFSA_LabelP" position="absolute 17 32 102 52"/>
+        <Static id="sta_WFSA_PointLabel03" text="근무지역" class="sta_WFSA_Label" position="absolute 319 32 394 52"/>
+        <Calendar id="Calendar00" taborder="11" value="20110620" text="2011-06-20" dateformat="yyyy-MM-dd" position="absolute 91 10 181 30" class="input_point"/>
+        <Edit id="Edit00" taborder="13" position="absolute 394 10 459 30"/>
+        <Button id="btn_WFSA_Search02" taborder="14" class="btn_WFSA_Search" position="absolute 460 10 480 30" style="image:URL('theme://images/ico_Search.png'); "/>
+        <Edit id="Edit01" taborder="15" position="absolute 481 10 656 30"/>
+        <Combo id="Combo01" taborder="16" position="absolute 394 32 544 52"/>
+        <Static id="sta_WF_TitleLev00" text="타이틀" class="sta_WF_TitleLev1" position="absolute 0 80 134 94"/>
+        <Button id="btn_WF_crud03" taborder="20" text="저장" class="btn_WF_crud" position="absolute 715 324 765 344" anchor="top right"/>
+        <Button id="btn_WF_crud04" taborder="21" text="삭제" class="btn_WF_crud" position="absolute 663 324 713 344" anchor="top right"/>
+        <Button id="btn_WF_crud05" taborder="22" text="수정" class="btn_WF_crud" position="absolute 611 324 661 344" anchor="top right"/>
+        <Button id="btn_WF_crud06" taborder="23" text="추가" class="btn_WF_crud" position="absolute 559 324 609 344" anchor="top right"/>
+        <Static id="sta_WFDA_Label05" class="sta_WFDA_Data" position="absolute 94 349 239 375" text=""/>
+        <Static id="sta_WFDA_Label00" text="한글명" class="sta_WFDA_LabelP" position="absolute 238 349 333 375"/>
+        <Static id="sta_WFDA_Label02" text="순서/비과세" class="sta_WFDA_LabelP" position="absolute 0 399 95 425"/>
+        <Static id="sta_WFDA_Label03" text="폐쇠일자" class="sta_WFDA_Label" position="absolute 0 424 95 450"/>
+        <Static id="sta_WFDA_Label04" text="비고" class="sta_WFDA_Label" position="absolute 0 449 95 540" anchor="left top bottom"/>
+        <Static id="sta_WFDA_Label01" class="sta_WFDA_Data" position="absolute 94 374 502 400" text=""/>
+        <Static id="sta_WFDA_Label06" text="유효기간" class="sta_WFDA_LabelP" position="absolute 0 374 95 400"/>
+        <Edit id="Edit02" taborder="24" position="absolute 98 352 173 372" class="input_point"/>
+        <Calendar id="Calendar01" taborder="25" value="20110620" text="2011-06-20" dateformat="yyyy-MM-dd" position="absolute 98 377 188 397" class="input_point"/>
+        <Calendar id="Calendar02" taborder="26" value="20110620" text="2011-06-20" dateformat="yyyy-MM-dd" position="absolute 201 377 291 397" class="input_point"/>
+        <Static id="sta_WFDA_Label07" class="sta_WFDA_Data" position="absolute 332 349 502 375" text=""/>
+        <Static id="sta_WFDA_Label08" class="sta_WFDA_Data" position="absolute 595 349 765 375" text="" anchor="left top right"/>
+        <Static id="sta_WFDA_Label09" text="영문명" class="sta_WFDA_Label" position="absolute 501 349 596 375"/>
+        <Edit id="Edit03" taborder="27" class="input_point" position="absolute 336 352 491 372"/>
+        <Edit id="Edit04" taborder="28" position="absolute 599 352 754 372"/>
+        <Static id="sta_WFDA_Label10" text="근무지역" class="sta_WFDA_LabelP" position="absolute 501 374 596 400"/>
+        <Static id="sta_WFDA_Label11" class="sta_WFDA_Data" position="absolute 595 374 765 400" text="" anchor="left top right"/>
+        <Combo id="Combo03" taborder="29" position="absolute 599 377 754 397"/>
+        <Static id="sta_WFDA_Label12" class="sta_WFDA_Data" position="absolute 94 399 239 425" text=""/>
+        <Static id="sta_WFDA_Label13" text="신설일자" class="sta_WFDA_Label" position="absolute 238 399 333 425"/>
+        <Static id="sta_WFDA_Label14" class="sta_WFDA_Data" position="absolute 332 399 502 425" text=""/>
+        <Static id="sta_WFDA_Label15" text="신설사유" class="sta_WFDA_Label" position="absolute 501 399 596 425"/>
+        <Static id="sta_WFDA_Label16" class="sta_WFDA_Data" position="absolute 595 399 765 425" text="" anchor="left top right"/>
+        <Static id="sta_WFDA_Label17" class="sta_WFDA_Data" position="absolute 94 424 239 450" text=""/>
+        <Static id="sta_WFDA_Label18" text="한글명" class="sta_WFDA_Label" position="absolute 238 424 333 450"/>
+        <Static id="sta_WFDA_Label19" class="sta_WFDA_Data" position="absolute 332 424 765 450" text="" anchor="left top right"/>
+        <Static id="sta_WFDA_Label22" class="sta_WFDA_Data" position="absolute 94 449 765 540" text="" anchor="all"/>
+        <Edit id="Edit05" taborder="30" class="input_point" position="absolute 98 402 163 422"/>
+        <CheckBox id="CheckBox00" taborder="31" position="absolute 180 402 235 422"/>
+        <Combo id="Combo04" taborder="32" position="absolute 599 402 754 422"/>
+        <Calendar id="Calendar03" taborder="33" value="20110620" text="2011-06-20" dateformat="yyyy-MM-dd" position="absolute 336 402 426 422"/>
+        <Calendar id="Calendar04" taborder="34" value="20110620" text="2011-06-20" dateformat="yyyy-MM-dd" position="absolute 98 427 188 447"/>
+        <Edit id="Edit06" taborder="35" position="absolute 336 427 754 447"/>
+        <TextArea id="TextArea00" taborder="36" position="absolute 98 452 754 537" anchor="all"/>
+        <Button id="Button00" taborder="37" text="엑셀다운로드" position="absolute 670 77 765 97" anchor="top right"/>
+        <Edit id="Edit07" taborder="38" class="input_point" position="absolute 91 32 154 52"/>
+        <Button id="btn_WFSA_Search00" taborder="39" class="btn_WFSA_Search" position="absolute 156 32 176 52" style="image:URL('theme://images/ico_Search.png'); "/>
+        <Edit id="Edit08" taborder="40" enable="false" position="absolute 178 32 281 52"/>
+        <Grid id="Grid00" taborder="41" binddataset="ds_grid" useinputpanel="false" autofittype="col" position="absolute 0 102 765 307" anchor="left top right">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="140"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="22" band="head"/>
+                <Row size="20"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="진행상태"/>
+                <Cell col="1" text="공사구분"/>
+                <Cell col="2" text="발주번호"/>
+                <Cell col="3" text="하도급명"/>
+                <Cell col="4" text="공사기간"/>
+                <Cell col="5" text="실행금액"/>
+                <Cell col="6" text="요청자"/>
+                <Cell col="7" text="요청일"/>
+                <Cell col="8" text="구분"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:Column0"/>
+                <Cell col="1" text="bind:Column1"/>
+                <Cell col="2" text="bind:Column2"/>
+                <Cell col="3" text="bind:Column3"/>
+                <Cell col="4" text="bind:Column4"/>
+                <Cell col="5" text="bind:Column5"/>
+                <Cell col="6" text="bind:Column6"/>
+                <Cell col="7" text="bind:Column7"/>
+                <Cell col="8" text="bind:Column8"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_grid" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+          <Column id="Column3" type="STRING" size="256"/>
+          <Column id="Column4" type="STRING" size="256"/>
+          <Column id="Column5" type="STRING" size="256"/>
+          <Column id="Column6" type="STRING" size="256"/>
+          <Column id="Column7" type="STRING" size="256"/>
+          <Column id="Column8" type="STRING" size="256"/>
+          <Column id="Column9" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
