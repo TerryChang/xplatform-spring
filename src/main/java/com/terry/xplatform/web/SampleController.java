@@ -13,19 +13,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.terry.xplatform.config.xplatform.annotation.RequestDataSet;
+import com.terry.xplatform.config.xplatform.annotation.RequestDataSetList;
 import com.terry.xplatform.config.xplatform.annotation.RequestVariable;
 import com.terry.xplatform.service.SampleService;
 import com.terry.xplatform.vo.SampleVO;
+import com.tobesoft.xplatform.data.DataSetList;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
 public class SampleController {
-	
+
 	@Autowired
 	SampleService sampleService;
-	
+
 	@RequestMapping("/egovSampleSelect")
 	public void list(Model model
 			, SampleVO sampleVO
@@ -38,7 +40,7 @@ public class SampleController {
 		List<SampleVO> sampleList = sampleService.list(sampleVO);
 		model.addAttribute("ds_output", sampleList);
 	}
-	
+
 	/*
 	@RequestMapping("/egovSampleSelect")
 	public void list(HttpServletRequest httpServletRequest) {
@@ -46,11 +48,13 @@ public class SampleController {
 		String recordCountPerPage = httpServletRequest.getParameter("recordCountPerPage");
 	}
 	*/
-	
+
 	@RequestMapping("/egovSampleModify")
 	public void modify(@RequestDataSet(name="ds_input")ArrayList<SampleVO> dataSet
 						, @RequestDataSet(name="ds_input")List<Map<String, Object>> dataSetMap
-						, @RequestDataSet(name="ds_input")Set<SampleVO> dataHashSet) {
+						, @RequestDataSet(name="ds_input")Set<SampleVO> dataHashSet
+						, @RequestDataSetList DataSetList dataSetList) {
+		logger.info("modify");
 		sampleService.modify(dataSet);
 	}
 
