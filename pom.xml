@@ -11,22 +11,22 @@
 		<java-version>1.8</java-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		
+
 		<!-- Web -->
 		<jsp.version>2.2</jsp.version>
 		<jstl.version>1.2</jstl.version>
 		<servlet.version>2.5</servlet.version>
-		
+
 		<!-- Spring -->
 		<spring-framework.version>4.3.18.RELEASE</spring-framework.version>
-		
+
 		<!-- AspectJ -->
 		<aspectj.version>1.8.13</aspectj.version>
-		
+
 		<!-- 데이터베이스 버전 -->
 		<h2db.version>1.4.197</h2db.version>
 		<oracle.version>11.2.0</oracle.version>
-		
+
 		<!-- Mybatis -->
 		<mybatis.version>3.4.6</mybatis.version>
         <mybatis-spring.version>1.3.2</mybatis-spring.version>
@@ -35,9 +35,9 @@
 		<logback.version>1.2.3</logback.version>
 		<slf4j.version>1.7.25</slf4j.version>
 		<log4jdbc.version>1.16</log4jdbc.version>
-		
+
 		<!-- Jackson Json Version -->
-		<jackson.version>2.5.1</jackson.version>
+		<jackson.version>2.9.7</jackson.version>
 		<!-- jackson.version>1.9.13</jackson.version -->
 	</properties>
 	<dependencies>
@@ -54,28 +54,28 @@
 				 </exclusion>
 			</exclusions>
 		</dependency>
-		
+
 		<!-- Spring Transactions -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
-		
+
 		<!-- Spring Transactions -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
-		
+
 		<!-- Spring MVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
-				
+
 		<!-- AspectJ -->
 		<dependency>
         	<groupId>org.aspectj</groupId>
@@ -87,7 +87,7 @@
         	<artifactId>aspectjweaver</artifactId>
         	<version>${aspectj.version}</version>
     	</dependency>
-		
+
 		<!-- Logging with SLF4J & LogBack -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -101,7 +101,7 @@
 			<version>${logback.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-				
+
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -120,21 +120,21 @@
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
 		</dependency>
-        
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.2</version>
             <optional>true</optional>
         </dependency>
-        
+
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2db.version}</version>
             <scope>compile</scope>
         </dependency>
-        
+
         <!-- Mybatis -->
 		<dependency>
             <groupId>org.mybatis</groupId>
@@ -147,13 +147,13 @@
             <artifactId>mybatis-spring</artifactId>
             <version>${mybatis-spring.version}</version>
         </dependency>
-		
+
 		<dependency>
 			<groupId>org.bgee.log4jdbc-log4j2</groupId>
 			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
 			<version>${log4jdbc.version}</version>
 		</dependency>
-		
+
 		<!-- jackson json -->
 		<dependency>
     		<groupId>com.fasterxml.jackson.core</groupId>
@@ -166,25 +166,25 @@
     		<artifactId>jackson-databind</artifactId>
     		<version>${jackson.version}</version>
 		</dependency>
-		
+
 		<dependency>
     		<groupId>com.fasterxml.jackson.core</groupId>
     		<artifactId>jackson-annotations</artifactId>
     		<version>${jackson.version}</version>
 		</dependency>
-		
+
 		<dependency>
 		    <groupId>javax.validation</groupId>
 		    <artifactId>validation-api</artifactId>
 		    <version>2.0.1.Final</version>
 		</dependency>
-		
+
 		<dependency>
     		<groupId>org.hibernate.validator</groupId>
     		<artifactId>hibernate-validator</artifactId>
     		<version>6.0.12.Final</version>
 		</dependency>
-		
+
 		<dependency>
             <groupId>com.tobesoft</groupId>
             <artifactId>xplatform</artifactId>
@@ -192,7 +192,7 @@
             <scope>system</scope>
             <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/xplatform-xapi-1.0.jar</systemPath>
         </dependency>
-        
+
         <dependency>
             <groupId>com.tobesoft</groupId>
             <artifactId>miplatform</artifactId>
@@ -200,8 +200,8 @@
             <scope>system</scope>
             <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/miplatform-3.2.jar</systemPath>
         </dependency>
-		
-		      
+
+
 	</dependencies>
     <build>
         <plugins>

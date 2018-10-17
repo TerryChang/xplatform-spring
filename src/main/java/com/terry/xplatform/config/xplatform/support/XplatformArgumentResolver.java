@@ -82,9 +82,7 @@ public class XplatformArgumentResolver implements HandlerMethodArgumentResolver 
 
     	Class<?> type = parameter.getParameterType();
     	Annotation[] annotations = parameter.getParameterAnnotations();
-    	HttpServletRequest request = (HttpServletRequest)webRequest.getNativeRequest();
-    	// HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
-    	// PlatformRequest platformRequest = new HttpPlatformRequest(request, "utf-8");
+    	HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
 
     	DataSetList dataSetList = null;
     	VariableList variableList = null;
@@ -112,16 +110,16 @@ public class XplatformArgumentResolver implements HandlerMethodArgumentResolver 
 		for(Annotation annotation : annotations){
 		    Class<? extends Annotation> annotationClass = annotation.annotationType();
 
-		    if(annotationClass.equals(RequestDataSetList.class)){			// @RequestDataSetList 어노테이션에 대한 처리(이 어노테이션은 DataSetList 클래스객체만 파라미터 타입으로 받을 수 있다)
+		    if(annotationClass.equals(RequestDataSetList.class)) {			// @RequestDataSetList 어노테이션에 대한 처리(이 어노테이션은 DataSetList 클래스객체만 파라미터 타입으로 받을 수 있다)
 		    	if(type.equals(DataSetList.class)) {
 		    		result = dataSetList;
 		    	}else{
 		    		result = WebArgumentResolver.UNRESOLVED;
 		    	}
-		    } else if(annotationClass.equals(RequestDataSet.class)){		// @RequestDataSet 어노테이션에 대한 처리
+		    } else if(annotationClass.equals(RequestDataSet.class)) {		// @RequestDataSet 어노테이션에 대한 처리
 		    	RequestDataSet requestDataSet = (RequestDataSet)annotation;
 		    	String dataSetName = requestDataSet.name();
-		    	if(!StringUtils.hasText(dataSetName)) {						// DataSet 이름이 빠진것이므로 이거는 예외처리 진행하자
+		    	if(!StringUtils.hasText(dataSetName)) {						// DataSet 이름이 빠진경우
 		    		result = WebArgumentResolver.UNRESOLVED;
 		    	} else {
 		    		DataSet dataSet = dataSetList.get(dataSetName);
@@ -180,7 +178,7 @@ public class XplatformArgumentResolver implements HandlerMethodArgumentResolver 
 		    		} else {
 		    			result = variable.getObject();
 		    		}
-		    	} else {												// 특정 변수 이름이 없으면 VO로 매핑하는 것이기 때문에 오히려 이런 경우 자바의 데이터타입과는 매핑을 할 수 없다
+		    	} else {												// 특정 변수 이름이 없으면 List, Set, Map 또는 VO로 매핑하는 것이기 때문에 오히려 이런 경우 자바의 데이터타입과는 매핑을 할 수 없다
 		    		List<String> keyList = variableList.keyList();
 
 		    		if(Collection.class.isAssignableFrom(type)) {
@@ -221,6 +219,7 @@ public class XplatformArgumentResolver implements HandlerMethodArgumentResolver 
 
 		    				for(String key : keyList) {
 		    					Field keyField = ReflectionUtils.findField(type, key);
+		    					if(keyField == null) continue;
 		    					ReflectionUtils.makeAccessible(keyField);
 
 		    					Class<?> keyFieldType = keyField.getType();

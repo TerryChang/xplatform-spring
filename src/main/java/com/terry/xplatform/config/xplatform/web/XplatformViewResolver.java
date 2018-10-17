@@ -17,7 +17,5 @@ public class XplatformViewResolver extends AbstractTemplateViewResolver {
 		XplatformView view = (XplatformView)super.buildView(viewName);
 		return view;
     }
-    
-    
 
 }
