@@ -28,7 +28,7 @@ public class SampleController {
 	@Autowired
 	SampleService sampleService;
 
-	@RequestMapping("/egovSampleSelect")
+	@RequestMapping("egovSampleSelect")
 	public void list(Model model
 			, SampleVO sampleVO
 			, @RequestVariable SampleVO requestVariableSampleVO

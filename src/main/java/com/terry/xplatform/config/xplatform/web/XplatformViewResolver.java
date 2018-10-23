@@ -1,21 +1,30 @@
 package com.terry.xplatform.config.xplatform.web;
 
-import org.springframework.web.servlet.view.AbstractTemplateViewResolver;
-import org.springframework.web.servlet.view.AbstractUrlBasedView;
+import java.util.Locale;
 
-public class XplatformViewResolver extends AbstractTemplateViewResolver {
+import org.springframework.core.Ordered;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.ViewResolver;
 
-    @Override
-    protected Class getViewClass() {
+public class XplatformViewResolver implements ViewResolver, Ordered {
+
+	private int order = Ordered.LOWEST_PRECEDENCE;
+
+	@Override
+	public View resolveViewName(String viewName, Locale locale) throws Exception {
 		// TODO Auto-generated method stub
-		return XplatformView.class;
-    }
+		XplatformView xplatformView = new XplatformView();
+		return xplatformView;
+	}
 
-    @Override
-    protected AbstractUrlBasedView buildView(String viewName) throws Exception {
+	@Override
+	public int getOrder() {
 		// TODO Auto-generated method stub
-		XplatformView view = (XplatformView)super.buildView(viewName);
-		return view;
-    }
+		return order;
+	}
+
+	public void setOrder(int order) {
+		this.order = order;
+	}
 
 }

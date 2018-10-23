@@ -17,20 +17,21 @@ import com.tobesoft.xplatform.data.DataSet;
 
 @Service
 public class SampleServiceImpl implements SampleService {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	SampleDAO sampleDAO;
-	
+
 	@PostConstruct
 	public void init() {
 		sampleDAO = sqlSession.getMapper(SampleDAO.class);
 	}
-	
+
 	@Override
 	public List<SampleVO> list(SampleDefaultVO sampleDefaultVO) throws DataAccessException {
 		// TODO Auto-generated method stub
+		// throw new DataAccessException("Test DataAccessException Message") {};
 		List<SampleVO> result = sampleDAO.selectSampleList(sampleDefaultVO);
 		return result;
 	}
@@ -48,7 +49,7 @@ public class SampleServiceImpl implements SampleService {
 				case DataSet.ROW_TYPE_UPDATED :
 					sampleDAO.updateSample(sampleVO);
 					break;
-				case DataSet.ROW_TYPE_DELETED : 
+				case DataSet.ROW_TYPE_DELETED :
 					sampleDAO.deleteSample(sampleVO.getId());
 					break;
 				}
@@ -59,15 +60,15 @@ public class SampleServiceImpl implements SampleService {
 					sampleDAO.deleteSample(sampleVO.getId());
 					sampleDAO.insertSample(sampleVO);
 					break;
-				case DataSet.ROW_TYPE_DELETED : 
+				case DataSet.ROW_TYPE_DELETED :
 					sampleDAO.deleteSample(sampleVO.getId());
 					break;
 				}
 			}
-			
+
 		}
 	}
 
-	
+
 
 }
