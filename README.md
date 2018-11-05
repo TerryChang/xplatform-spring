@@ -17,7 +17,7 @@ xplatform-spring
 7. [Xplatform과 Spring Framework 연동 템플릿으로 보는 HandlerMethodArgumentResolver와 ViewResolver (7) - HandlerMethodArgumentResolver 분석(3)](https://zgundam.tistory.com/156)
 8. [Xplatform과 Spring Framework 연동 템플릿으로 보는 HandlerMethodArgumentResolver와 ViewResolver (8) - HandlerMethodArgumentResolver 분석(4)](https://zgundam.tistory.com/157)
 9. [Xplatform과 Spring Framework 연동 템플릿으로 보는 HandlerMethodArgumentResolver와 ViewResolver (9) - XplatformView 분석](https://zgundam.tistory.com/158)
-10.[ Xplatform과 Spring Framework 연동 템플릿으로 보는 HandlerMethodArgumentResolver와 ViewResolver (10) - 예외처리](https://zgundam.tistory.com/159)
+10.[Xplatform과 Spring Framework 연동 템플릿으로 보는 HandlerMethodArgumentResolver와 ViewResolver (10) - 예외처리](https://zgundam.tistory.com/159)
 
 Xplatform 관련 소스는 **src/main/webapp/xui** 디렉토리에 있습니다.<br/>
 Xplatform으로 해당 프로젝트를 열고자 할때는 xui 디렉토리에 있는 DefaultTheme.xprj 파일을 여세요<br/>
