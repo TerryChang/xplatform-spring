@@ -12,13 +12,6 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(value={DataAccessException.class})
 	public XplatformView processDataAccessException(DataAccessException ex){
-		/*
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("ErrorCode", "-1");
-		modelAndView.addObject("ErrorMsg", ex.getMessage());
-		modelAndView.setViewName("errorView");
-		return modelAndView;
-		*/
 		XplatformView xplatformView = new XplatformView("30", ex.getMessage());
 		return xplatformView;
 	}
@@ -26,7 +19,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(value={Exception.class})
 	public ModelAndView processException(Exception ex){
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("ErrorCode", "-1");
+		modelAndView.addObject("ErrorCode", "156");
 		modelAndView.addObject("ErrorMsg", ex.getMessage());
 		modelAndView.setViewName("errorView");
 		return modelAndView;

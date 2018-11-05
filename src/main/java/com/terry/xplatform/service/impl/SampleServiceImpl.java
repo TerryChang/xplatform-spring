@@ -32,6 +32,7 @@ public class SampleServiceImpl implements SampleService {
 	public List<SampleVO> list(SampleDefaultVO sampleDefaultVO) throws DataAccessException {
 		// TODO Auto-generated method stub
 		// throw new DataAccessException("Test DataAccessException Message") {};
+		// throw new RuntimeException("Test RuntimeException Message") {};
 		List<SampleVO> result = sampleDAO.selectSampleList(sampleDefaultVO);
 		return result;
 	}
